@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, ReactNode } from 'react'
 import { format } from 'date-fns'
 import { Search, Calendar, ChevronDown, Send, Clock, AlertCircle } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -151,7 +151,7 @@ export default function Invoices() {
             </tr>
           </thead>
           <tbody>
-            {invoices.map((invoice) => (
+            {invoices.map((invoice: { id: string; [key: string]: any }) => (
               <tr key={invoice.id} className="border-b">
                 <td className="py-2 px-4">
                   <Badge variant={
