@@ -104,9 +104,9 @@ export default function RecurringPayments() {
   const getStatusBadgeVariant = (status: string) => {
     switch (status.toLowerCase()) {
       case 'active':
-        return 'success'
+        return 'default'
       case 'pending':
-        return 'warning'
+        return 'outline'
       case 'paused':
         return 'secondary'
       case 'closed':

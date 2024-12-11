@@ -99,7 +99,7 @@ export default function PayRequest() {
   const getStatusBadgeVariant = (status: string) => {
     switch (status.toLowerCase()) {
       case 'sent':
-        return 'warning'
+        return 'default'
       case 'paid':
         return 'success'
       case 'pending':
