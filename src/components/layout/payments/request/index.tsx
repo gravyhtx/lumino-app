@@ -101,7 +101,7 @@ export default function PayRequest() {
       case 'sent':
         return 'default'
       case 'paid':
-        return 'success'
+        return 'outline'
       case 'pending':
         return 'secondary'
       default:
