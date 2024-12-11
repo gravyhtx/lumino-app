@@ -2,11 +2,11 @@ import type { DateRange } from "react-day-picker"
 import { addDays, format, getYear } from "date-fns"
 
 import React from "react"
-import { classnames } from "~/utils/global"
+import { classnames } from "@/utils"
 import { CalendarIcon } from "lucide-react"
-import { Button } from "~/components/ui/button"
-import { Calendar } from "~/components/ui/calendar"
-import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 export function DateRangePicker({
   className,
