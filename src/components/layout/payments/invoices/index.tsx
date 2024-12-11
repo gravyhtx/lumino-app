@@ -157,7 +157,7 @@ export default function Invoices() {
                   <Badge variant={
                     invoice.status === 'PAST DUE' ? 'destructive' :
                     invoice.status === 'Paid' ? 'success' :
-                    invoice.status === 'Outstanding' ? 'warning' :
+                    invoice.status === 'Outstanding' ? 'outline' :
                     'secondary'
                   }>
                     {invoice.status}
