@@ -13,8 +13,8 @@ export const InfoCard = forwardRef<HTMLDivElement, InfoCardProps>(
   ({ title, amount, timeSince, icon }, ref) => {
     // Determine if the icon is a string (Lucide icon name)
     const IconComponent =
-      typeof icon === "string" && LucideIcons[icon]
-        ? LucideIcons[icon] // Retrieve the icon dynamically from Lucide
+      typeof icon === "string" && icon in LucideIcons
+        ? (LucideIcons[icon as keyof typeof LucideIcons] as React.ElementType) // Explicit type assertion
         : null;
 
     // Default fallback SVG
