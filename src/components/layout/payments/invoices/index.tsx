@@ -156,7 +156,7 @@ export default function Invoices() {
                 <td className="py-2 px-4">
                   <Badge variant={
                     invoice.status === 'PAST DUE' ? 'destructive' :
-                    invoice.status === 'Paid' ? 'success' :
+                    invoice.status === 'Paid' ? 'default' :
                     invoice.status === 'Outstanding' ? 'outline' :
                     'secondary'
                   }>
