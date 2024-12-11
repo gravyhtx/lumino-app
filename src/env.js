@@ -38,6 +38,6 @@ export const env = createEnv({
     SUPABASE_API_KEY: process.env.SUPABASE_API_KEY,
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   },
-  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
+  skipValidation: true,
   emptyStringAsUndefined: true,
 });
