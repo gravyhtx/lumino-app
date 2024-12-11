@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import type { ReactNode } from "react";
-import type { IconName } from "@/components/elements/";
-import Icon from "@/components/_core/Icon";
+import Icon, { type IconName } from "../../Icon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 type InfoCardProps = {
@@ -59,3 +58,5 @@ export const InfoCard: React.ForwardRefExoticComponent<InfoCardProps | InfoCardP
     </Card>
   )
 });
+
+InfoCard.displayName = "InfoCard";

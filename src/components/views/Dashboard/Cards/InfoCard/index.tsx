@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import type { ReactNode } from "react";
-import type { IconName } from "@/components/_core/Icon";
-import Icon from "@/components/_core/Icon";
+import Icon, { type IconName } from "../../Icon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 type InfoCardProps = {
@@ -41,7 +40,7 @@ export const InfoCard: React.ForwardRefExoticComponent<InfoCardProps | InfoCardP
   const cardIcon = typeof icon === 'string' ? <Icon name={icon as IconName} size={20} color="currentColor" /> : icon;
 
   return(
-    <Card ref={ref} aria-label={title} style={{ backgroundColor: "#02041E", border: "1px solid rgba(255, 255, 255, .2)"}}>
+    <Card ref={ref} aria-label={title} style={{ border: "1px solid rgba(255, 255, 255, .2)"}}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">
           {title}
@@ -49,7 +48,7 @@ export const InfoCard: React.ForwardRefExoticComponent<InfoCardProps | InfoCardP
         {cardIcon ?? svgEl}
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold" style={{ color: "white"}}>
+        <div className="text-2xl font-bold">
           {amount}
         </div>
         <p className="text-xs text-muted-foreground">
@@ -59,3 +58,5 @@ export const InfoCard: React.ForwardRefExoticComponent<InfoCardProps | InfoCardP
     </Card>
   )
 });
+
+InfoCard.displayName = "InfoCard";

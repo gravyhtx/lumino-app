@@ -1,8 +1,7 @@
 import { classnames } from "@/utils";
 import { QuickView } from "./QuickView";
-import { BarGraph } from "./BarGraph";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { RecentSales } from "./RecentSales";
+import { useState } from "react";
+import { Display } from './Display';
 
 // Include props for Total Revenue, Subscriptions, Transaction Quantity, and Next Payout 
 
@@ -19,26 +18,16 @@ export const Dashboard = () => {
     nextPayout
   ];
 
+  const [activeTab, setActiveTab] = useState<'overview' | 'sales' | 'rewards' | 'goals'>('overview');
+
   return (<>
     <div className={''}>
-      <QuickView value={quickViewData} margin={"0 1rem"} />
+      <QuickView
+        tabId={activeTab}
+        onTabChange={(tab) => setActiveTab(tab)} />
     </div>
     <div className={classnames("grid grid-cols-1 lg:grid-cols-[7fr_3fr] gap-8", '')}>
-      <div className="w-full lg:col-span-1">
-        <Card>
-          <CardTitle>Gross Sales</CardTitle>
-          <BarGraph />
-        </Card>
-      </div>
-      <div className="w-full lg:col-span-1">
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Transactions</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <RecentSales />
-        </Card>
-      </div>
+      <Display />
     </div>
   </>)
 }

@@ -6,24 +6,44 @@ import styles from "./quickview.module.css";
 import { titlecase } from "@/utils";
 
 type Timeframes = 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
-type Amount = `${'+'|'-'|''}${'$'|''}${string}${'%'|''}`;
-type Delta = `${'+'|'-'}${string}${'%'|''}`;
+type Title = [string, string, string, string];
+type Amount = string | Date;
+type Value = [Amount, Amount, Amount, Amount];
+type Delta = string;
 type DeltaType = {
   amount: [Delta, Delta, Delta, Delta];
   time: [Timeframes, Timeframes, Timeframes, Timeframes];
 }
 
 type InfoCardsProps = {
-  title?: [string, string, string, string];
-  value?: [Amount, Amount, Amount, Amount];
+  title?: { overview: Title, sales: Title, rewards: Title, goals: Title };
+  value?: { overview: Value, sales: Value, rewards: Value, goals: Value };
   delta?: DeltaType;
   icon?: [ReactNode, ReactNode, ReactNode, ReactNode];
   margin?: string;
+  tabId: 'overview' | 'sales' | 'rewards' | 'goals';
+  onTabChange: (tab: 'overview' | 'sales' | 'rewards' | 'goals') => void;
 }
 
-export const QuickView: React.FC<InfoCardsProps> = ({title, value, delta, margin}): JSX.Element => {
-  title = title ?? ['Total Revenue', 'Subscriptions', 'Transaction Quantity', 'Next Payout'];
-  value = value ?? ['$45,231.89', '+2350', '+12,234', '+537'];
+export const QuickView: React.FC<InfoCardsProps> = ({
+  title = {
+    overview: ['Total Revenue', 'Next Payout', 'Rewards Earned', 'Next Milestone'],
+    sales: ['Total Sales', 'Payment Methods', 'Fees Saved', 'Recurring Revenue'],
+    rewards: ['Total Points', 'Total Rewards Earned', 'Recent Points', 'Top Earnings Activity'],
+    goals: ['Goals Completed', 'Active Goals', 'Next Milestone', 'Rewards Earned']
+  },
+  value = {
+    overview: ['$45,231.89', '12/23/2024', '12,234', '537 pts'],
+    sales: ['$12,231.89', '+350', '+2,234', '+37'],
+    rewards: ['$1,231.89', '+50', '+234', '+7'],
+    goals: ['23', '5', '12', '3']
+  },
+  delta,
+  margin,
+  tabId= 'overview',
+  onTabChange,
+}): JSX.Element => {
+
   const deltaObj = {
     a: {amount: delta?.amount[0] ?? '+20.1%', time: delta?.time[0] ?? 'month'},
     b: {amount: '+180.1%', time: 'month'},
@@ -41,50 +61,52 @@ export const QuickView: React.FC<InfoCardsProps> = ({title, value, delta, margin
   };
 
   const titleValue = (title: string) => `${titlecase(title.trim())}`;
-  const amountValue = (amount: string) => `${amount.trim()}`;
+  const amountValue = (amount: Amount) => `${amount.toString().trim()}`;
   const deltaValue = (amount: string, time:string) => `${amount as Delta} ${timeframes[time as Timeframes]}`;
 
   console.log(CardSvg[0] as ReactNode)
+  console.log({ tabId, title: title[tabId], value: value[tabId] });
 
   return(
     <div style={{width: "100%", padding: "0 20px", margin}}>
       <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList style={{ backgroundColor: "#02041E", border: "1px solid rgba(255, 255, 255, .2)"}}>
-          <TabsTrigger value="overview">
-            Overview
-          </TabsTrigger>
-          <TabsTrigger value="analytics" disabled>
-            Analytics
-          </TabsTrigger>
-          <TabsTrigger value="reports" disabled>
-            Reports
-          </TabsTrigger>
-          <TabsTrigger value="notifications" disabled>
-            Notifications
-          </TabsTrigger>
+        <TabsList style={{ border: '1px solid rgba(255, 255, 255, .2)' }}>
+          {(['overview', 'sales', 'rewards', 'goals'] as const).map((tab) => (
+            <TabsTrigger
+              key={tab}
+              value={tab}
+              onClick={() => onTabChange(tab)}
+            >
+              {titlecase(tab)}
+            </TabsTrigger>
+          ))}
         </TabsList>
-        <TabsContent value="overview" className="space-y-4">
-          <div className={classnames("grid gap-4 sm:grid-cols-2 md:grid-cols-4 poo", styles.cards)}>
+        <TabsContent value={tabId} className="space-y-4">
+          <div className={classnames('grid gap-4 sm:grid-cols-2 md:grid-cols-4', styles.cards)}>
             <InfoCard
-              title={titleValue(title[0])}
-              amount={amountValue(value[0])}
+              title={titleValue(title[tabId][0])}
+              amount={amountValue(value[tabId][0])}
               timeSince={deltaValue(deltaObj.a.amount, deltaObj.a.time)}
-              icon={CardSvg[0] as ReactNode} />
+              icon={CardSvg[0]}
+            />
             <InfoCard
-              title={titleValue(title[1])}
-              amount={amountValue(value[1])}
+              title={titleValue(title[tabId][1])}
+              amount={amountValue(value[tabId][1])}
               timeSince={deltaValue(deltaObj.b.amount, deltaObj.b.time)}
-              icon={CardSvg[1] as ReactNode} />
+              icon={CardSvg[1]}
+            />
             <InfoCard
-              title={titleValue(title[2])}
-              amount={amountValue(value[2])}
+              title={titleValue(title[tabId][2])}
+              amount={amountValue(value[tabId][2])}
               timeSince={deltaValue(deltaObj.c.amount, deltaObj.c.time)}
-              icon={CardSvg[2] as ReactNode} />
+              icon={CardSvg[2]}
+            />
             <InfoCard
-              title={titleValue(title[3])}
-              amount={amountValue(value[3])}
+              title={titleValue(title[tabId][3])}
+              amount={amountValue(value[tabId][3])}
               timeSince={deltaValue(deltaObj.d.amount, deltaObj.d.time)}
-              icon={CardSvg[3] as ReactNode} />
+              icon={CardSvg[3]}
+            />
           </div>
         </TabsContent>
       </Tabs>

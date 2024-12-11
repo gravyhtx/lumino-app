@@ -30,4 +30,15 @@ export const LuminoLogo = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
   }
 );
 
-LuminoLogo.displayName = "LuminoLogo"
+export const LuminoTriangle = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  (props, ref) => {
+    return (
+      <div ref={ref} className="flex items-center" {...props}>
+        <LuminoLogoTriangle />
+      </div>
+    );
+  }
+);
+
+LuminoLogo.displayName = "LuminoLogo";
+LuminoTriangle.displayName = "LuminoTriangle";

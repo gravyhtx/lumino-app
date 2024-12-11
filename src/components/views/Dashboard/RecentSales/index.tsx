@@ -1,6 +1,6 @@
 import { Avatar } from "@radix-ui/react-avatar"
-import { classnames } from "~/utils/global";
 import styles from "./recents.module.css";
+import { classnames } from "@/utils";
 
 export const RecentSales = () => {
   return (<div style={{padding: '20px', width: "100%"}}>

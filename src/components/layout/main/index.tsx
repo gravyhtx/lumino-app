@@ -3,8 +3,11 @@
 import Link from "next/link"
 import {
   Bell,
+  CircleUser,
+  HandCoins,
   Home,
   LineChart,
+  Medal,
   Menu,
   Package,
   Package2,
@@ -23,9 +26,10 @@ import { DialogDemo } from './navigation/dialog-ui';
 import BouncingDotsLoader from '../loading/BouncingDots';
 import { formatLink } from '@/lib/utils';
 import { ViewContainer } from '../views/view-container';
-import { LuminoLogo } from "@/components/elements/logo";
+import { LuminoLogo, LuminoTriangle } from "@/components/elements/logo";
 import type  { MainProps } from "../types";
 import { Customers } from '../../views/Customers';
+import { Dashboard } from "@/components/views/Dashboard";
 
 const Main: React.FC<MainProps> = ({}) => {
   // Single page application
@@ -56,17 +60,19 @@ const Main: React.FC<MainProps> = ({}) => {
 
   const Dash = () => {
     return (
-      <></>
+      <><Dashboard/></>
     )
   }
 
+  const iconClass = "h-5 w-5";
+
   const viewLinks = [
-    { name: 'Dashboard', icon: <Home className="h-5 w-5" />, component: <DefaultView header='Dashboard' />},
-    { name: 'Invoices', icon: <ShoppingCart className="h-5 w-5" />, notifications: 6, component: <View2 /> },
-    { name: 'Payment Requests', icon: <Package className="h-5 w-5" />, component: <Dash /> },
-    { name: 'Payment Links', icon: <LineChart className="h-5 w-5" /> },
-    { name: 'Customers', icon: <Users className="h-5 w-5" />, component: <Customers /> },
-    { name: 'Orders', icon: <ShoppingCart className="h-5 w-5" /> },
+    { name: 'Dashboard', icon: <Home className={iconClass} />, component: <DefaultView header='Dashboard' />},
+    { name: 'Invoices', icon: <ShoppingCart className={iconClass} />, notifications: 6, component: <View2 /> },
+    { name: 'Payment Requests', icon: <Package className={iconClass} />, component: <Dash /> },
+    { name: 'Payment Links', icon: <LineChart className={iconClass} /> },
+    { name: 'Customers', icon: <Users className={iconClass} />, component: <Customers /> },
+    { name: 'Orders', icon: <ShoppingCart className={iconClass} /> },
     { name: 'Subscriptions', component: <></> },
     { name: 'Virtual Terminal' },
     { name: 'Payments' },
@@ -117,7 +123,7 @@ const Main: React.FC<MainProps> = ({}) => {
                 size="icon"
                 className="shrink-0 md:hidden"
               >
-                <Menu className="h-5 w-5" />
+                <LuminoTriangle />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
@@ -138,7 +144,7 @@ const Main: React.FC<MainProps> = ({}) => {
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1">
-            <form>
+            {/* <form>
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -147,7 +153,7 @@ const Main: React.FC<MainProps> = ({}) => {
                   className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
                 />
               </div>
-            </form>
+            </form> */}
           </div>
           <UserMenu />
         </header>

@@ -82,7 +82,7 @@ export type ExtractKeys<T> = keyof T;
  */
 export type ExtractValues<T> = T[keyof T];
 
-//*[ XXXXXXXX ]*//
+//*[ CHECKS ]*//
 
 /**
  * Check if a type is an object.
