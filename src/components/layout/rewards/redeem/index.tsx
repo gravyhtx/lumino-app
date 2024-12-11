@@ -41,15 +41,18 @@ export default function RewardRedemption() {
   }, [])
 
   const lastRewardElementRef = useCallback((node: HTMLDivElement | null) => {
-    if (loading) return
-    if (observer.current) observer.current.disconnect()
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    
     observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasMore) {
-        loadMoreRewards()
+      const firstEntry = entries[0];
+      if (firstEntry && firstEntry.isIntersecting && hasMore) {
+        loadMoreRewards();
       }
-    })
-    if (node) observer.current.observe(node)
-  }, [loading, hasMore, loadMoreRewards])
+    });
+    
+    if (node) observer.current.observe(node);
+  }, [loading, hasMore, loadMoreRewards]);
 
   const filteredRewards = rewards.filter(reward => 
     activeCategory === "All" || reward.category === activeCategory
