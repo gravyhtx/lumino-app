@@ -10,7 +10,7 @@
     "isolatedModules": true,
 
     /* Strictness */
-    "strict": false, // change back to `true`
+    "strict": true,
     "noUncheckedIndexedAccess": true,
     "checkJs": true,
 

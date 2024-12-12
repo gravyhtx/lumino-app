@@ -2,6 +2,7 @@
   "name": "saucelib",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "SKIP_TYPE_CHECK=1 next build",
     "db:generate": "prisma migrate dev",
