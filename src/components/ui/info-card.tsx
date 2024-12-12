@@ -6,7 +6,7 @@ type InfoCardProps = {
   title: string;
   amount: string;
   timeSince: string;
-  icon?: React.ReactNode | keyof typeof LucideIcons; // Allow ReactNode or Lucide icon name as string
+  icon?: React.ReactNode; // Allow ReactNode or Lucide icon name as string
 };
 
 export const InfoCard = forwardRef<HTMLDivElement, InfoCardProps>(
@@ -14,7 +14,7 @@ export const InfoCard = forwardRef<HTMLDivElement, InfoCardProps>(
     // Determine if the icon is a string (Lucide icon name)
     const IconComponent =
       typeof icon === "string" && icon in LucideIcons
-        ? (LucideIcons[icon as keyof typeof LucideIcons] as React.ElementType) // Explicit type assertion
+        ? (LucideIcons[icon as keyof typeof LucideIcons] as React.ElementType) // Explicitly cast to keyof LucideIcons
         : null;
 
     // Default fallback SVG
@@ -39,7 +39,7 @@ export const InfoCard = forwardRef<HTMLDivElement, InfoCardProps>(
         aria-label={title}
         style={{
           border: "1px solid rgba(255, 255, 255, .2)",
-          width: "100%"
+          width: "100%",
         }}
       >
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -48,13 +48,11 @@ export const InfoCard = forwardRef<HTMLDivElement, InfoCardProps>(
           {IconComponent ? (
             <IconComponent size={20} className="text-muted-foreground" />
           ) : (
-            icon || defaultIcon
+            icon ?? defaultIcon /* Use `??` for nullish values */
           )}
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
-            {amount}
-          </div>
+          <div className="text-2xl font-bold">{amount}</div>
           <p className="text-xs text-muted-foreground">{timeSince}</p>
         </CardContent>
       </Card>

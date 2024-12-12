@@ -53,7 +53,7 @@ export default function Orders() {
           </div>
           <p className="text-muted-foreground max-w-[600px] mx-auto">
             When a customer places an order from a{" "}
-            <span className="text-foreground">Payment Link</span>, you'll find it
+            <span className="text-foreground">Payment Link</span>, you&apos;ll find it
             here. You can manage the status of orders, apply shipping details, and
             perform refunds.
           </p>

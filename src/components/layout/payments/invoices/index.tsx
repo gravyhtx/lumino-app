@@ -21,8 +21,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+type Invoice = {
+  id: string;
+  status: string;
+  customer: string;
+  total: number;
+  balance: number;
+  created: string;
+  due: string;
+};
+
 // Mock data with proper date formatting
-const invoices = [
+const invoices: Invoice[] = [
   {
     id: 'H10001',
     status: 'PAST DUE',
@@ -85,7 +95,7 @@ export default function Invoices() {
   const [dateRange, setDateRange] = useState('3months')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const filteredInvoices = useMemo(() => {
+  const filteredInvoices: Invoice[] = useMemo(() => {
     let filtered = [...invoices]
 
     // Filter by view
@@ -151,8 +161,8 @@ export default function Invoices() {
             </tr>
           </thead>
           <tbody>
-            {invoices.map((invoice: { id: string; [key: string]: any }) => (
-              <tr key={invoice.id} className="border-b">
+              {invoices.map((invoice: Invoice) => (
+                <tr key={invoice.id} className="border-b">
                 <td className="py-2 px-4">
                   <Badge variant={
                     invoice.status === 'PAST DUE' ? 'destructive' :

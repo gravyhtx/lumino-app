@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { PieChart, Pie, Cell } from 'recharts'
-import { FileText, Users, Wallet, Clock, Plus } from 'lucide-react'
+import { FileText, Users, Wallet, Clock } from 'lucide-react'
 
 // Mock data for the revenue chart
 const revenueData = [
@@ -82,9 +82,12 @@ export default function Dashboard() {
                   tickFormatter={(value) => `$${value/1000}K`}
                   ticks={[0, 1000, 2000, 3000, 4000, 5000]}
                 />
-                <Tooltip 
-                  formatter={(value) => [`$${value}`, 'Revenue']}
-                  labelFormatter={(label) => `Date: ${label}`}
+                <Tooltip
+                  formatter={(value: number | string, name: string, props: any) => [
+                    `$${value}`,
+                    'Revenue',
+                  ]}
+                  labelFormatter={(label: string) => `Date: ${label}`}
                 />
                 <Line 
                   type="monotone" 
@@ -149,11 +152,11 @@ export default function Dashboard() {
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip 
-                    formatter={(value, name, props) => [
-                      `$${value.toLocaleString()} (${props.payload.count} items)`,
-                      name
-                    ]}
+                  <Tooltip
+                    formatter={(value: number | string, name: string, props: any) => {
+                      const count = props?.payload?.count ?? 0; // Ensure safe access
+                      return [`$${value.toLocaleString()} (${count} items)`, name];
+                    }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -196,8 +199,8 @@ export default function Dashboard() {
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip 
-                    formatter={(value) => [`${value}%`, 'Percentage']}
+                  <Tooltip
+                    formatter={(value: number | string) => [`${value}%`, 'Percentage']}
                   />
                 </PieChart>
               </ResponsiveContainer>

@@ -62,8 +62,9 @@ export const QuickView: React.FC<InfoCardsProps> = ({
 
   const titleValue = (title: string) => `${titlecase(title.trim())}`;
   const amountValue = (amount: Amount) => `${amount.toString().trim()}`;
-  const deltaValue = (amount: string, time:string) => `${amount as Delta} ${timeframes[time as Timeframes]}`;
-
+  const deltaValue = (amount: string, time: keyof typeof timeframes) => 
+    `${amount} ${timeframes[time]}`;
+  
   console.log(CardSvg[0] as ReactNode)
   console.log({ tabId, title: title[tabId], value: value[tabId] });
 

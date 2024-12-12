@@ -94,7 +94,7 @@ export default function GoalTrackingSuggestions() {
                 </ResponsiveContainer>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                At the current rate, you'll reach $384,000 by year-end.
+                At the current rate, you&apos;ll reach $384,000 by year-end.
               </p>
             </TabsContent>
             <TabsContent value="cash" className="mt-6">
@@ -104,7 +104,7 @@ export default function GoalTrackingSuggestions() {
               </div>
               <Progress value={75} className="w-full mb-4" />
               <p className="text-sm text-muted-foreground">
-                You're 75% of the way to your cash collection goal. Keep it up!
+                You&apos;'re 75% of the way to your cash collection goal. Keep it up!
               </p>
             </TabsContent>
             <TabsContent value="adspend" className="mt-6">
