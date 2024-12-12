@@ -104,7 +104,7 @@ export default function GoalTrackingSuggestions() {
               </div>
               <Progress value={75} className="w-full mb-4" />
               <p className="text-sm text-muted-foreground">
-                You&apos;'re 75% of the way to your cash collection goal. Keep it up!
+                You&apos;re 75% of the way to your cash collection goal. Keep it up!
               </p>
             </TabsContent>
             <TabsContent value="adspend" className="mt-6">

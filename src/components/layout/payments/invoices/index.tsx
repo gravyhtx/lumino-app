@@ -161,7 +161,7 @@ export default function Invoices() {
             </tr>
           </thead>
           <tbody>
-              {invoices.map((invoice: Invoice) => (
+              {(invoices as Invoice[]).map((invoice: Invoice) => (
                 <tr key={invoice.id} className="border-b">
                 <td className="py-2 px-4">
                   <Badge variant={

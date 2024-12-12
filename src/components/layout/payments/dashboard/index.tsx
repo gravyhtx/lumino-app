@@ -83,7 +83,7 @@ export default function Dashboard() {
                   ticks={[0, 1000, 2000, 3000, 4000, 5000]}
                 />
                 <Tooltip
-                  formatter={(value: number | string, name: string, props: any) => [
+                  formatter={(value: number | string, name: string, props: unknown) => [
                     `$${value}`,
                     'Revenue',
                   ]}
@@ -153,7 +153,7 @@ export default function Dashboard() {
                     ))}
                   </Pie>
                   <Tooltip
-                    formatter={(value: number | string, name: string, props: any) => {
+                    formatter={(value: number | string, name: string, props: {payload?: {count?: number}}) => {
                       const count = props?.payload?.count ?? 0; // Ensure safe access
                       return [`$${value.toLocaleString()} (${count} items)`, name];
                     }}
