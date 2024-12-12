@@ -48,20 +48,7 @@ const Rewards: React.FC<MainProps> = ({}) => {
   // Handles modals, notifications, etc.
   const { currentView } = useHashChange();
 
-  const DefaultView = ({ header }: { header?: string }) => <>
-    <h3 className="text-2xl font-bold tracking-tight">
-      You have no {header ?? 'default'}
-    </h3>
-    <p className="text-sm text-muted-foreground">
-      You can start selling as soon as you add a product.
-    </p>
-    <DialogDemo test="test">
-      <Button className="mt-4">This is a Test</Button>
-    </DialogDemo>
-    <DialogDemo test="best">
-      <Button className="mt-4">This is the Best</Button>
-    </DialogDemo>
-  </>;
+  const DefaultView = ({ header }: { header?: string }) => <PointsSummary/>;
 
   // const Points = () => {
   //   return (
