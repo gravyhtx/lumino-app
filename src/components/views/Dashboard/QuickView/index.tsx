@@ -45,10 +45,10 @@ export const QuickView: React.FC<InfoCardsProps> = ({
 }): JSX.Element => {
 
   const deltaObj = {
-    a: {amount: delta?.amount[0] ?? '+20.1%', time: delta?.time[0] ?? 'month'},
-    b: {amount: '+180.1%', time: 'month'},
-    c: {amount: '+19%', time: 'month'},
-    d: {amount: '+201', time: 'hour'}
+    a: { amount: delta?.amount[0] ?? '+20.1%', time: delta?.time[0] ?? 'month' as Timeframes },
+    b: { amount: '+180.1%', time: 'month' as Timeframes },
+    c: { amount: '+19%', time: 'month' as Timeframes },
+    d: { amount: '+201', time: 'hour' as Timeframes }
   };
   
   const timeframes = {
@@ -64,7 +64,7 @@ export const QuickView: React.FC<InfoCardsProps> = ({
   const amountValue = (amount: Amount) => `${amount.toString().trim()}`;
   const deltaValue = (amount: string, time: keyof typeof timeframes) => 
     `${amount} ${timeframes[time]}`;
-  
+
   console.log(CardSvg[0] as ReactNode)
   console.log({ tabId, title: title[tabId], value: value[tabId] });
 
