@@ -79,7 +79,7 @@ export const StandardLineChart = <T extends Record<string, unknown>>({
                 <YAxis />
                 {/* Tooltip formatter */}
                 <Tooltip
-                  formatter={(value, name) => [`${value}`, formatKey(name as string)]}
+                  formatter={(value, name) => [String(value), formatKey(name as string)]}
                   labelFormatter={(label) =>
                     `${xAxisKey === 'date' ? label : formatKey(xAxisKey as string)}`
                   }
