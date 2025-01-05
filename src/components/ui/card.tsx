@@ -92,9 +92,8 @@ export const AuraCard = React.forwardRef<HTMLDivElement, AuraCardProps>(
           "relative overflow-hidden rounded-lg p-6",
           "bg-gradient-to-br from-white/10 to-white/5",
           "backdrop-blur-md",
-          "border-6 border-transparent",
-          "shadow-xl",
-          "aura-card",
+          "border-1 border-transparent",
+          "glass-card aura",
           className
         )}
         {...props}
