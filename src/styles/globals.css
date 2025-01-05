@@ -83,3 +83,7 @@ html {
   @apply backdrop-blur-[8px];
   background-color: rgba(0, 0, 0, 0.2); /* Black at 20% opacity */
 }
+
+.lumino-banner {
+  background-color: #0B1B33;
+}

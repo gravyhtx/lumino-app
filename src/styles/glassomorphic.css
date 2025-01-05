@@ -141,6 +141,15 @@
   animation: shine 5s linear infinite;
 }
 
+.aura-background {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 200, 200, 0.5),
+    rgba(200, 255, 200, 0.5),
+    rgba(200, 200, 255, 0.5)
+  );
+}
+
 .glass-settings {
   @apply rounded-lg;
   /* background: var(--prism-gradient); */
