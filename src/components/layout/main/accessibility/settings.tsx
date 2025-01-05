@@ -92,7 +92,8 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, setIsOpen }) => {
               Text Size
             </Label>
             <div className="col-span-3">
-              <StickySlider labels={["Aa","","","Aa"]} />
+              <StickySlider onChange={(size) => setSettings({
+                ...settings,size})} labels={["Aa","","","Aa"]} />
             </div>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">

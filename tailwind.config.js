@@ -53,6 +53,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "glass-border": "rgba(255, 255, 255, 0.08)", // Light mode
+        "glass-background": "rgba(255, 255, 255, 0.05)", // Light mode
+        dark: {
+          "glass-border": "rgba(255, 255, 255, 0.1)", // Dark mode
+          "glass-background": "rgba(0, 0, 0, 0.2)", // Dark mode
+        },
+        backdropBlur: {
+          sm: '4px',
+          md: '8px',
+          lg: '12px',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

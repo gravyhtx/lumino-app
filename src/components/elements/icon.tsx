@@ -16,7 +16,10 @@ export const GenerateIcon = (
   viewBox: string,
   width: number,
   height: number,
-  className: string
+  className: string,
+  fill?: string,
+  stroke?: string,
+  strokeWidth?: number
 ) => {
   const Icon = forwardRef<SVGSVGElement>(({ ...props }, ref) => {
     return (
@@ -25,9 +28,9 @@ export const GenerateIcon = (
         width={width}
         height={height}
         viewBox={viewBox}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={0}
+        fill={fill??"none"}
+        stroke={stroke??"currentColor"}
+        strokeWidth={strokeWidth??0}
         className={cn("dark:invert", className)}
         {...props}
       >

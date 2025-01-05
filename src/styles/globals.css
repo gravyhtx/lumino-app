@@ -78,3 +78,8 @@
 html {
   body: 16px;
 }
+
+.dialog-backdrop {
+  @apply backdrop-blur-[8px];
+  background-color: rgba(0, 0, 0, 0.2); /* Black at 20% opacity */
+}

@@ -1,4 +1,4 @@
-import { type NumericRange } from "./Utilities";
+import { type NumericRange } from "../Utilities";
 
 /**
  * Represents time units in milliseconds or seconds.
@@ -19,6 +19,18 @@ export type TimeUnits = 'ms' | 's';
  * const timeMs: T = '500ms'; // Valid
  */
 export type Time = `${number}${TimeUnits}`;
+
+/**
+ * Represents a date (`Date` type) or time (`Time` type).
+ * 
+ * @example
+ * type T = DateTime;
+ * const date: T = new Date(); // Valid
+ * const time: T = 90s; // Valid
+ * const timestamp: T = '2022-07-15T14:30:45.500Z'; // Valid
+ * const msValue: T = 1000; // Valid
+ */
+export type DateTime = Date | Time;
 
 /**
  * Represents the days of the week.
@@ -66,22 +78,22 @@ export type SecondsValue = NumericRange<[], 59>;
 export type MinutesValue = NumericRange<[], 59>;
 
 /**
- * Represents a value in hours (0 to 23) for a 24-hour clock.
- * 
- * @example
- * type T = HoursValue;
- * const hr: T = 13; // Valid
- */
-export type HoursValue = NumericRange<[], 23>;
-
-/**
  * Represents a value in hours (1 to 12) for a 12-hour clock.
  * 
  * @example
- * type T = TwelveHoursValue;
+ * type T = HoursValue;
  * const hr: T = 5; // Valid
  */
-export type TwelveHoursValue = NumericRange<[1], 12>;
+export type HoursValue = NumericRange<[1], 12>;
+
+/**
+ * Represents a value in hours (0 to 23) for a 24-hour clock.
+ * 
+ * @example
+ * type T = MilitaryHoursValue;
+ * const hr: T = 13; // Valid
+ */
+export type MilitaryHoursValue = NumericRange<[], 23>;
 
 /**
  * Represents a value in days (1 to 31).
@@ -90,7 +102,7 @@ export type TwelveHoursValue = NumericRange<[1], 12>;
  * type T = DaysValue;
  * const day: T = 15; // Valid
  */
-export type DaysValue = NumericRange<[1], 31>;
+export type DayValue = NumericRange<[1], 31>;
 
 /**
  * Represents a value in weeks (1 to 52).
@@ -99,7 +111,7 @@ export type DaysValue = NumericRange<[1], 31>;
  * type T = WeeksValue;
  * const week: T = 12; // Valid
  */
-export type WeeksValue = NumericRange<[1], 52>;
+export type WeekValue = NumericRange<[1], 52>;
 
 /**
  * Represents a value in months (1 to 12).
@@ -127,7 +139,7 @@ export type YearValue = number;
  * const time: T = { hr: 14, min: 30, s: 45, ms: 500 }; // Valid
  */
 export type ClockTime = {
-  hr: HoursValue;
+  hr: MilitaryHoursValue;
   min: MinutesValue;
   s: SecondsValue;
   ms: MillisecondsValue;
@@ -139,13 +151,13 @@ export type ClockTime = {
  * 
  * @example
  * type T = CalendarTime;
- * const date: T = { d: 15, wk: 12, mo: 7, yr: 2022 }; // Valid
+ * const date: T = { day: 15, week: 12, month: 7, year: 2022 }; // Valid
  */
 export type CalendarTime = {
-  d: DaysValue;
-  wk: WeeksValue;
-  mo: MonthValue;
-  yr: YearValue;
+  day: DaysValue;
+  week: WeeksValue;
+  month: MonthValue;
+  year: YearValue;
 }
 
 /**
@@ -156,3 +168,52 @@ export type CalendarTime = {
  * const period: T = 'AM'; // Valid
  */
 export type TimePeriod = 'AM' | 'PM';
+
+/**
+ * Represents a date object with a month, day, and year.
+ * 
+ * @example
+ * type T = DateObject;
+ * const date: T = { month: 7, day: 15, year: 2022 }; // Valid
+ */
+export type DateObject = {
+  month: number;
+  day: number;
+  year: number;
+}
+
+/**
+ * Represents a date string in the format 'MM/DD/YYYY'.
+ * 
+ * @example
+ * type T = DateString;
+ * const date: T = '07/15/2022'; // Valid
+ */
+export type StandardDateString = `${MonthValue}/${DaysValue}/${YearValue}`;
+
+/**
+ * Represents a date string in the format 'YYYY-MM-DD'.
+ * 
+ * @example
+ * type T = ISODateString;
+ * const date: T = '2022-07-15'; // Valid
+ */
+export type ISODateString = `${YearValue}-${MonthValue}-${DaysValue}`;
+
+/**
+ * Represents a date string in the format 'DD/MM/YYYY'.
+ * 
+ * @example
+ * type T = UKDateString;
+ * const date: T = '15/07/2022'; // Valid
+ */
+export type UKDateString = `${DaysValue}/${MonthValue}/${YearValue}`;
+
+/**
+ * Represents a date string in the format 'YYYY/MM/DD'.
+ * 
+ * @example
+ * type T = JapanDateString;
+ * const date: T = '2022/07/15'; // Valid
+ */
+export type JapanDateString = `${YearValue}/${MonthValue}/${DaysValue}`;

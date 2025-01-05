@@ -9,12 +9,12 @@ import { classnames } from "@/utils"
 
 // Mock data for the line chart
 const pointsData = [
-  { date: '2023-01-01', points: 100 },
-  { date: '2023-02-01', points: 250 },
-  { date: '2023-03-01', points: 380 },
-  { date: '2023-04-01', points: 470 },
-  { date: '2023-05-01', points: 600 },
-  { date: '2023-06-01', points: 750 },
+  { date: '2023-01-01', Points: 100 },
+  { date: '2023-02-01', Points: 250 },
+  { date: '2023-03-01', Points: 380 },
+  { date: '2023-04-01', Points: 470 },
+  { date: '2023-05-01', Points: 600 },
+  { date: '2023-06-01', Points: 750 },
 ]
 
 // Mock data for the pie chart
@@ -42,8 +42,11 @@ export default function PointsSummary() {
         <div className="w-full lg:col-span-1">
           <Card>
             <CardContent className="pt-6">
-              <CardTitle className="mb-4">Points Accumulation Over Time</CardTitle>
-              <div className="mb-4">
+              <div className="flex items-start justify-between mb-4">
+                {/* Title */}
+                <CardTitle>Points Accumulation Over Time</CardTitle>
+
+                {/* Select Range */}
                 <Select value={timeRange} onValueChange={setTimeRange}>
                   <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Select time range" />
@@ -62,7 +65,7 @@ export default function PointsSummary() {
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
-                    <Line type="monotone" dataKey="points" stroke="#8884d8" />
+                    <Line type="monotone" dataKey="Points" stroke="#8884d8" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

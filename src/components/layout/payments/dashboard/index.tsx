@@ -25,10 +25,10 @@ const revenueData = [
 
 // Mock data for the donut charts
 const outstandingBalanceData = [
-  { name: 'Upcoming', value: 12664, count: 10, color: '#FFB98A' },
-  { name: '0-14 days', value: 12250, count: 2, color: '#FFA366' },
-  { name: '15-30 days', value: 400, count: 2, color: '#FF8C42' },
-  { name: '>30 days', value: 0, count: 0, color: '#FF751F' },
+  { name: 'Upcoming', value: 12664, count: 10, color: '#19e8aa' },
+  { name: '0-14 days', value: 12250, count: 2, color: '#19e8aa' },
+  { name: '15-30 days', value: 8400, count: 2, color: '#00cd8f' },
+  { name: '>30 days', value: 0, count: 0, color: '#00cd8f' },
 ]
 
 const timeToPayData = [

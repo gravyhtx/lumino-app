@@ -66,7 +66,7 @@ const Main: React.FC<MainProps> = ({}) => {
 
   const iconClass = "h-5 w-5";
 
-  const viewLinks = [
+  const pageLinks = [
     { name: 'Dashboard', icon: <Home className={iconClass} />, component: <DefaultView header='Dashboard' />},
     { name: 'Invoices', icon: <ShoppingCart className={iconClass} />, notifications: 6, component: <View2 /> },
     { name: 'Payment Requests', icon: <Package className={iconClass} />, component: <Dash /> },
@@ -79,19 +79,19 @@ const Main: React.FC<MainProps> = ({}) => {
     { name: 'Items' },
   ];
 
-  const currentLink = viewLinks.find(link => formatLink(link.name) === formatLink(currentView));
+  const currentLink = pageLinks.find(link => formatLink(link.name) === formatLink(currentView));
 
   const View = () => {
     return currentLink?.component ?? <DefaultView header={ currentLink?.name } />;
   }
 
-  const NavLinks = () => viewLinks.map((link) => (
+  const NavLinks = () => pageLinks.map((link) => (
     <NavLink key={link?.name} {...link} />
   ));
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-      <div className="hidden border-r bg-muted/40 md:block">
+      <div className="hidden border-r bg-muted/40 block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
@@ -104,7 +104,7 @@ const Main: React.FC<MainProps> = ({}) => {
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              {viewLinks.map((link) => (
+              {pageLinks.map((link) => (
                 <NavLink key={link?.name} {...link} />
               ))}
             </nav>

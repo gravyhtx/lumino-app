@@ -78,7 +78,7 @@ export const ResponsiveDialog: React.FC<ResponsiveDialogProps> = ({
 
   return isDesktop ? (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className={cn(`sm:max-w-[${dialogWidth}]`, className?.desktop)}>
+      <DialogContent className={cn(`glass-settings sm:max-w-[${dialogWidth}] dialog-backdrop`, className?.desktop)}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           {description && (
