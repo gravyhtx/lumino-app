@@ -105,16 +105,18 @@ const Payments: React.FC<MainProps> = ({}) => {
     <NavLink key={link?.name} {...link} />
   ));
 
+  const notify = false;
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="sticky top-0 h-screen hidden border-r bg-muted/40 md:block glass-sidebar">
         <div className="flex h-full max-h-screen flex-col gap-2">
-          <div className="flex h-14 items-center border-b border-glass-border px-4 lg:h-[60px] lg:px-6 lumino-banner">
+          <div className="flex h-14 items-center border-b border-glass-border px-4 lg:h-[60px] lg:px-5 lumino-banner">
             <Link href="/" className="flex items-center gap-2 font-semibold">
               <LuminoLogo />
             </Link>
-            <Button variant="link" size="icon" className="ml-auto h-8 w-8 aura-background">
-              <Bell className="h-4 w-4" />
+            <Button variant="link" size="icon" className={cn("ml-auto h-8 w-8 glass-notify", notify?"active":"")}>
+              <Bell stroke={notify?"white":"#888"} className="h-4 w-4" />
               <span className="sr-only">Toggle notifications</span>
             </Button>
           </div>

@@ -85,5 +85,6 @@ html {
 }
 
 .lumino-banner {
-  background-color: #0B1B33;
+  /* background-color: #0B1B33; */
+  background-color: #222;
 }

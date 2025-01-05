@@ -125,31 +125,6 @@
   }
 }
 
-.prism-text {
-  background: linear-gradient(
-    90deg,
-    #000 0%,
-    #666 25%,
-    #000 50%,
-    #666 75%,
-    #000 100%
-  );
-  background-size: 200% auto;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: shine 5s linear infinite;
-}
-
-.aura-background {
-  background: linear-gradient(
-    45deg,
-    rgba(255, 200, 200, 0.5),
-    rgba(200, 255, 200, 0.5),
-    rgba(200, 200, 255, 0.5)
-  );
-}
-
 .glass-settings {
   @apply rounded-lg;
   /* background: var(--prism-gradient); */
@@ -176,6 +151,64 @@
     fill: black; /* Stay black */
     filter: none; /* Remove the glow completely */
   }
+}
+
+.prism-text {
+  background: linear-gradient(
+    90deg,
+    #000 0%,
+    #666 25%,
+    #000 50%,
+    #666 75%,
+    #000 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 5s linear infinite;
+}
+
+.glass-notify {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 200, 200, 0.2),
+    rgba(200, 255, 200, 0.2),
+    rgba(200, 200, 255, 0.2)
+  );
+  border-radius: 50%;
+  stroke: 1px solid #888;
+}
+
+.glass-notify:hover,
+.glass-notify.active {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 200, 200, 0.5),
+    rgba(200, 255, 200, 0.5),
+    rgba(200, 200, 255, 0.5)
+  );
+  stroke: 1px solid #fff;
+}
+
+.aura-background {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 200, 200, 0.2),
+    rgba(200, 255, 200, 0.2),
+    rgba(200, 200, 255, 0.2)
+  );
+}
+
+.aura-border {
+  border-image: linear-gradient(
+    45deg,
+    rgba(255, 200, 200, 0.5),
+    rgba(200, 255, 200, 0.5),
+    rgba(200, 200, 255, 0.5)
+  ) 1;
+  border-width: 1px;
+  border-radius: var(--radius);
 }
 
 @keyframes auraBorderGlow {
