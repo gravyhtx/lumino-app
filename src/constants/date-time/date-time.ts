@@ -57,7 +57,7 @@ export const CURRENT_MONTH_VALUE: number = CURRENT_DATE.getMonth() + 1;
 /**
  * Gets the current month's name.
  */
-export const CURRENT_MONTH_NAME: string = MONTH_NAMES[CURRENT_DATE.getMonth()] as Months;
+export const CURRENT_MONTH_NAME: string = MONTH_NAMES[CURRENT_DATE.getMonth()]!;
 
 //* CURRENT DAY VALUE
 /**
@@ -69,4 +69,4 @@ export const CURRENT_DAY_VALUE: number = CURRENT_DATE.getDate();
 /**
  * Gets the current day's name.
  */
-export const CURRENT_DAY_NAME: string = DAY_NAMES[CURRENT_DATE.getDay()] as Days;
+export const CURRENT_DAY_NAME: string = DAY_NAMES[CURRENT_DATE.getDay()]!;

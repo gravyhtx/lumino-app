@@ -27,7 +27,7 @@ interface StandardLineChartProps<T> {
   
 }
 
-export const StandardLineChart = <T extends Record<string, any>>({
+export const StandardLineChart = <T extends Record<string, unknown>>({
   data,
   xAxisKey,
   lineKey,
@@ -87,8 +87,8 @@ export const StandardLineChart = <T extends Record<string, any>>({
                 <Line
                   type="monotone"
                   dataKey={lineKey as string}
-                  stroke={stroke.color as string}
-                  strokeWidth={stroke.width as number}
+                  stroke={stroke.color}
+                  strokeWidth={stroke.width}
                 />
               </LineChart>
             </ResponsiveContainer>

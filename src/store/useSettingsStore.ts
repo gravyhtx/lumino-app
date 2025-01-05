@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 type ThemeTypes = 'light' | 'dark' | 'system';
-type SizeTypes = 0 | 1 | 2 | 3 | number;
+type SizeTypes = number;
 
 export interface SettingsState {
   name: string
