@@ -94,3 +94,22 @@
   backdrop-filter: blur(8px);
   border: 6px solid var(--glass-border);
 }
+
+.glass-logo {
+  animation: logo-glow 1s ease-in-out forwards;
+}
+
+@keyframes logo-glow {
+  0% {
+    fill: black; /* Start with glowing green */
+    filter: drop-shadow(0 0 10px #19e8aa); /* Add glow effect */
+  }
+  50% {
+    fill: black; /* Transition to black */
+    filter: drop-shadow(0 0 5px #19e8aa); /* Fade the glow */
+  }
+  100% {
+    fill: black; /* Stay black */
+    filter: none; /* Remove the glow completely */
+  }
+}

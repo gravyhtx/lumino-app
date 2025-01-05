@@ -12,10 +12,8 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  sideNav,
 }: {
   children: React.ReactNode;
-  sideNav: boolean;
 }) {
 
   const useClasses = false;
