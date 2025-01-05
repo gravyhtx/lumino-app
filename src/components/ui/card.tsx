@@ -77,3 +77,32 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+
+
+interface AuraCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode
+}
+
+export const AuraCard = React.forwardRef<HTMLDivElement, AuraCardProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "relative overflow-hidden rounded-lg p-6",
+          "bg-gradient-to-br from-white/10 to-white/5",
+          "backdrop-blur-md",
+          "border-6 border-transparent",
+          "shadow-xl",
+          "aura-card",
+          className
+        )}
+        {...props}
+      >
+        <div className="relative z-10">{children}</div>
+      </div>
+    )
+  }
+)
+
+AuraCard.displayName = 'AuraCard'

@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { AuraCard, Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { PieChart, Pie, Cell } from 'recharts'
@@ -103,12 +103,12 @@ export default function Dashboard() {
       </Card>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="bg-muted/50">
+        <AuraCard className="bg-muted/50">
           <CardContent className="flex flex-col items-center justify-center p-6">
             <FileText className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Create an Invoice</h3>
           </CardContent>
-        </Card>
+        </AuraCard>
         <Card className="bg-muted/50">
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Wallet className="h-6 w-6 mb-2" />
