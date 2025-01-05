@@ -92,7 +92,7 @@ export default function Dashboard() {
                 <Line 
                   type="monotone" 
                   dataKey="amount" 
-                  stroke="#2563eb" 
+                  stroke="#19e8aa" 
                   strokeWidth={2}
                   dot={false}
                 />
