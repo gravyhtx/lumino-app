@@ -1,11 +1,15 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AuraCard, Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { PieChart, Pie, Cell } from 'recharts'
 import { FileText, Users, Wallet, Clock } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { NotificationCard } from '../../../ui/notification-card';
+import { closeScreen } from '@/utils'
+import { InvoiceCreator } from '../window/invoice-creator'
 
 // Mock data for the revenue chart
 const revenueData = [
@@ -23,6 +27,21 @@ const revenueData = [
   { date: 'Nov 10', amount: 0 },
 ]
 
+// const [showNotification, setShowNotification] = useState(false)
+
+// const triggerNotification = () => {
+//   setShowNotification(true)
+// }
+
+const closeNotification = () => { return }
+
+const sampleTransaction = {
+  amount: 75.50,
+  pointsEarned: 150,
+  merchant: "Lumino Store"
+}
+
+
 // Mock data for the donut charts
 const outstandingBalanceData = [
   { name: 'Upcoming', value: 12664, count: 10, color: '#19e8aa' },
@@ -39,7 +58,11 @@ const timeToPayData = [
 ]
 
 export default function Dashboard() {
-  return (
+  const [openInvoice, setOpenInvoice] = useState<boolean>(false);
+  const onClose = () => setOpenInvoice(false);
+
+  return (<>
+    {openInvoice ? <InvoiceCreator onClose={onClose} /> : <></>}
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
@@ -103,7 +126,7 @@ export default function Dashboard() {
       </Card>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <AuraCard className="bg-muted/50">
+        <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <FileText className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Create an Invoice</h3>
@@ -219,8 +242,17 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
+        <div>
+      {/* <Button onClick={triggerNotification} className="glass-effect">
+        Simulate Transaction
+      </Button> */}
+      <NotificationCard
+        transaction={sampleTransaction}
+        onClose={closeNotification}
+      />
+    </div>
       </div>
     </div>
-  )
+  </>)
 }
 

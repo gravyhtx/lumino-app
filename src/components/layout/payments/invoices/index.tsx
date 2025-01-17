@@ -20,6 +20,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { InvoiceCreator } from '../window/invoice-creator'
 
 type Invoice = {
   id: string;
@@ -91,6 +92,8 @@ const dateRanges = [
 ]
 
 export default function Invoices() {
+  const [openInvoice, setOpenInvoice] = useState<boolean>(false);
+  const onClose = () => setOpenInvoice(false);
   const [view, setView] = useState('all')
   const [dateRange, setDateRange] = useState('3months')
   const [searchQuery, setSearchQuery] = useState('')
@@ -187,7 +190,8 @@ export default function Invoices() {
     ))
   }
 
-  return (
+  return (<>
+    {openInvoice ? <InvoiceCreator onClose={onClose} /> : <></>}
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Invoices</h1>
@@ -224,7 +228,7 @@ export default function Invoices() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Create Invoice</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setOpenInvoice(true)}>Create Invoice</DropdownMenuItem>
             <DropdownMenuItem>Quick Invoice</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -297,5 +301,5 @@ export default function Invoices() {
         {renderInvoiceTable()}
       </div>
     </div>
-  )
+  </>)
 }

@@ -44,6 +44,8 @@ import Items from "./items";
 import Orders from "./orders";
 import PayLinks from "./link";
 import Terminal from "./terminal";
+import { closeScreen } from "@/utils";
+import { InvoiceCreator } from "./window/invoice-creator";
 
 const Payments: React.FC<MainProps> = ({}) => {
   // Single page application
@@ -182,6 +184,7 @@ const Payments: React.FC<MainProps> = ({}) => {
             <BouncingDotsLoader />
           </div> }
         </main>
+        
       </div>
     </div>
   )

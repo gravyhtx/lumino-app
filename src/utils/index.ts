@@ -60,5 +60,37 @@ export const classnames = (...classes: unknown[]): string => {
   return twMerge(result.join(' '));
 };
 
+// Utility to open a screen and update the query params
+export const openScreen = (screen: string, data: Record<string, string | number | undefined> = {}) => {
+  const params = new URLSearchParams(window.location.search);
+
+  // Set the screen and any additional data
+  params.set("open", screen);
+  Object.entries(data).forEach(([key, value]) => {
+    if (value !== undefined) {
+      params.set(key, String(value));
+    }
+  });
+
+  // Update the URL without reloading the page
+  window.history.pushState({}, "", `${window.location.pathname}?${params.toString()}`);
+};
+
+// Utility to close the currently open screen
+export const closeScreen = () => {
+  const params = new URLSearchParams(window.location.search);
+  params.delete("open");
+
+  // Remove associated query params
+  for (const key of params.keys()) {
+    if (key !== "open") {
+      params.delete(key);
+    }
+  }
+
+  window.history.pushState({}, "", `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`);
+};
+
+
 export * from './strings';
 export * from './numbers';
