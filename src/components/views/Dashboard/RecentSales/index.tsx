@@ -3,7 +3,7 @@ import styles from "./recents.module.css";
 import { classnames } from "@/utils";
 
 export const RecentSales = () => {
-  return (<div style={{padding: '20px', width: "100%"}}>
+  return (<div style={{padding: '20px', height: "350px", width: "100%"}}>
     <div className="space-y-8">
       <div className="flex items-center">
         <Avatar className="h-9 w-[20%]">

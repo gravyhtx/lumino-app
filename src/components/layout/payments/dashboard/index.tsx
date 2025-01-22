@@ -132,19 +132,19 @@ export default function Dashboard() {
             <h3 className="text-sm font-medium">Create an Invoice</h3>
           </CardContent>
         </AuraCard>
-        <AuraCard className="bg-muted/50">
+        <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Wallet className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Request a Payment</h3>
           </CardContent>
         </AuraCard>
-        <AuraCard className="bg-muted/50">
+        <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Clock className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Take a Payment</h3>
           </CardContent>
         </AuraCard>
-        <AuraCard className="bg-muted/50">
+        <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Users className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Add a Customer</h3>

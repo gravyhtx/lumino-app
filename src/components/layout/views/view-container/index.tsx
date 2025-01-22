@@ -11,7 +11,7 @@ interface ViewContainerProps {
 
 export const ViewContainer: React.FC<ViewContainerProps> = ({ children, classes, header }) => {
   return (<>
-    <div className={cn("w-full flex flex-col", classes)}>
+    <div className={cn("w-full flex flex-col h-full", classes)}>
       {/* {header && (
         <h1 className={cn("text-lg font-semibold md:text-2xl mb-4", header?.classes)}>
           {header.text}

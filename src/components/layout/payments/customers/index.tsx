@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { InvoiceCreator } from '../window/invoice-creator'
 
 // Mock data
 const customers = [
@@ -84,6 +85,9 @@ export default function Customers() {
   const [searchQuery, setSearchQuery] = useState('')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
 
+  const [openAddCustomer, setOpenAddCustomer] = useState<boolean>(false);
+  const onClose = () => setOpenAddCustomer(false);
+
   const sortedCustomers = [...customers].sort((a, b) => {
     return sortDirection === 'asc' 
       ? a.name.localeCompare(b.name)
@@ -96,7 +100,8 @@ export default function Customers() {
     customer.phone.includes(searchQuery)
   )
 
-  return (
+  return (<>
+    {openAddCustomer ? <InvoiceCreator onClose={onClose} /> : <></>}
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Customers</h1>
@@ -113,7 +118,7 @@ export default function Customers() {
           />
         </div>
         <div className="flex gap-1">
-          <Button>New Customer</Button>
+          <Button onClick={() => setOpenAddCustomer(true)}>New Customer</Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="default" className="px-2">
@@ -188,5 +193,5 @@ export default function Customers() {
         </table>
       </div>
     </div>
-  )
+  </>)
 }

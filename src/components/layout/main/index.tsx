@@ -31,6 +31,7 @@ import type  { MainProps } from "../types";
 import { Customers } from '../../views/Customers';
 import { Dashboard } from "@/components/views/Dashboard";
 import { useEffect, useRef, useState } from "react";
+import { AiAssistant } from "./chat/ai-assistant";
 
 const Main: React.FC<MainProps> = ({}) => {
   // Single page application
@@ -122,10 +123,21 @@ const Main: React.FC<MainProps> = ({}) => {
               {pageLinks.map((link) => (
                 <NavLink key={link?.name} {...link} />
               ))}
+                  <div className="my-4 h-px bg-muted/40"></div>
+                {/* Favorites Section */}
+                <h4 className="text-muted-foreground text-xs uppercase px-2 lg:px-4">
+                  Favorites
+                </h4>
+                <div className="mt-2">
+                  <NavLink
+                    name="Payment Requests"
+                    icon={<HandCoins className={iconClass} />}
+                  />
+                </div>
             </nav>
           </div>
           <div className="mt-auto p-4">
-            <NotificationCard />
+            <AiAssistant />
           </div>
         </div>
       </div>
@@ -171,8 +183,10 @@ const Main: React.FC<MainProps> = ({}) => {
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
         { currentView ?
           <ViewContainer header={{ text: formatLink(currentView) }}>
+            <div style={{display: "flex",flexDirection: "column", height: "100%", justifyContent: "space-evenly"}}>
             {/* <View /> */}
             <Dash />
+            </div>
           </ViewContainer>
         :
           <div className="flex items-center">

@@ -71,7 +71,8 @@ export const StandardLineChart = <T extends Record<string, unknown>>({
               </Select>
             ) : null}
           </div>
-          <div className="h-[300px]">
+          <div className="h-[458px]" style={{ height: '458px' }}>
+            <div>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -92,6 +93,7 @@ export const StandardLineChart = <T extends Record<string, unknown>>({
                 />
               </LineChart>
             </ResponsiveContainer>
+            </div>
           </div>
         </CardContent>
       </Card>

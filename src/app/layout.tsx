@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import "@/styles/glassomorphic.css";
 
 import { GeistSans } from "geist/font/sans";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 export const metadata = {
   title: "Create T3 App",
@@ -21,9 +22,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <div className={cn(classes)}>
-          {children}
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className={cn(classes)}>
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

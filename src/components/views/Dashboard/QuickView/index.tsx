@@ -4,6 +4,7 @@ import { classnames } from "@/utils";
 import { CardSvg, InfoCard } from "../Cards";
 import styles from "./quickview.module.css";
 import { titlecase } from "@/utils";
+import { DatePickerWithRange } from "@/components/ui/date";
 
 type Timeframes = 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
 type Title = [string, string, string, string];
@@ -71,17 +72,22 @@ export const QuickView: React.FC<InfoCardsProps> = ({
   return(
     <div style={{width: "100%", padding: "0 20px", margin}}>
       <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList style={{ border: '1px solid rgba(255, 255, 255, .2)' }}>
-          {(['overview', 'sales', 'rewards', 'goals'] as const).map((tab) => (
-            <TabsTrigger
-              key={tab}
-              value={tab}
-              onClick={() => onTabChange(tab)}
-            >
-              {titlecase(tab)}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <div className="flex items-center justify-between mb-4">
+          <TabsList style={{ border: '1px solid rgba(255, 255, 255, .2)' }}>
+            {(['overview', 'sales', 'rewards', 'goals'] as const).map((tab) => (
+              <TabsTrigger
+                key={tab}
+                value={tab}
+                onClick={() => onTabChange(tab)}
+              >
+                {titlecase(tab)}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          <div className="ml-auto">
+            <DatePickerWithRange />
+          </div>
+        </div>
         <TabsContent value={tabId} className="space-y-4">
           <div className={classnames('grid gap-4 sm:grid-cols-2 md:grid-cols-4', styles.cards)}>
             <InfoCard

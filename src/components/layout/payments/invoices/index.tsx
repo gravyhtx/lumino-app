@@ -92,11 +92,12 @@ const dateRanges = [
 ]
 
 export default function Invoices() {
-  const [openInvoice, setOpenInvoice] = useState<boolean>(false);
-  const onClose = () => setOpenInvoice(false);
   const [view, setView] = useState('all')
   const [dateRange, setDateRange] = useState('3months')
   const [searchQuery, setSearchQuery] = useState('')
+  
+  const [openInvoice, setOpenInvoice] = useState<boolean>(false);
+  const onClose = () => setOpenInvoice(false);
 
   const filteredInvoices: Invoice[] = useMemo(() => {
     let filtered = [...invoices]
