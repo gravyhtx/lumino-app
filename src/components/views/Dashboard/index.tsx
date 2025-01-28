@@ -13,21 +13,23 @@ export const Dashboard = () => {
 
   const quickViewData: [string, string, string, string] = [
     totalRevenue,
-    `+${subscriptions}`??'--',
+    `+${subscriptions}`,
     transactionQuantity,
     nextPayout
   ];
 
   const [activeTab, setActiveTab] = useState<'overview' | 'sales' | 'rewards' | 'goals'>('overview');
 
-  return (<>
-    <div className={''}>
-      <QuickView
-        tabId={activeTab}
-        onTabChange={(tab) => setActiveTab(tab)} />
+  return (
+    <div style={{display: "flex",flexDirection: "column", height: "100%", justifyContent: "space-evenly"}}>
+      <div className={''}>
+        <QuickView
+          tabId={activeTab}
+          onTabChange={(tab) => setActiveTab(tab)} />
+      </div>
+      <div className={classnames("grid grid-cols-1 lg:grid-cols-[7fr_3fr] gap-8", '')}>
+        <Display />
+      </div>
     </div>
-    <div className={classnames("grid grid-cols-1 lg:grid-cols-[7fr_3fr] gap-8", '')}>
-      <Display />
-    </div>
-  </>)
+  )
 }

@@ -1,17 +1,18 @@
+import React, { useState } from "react";
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
-import { Package2, Star } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { formatLink } from "@/lib/utils";
 import { useUpdateView } from "@/store/useViewStore";
+import { Badge } from "@/components/ui/badge";
+import { Package2, Star } from "lucide-react";
 
-interface NavLinkProps {
+export interface NavLinkProps {
   name: string;
-  icon?: ReactNode;
+  href: string;
+  icon?: React.ReactNode;
   notifications?: number;
 }
-export const NavLink: React.FC<NavLinkProps> = ({ name = "Nav Link", icon, notifications}) => {
-  const updateView = useUpdateView();
+
+export const NavLink: React.FC<NavLinkProps> = ({ name = "Nav Link", href, icon, notifications }) => {
+  // const updateView = useUpdateView();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const toggleFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,8 +24,8 @@ export const NavLink: React.FC<NavLinkProps> = ({ name = "Nav Link", icon, notif
   return (
     <div className="relative group">
       <Link
-        href={`#${formatLink(name)}`}
-        onClick={() => updateView(name)}
+        href={href}
+        // onClick={() => updateView(name)}
         className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
       >
         {icon ?? <Package2 className="h-6 w-6" />}

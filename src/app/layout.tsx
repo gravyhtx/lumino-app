@@ -4,6 +4,7 @@ import "@/styles/glassomorphic.css";
 
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { SideNav } from "@/components/layout/window/side-nav";
 
 export const metadata = {
   title: "Create T3 App",
@@ -29,7 +30,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className={cn(classes)}>
+            <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
             {children}
+            </div>
           </div>
         </ThemeProvider>
       </body>

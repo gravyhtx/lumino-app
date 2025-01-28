@@ -46,6 +46,7 @@ import PayLinks from "./link";
 import Terminal from "./terminal";
 import { closeScreen } from "@/utils";
 import { InvoiceCreator } from "./window/invoice-creator";
+import { Header } from "../window/header";
 
 const Payments: React.FC<MainProps> = ({}) => {
   // Single page application
@@ -110,8 +111,9 @@ const Payments: React.FC<MainProps> = ({}) => {
   const notify = false;
 
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-      <div className="sticky top-0 h-screen hidden border-r bg-muted/40 md:block glass-sidebar">
+    <>
+      {/* SIDEBAR */}
+      {/* <div className="sticky top-0 h-screen hidden border-r bg-muted/40 md:block glass-sidebar">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b border-glass-border px-4 lg:h-[60px] lg:px-5 lumino-banner">
             <Link href="/" className="flex items-center gap-2 font-semibold">
@@ -133,46 +135,10 @@ const Payments: React.FC<MainProps> = ({}) => {
             <NotificationCard />
           </div>
         </div>
-      </div>
-      <div className="flex flex-col">
-        <header 
-            ref={headerRef}
-            className={cn(
-              "flex h-14 items-center gap-4 border-b px-4 lg:h-[60px] lg:px-6 sticky top-0 z-10 transition-all duration-200",
-              scrolled ? "glass-header shadow-lg" : "bg-background/60"
-            )}
-          >
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="shrink-0 md:hidden glass-effect"
-              >
-                <LuminoTriangle />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="flex flex-col glass-sidebar">
-              <nav className="grid gap-2 text-lg font-medium">
-                <Link
-                  href="#"
-                  className="flex items-center gap-2 text-lg font-semibold"
-                >
-                  <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
-                </Link>
-                <NavLinks />
-              </nav>
-              <div className="mt-auto">
-                <NotificationCard />
-              </div>
-            </SheetContent>
-          </Sheet>
-          <div className="w-full flex-1">
-          </div>
-          <UserMenu />
-        </header>
+      </div> */}
+      {/* MAIN SCREEN */}
+      {/* <div className="flex flex-col">
+        <Header links={viewLinks} />
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
         { currentView ?
           <ViewContainer header={{ text: formatLink(currentView) }}>
@@ -185,8 +151,9 @@ const Payments: React.FC<MainProps> = ({}) => {
           </div> }
         </main>
         
-      </div>
-    </div>
+      </div> */}
+      <Dashboard />
+    </>
   )
 }
 

@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/window/header';
 import { ViewContainer } from '@/components/layout/views/view-container';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import Dashboard from '@/components/layout/payments/dashboard';
+import Customers from '@/components/layout/payments/customers';
 
 
 export default function Page() {
@@ -32,7 +33,7 @@ export default function Page() {
       <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
       { isLoaded ?
           <ViewContainer>
-            <Dashboard />
+            <Customers />
           </ViewContainer>
         :
         <div className="flex items-center">

@@ -152,7 +152,7 @@ const Rewards: React.FC<MainProps> = ({}) => {
   const iconClass = "h-5 w-5";
 
   const viewLinks = [
-    { name: 'Points Summary', icon: <Home className={iconClass} />, component: <PointsSummary />},
+    { name: 'Rewards Summary', icon: <Home className={iconClass} />, component: <PointsSummary />},
     { name: 'Badges & Achievements', icon: <ShoppingCart className={iconClass} />, notifications: 6, component: <BadgesAndAchievements /> },
     { name: 'Reward Redemption', icon: <Package className={iconClass} />, component: <RewardRedemption /> },
     { name: 'Goal Tracking', icon: <LineChart className={iconClass} />, component: <GoalTrackingSuggestions /> },
