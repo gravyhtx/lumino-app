@@ -29,6 +29,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { PopupWindow } from "../../window/popup-window"
 
 interface InvoiceItem {
   id: number
@@ -38,6 +39,7 @@ interface InvoiceItem {
 }
 interface InvoiceCreatorProps {
   onClose: () => void;
+  onSave?: () => void;
 }
 
 const customers = [
@@ -68,7 +70,7 @@ const terms = [
   { id: 4, name: "Net 60", days: 60 },
 ]
 
-export function InvoiceCreator({ onClose }: InvoiceCreatorProps) {
+export function InvoiceCreator({ onClose, onSave }: InvoiceCreatorProps) {
   const defaultTerms = { id: 1, name: "Due on receipt", days: 0 }
   const [date, setDate] = useState<Date>(new Date())
   const [term, setTerm] = useState(defaultTerms)
@@ -108,329 +110,337 @@ export function InvoiceCreator({ onClose }: InvoiceCreatorProps) {
     0
   )
 
+  const Dropdown = () => {
+    return (
+      <li>Save and Close</li>
+    )
+  }
+
   return (
-    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
-      <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto">
-        <div className="min-h-screen w-full max-w-6xl p-4">
-          <div className="rounded-lg border bg-card text-card-foreground shadow-lg">
-            <div className="flex items-center justify-between border-b p-4">
-              <div className="flex items-center gap-2">
-                <Button onClick={onClose} variant="ghost" size="sm">
-                  Close
+    // <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
+    //   <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto">
+    //     <div className="min-h-screen w-full max-w-6xl p-4">
+    //       <div className="rounded-lg border bg-card text-card-foreground shadow-lg">
+    //         <div className="flex items-center justify-between border-b p-4">
+    //           <div className="flex items-center gap-2">
+    //             <Button onClick={onClose} variant="ghost" size="sm">
+    //               Close
+    //             </Button>
+    //             <Button variant="ghost" size="sm">
+    //               Reset
+    //             </Button>
+    //           </div>
+    //           <div className="flex items-center gap-2">
+    //             {/* <Button variant="outline" size="sm">
+    //               Create another invoice
+    //             </Button> */}
+    //             <Button size="sm" onClick={onSave}>
+    //               Save and send immediately
+    //               <ChevronDown className="ml-2 h-4 w-4" />
+    //             </Button>
+    //           </div>
+    //         </div>
+    <PopupWindow
+      onClose={onClose}
+      onSave={onSave}
+      saveButtonText="Save and Send Immediately"
+      dropdown={<Dropdown />}
+      columns>
+      <div className="grid grid-cols-1 gap-6 p-4 md:grid-cols-2">
+        {/* Form Section */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Create Invoice</h2>
+
+          {/* Date and Term */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-2">
+            <Label>Customer</Label>
+            <Popover open={open} onOpenChange={setOpen}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  role="combobox"
+                  aria-expanded={open}
+                  className="w-full justify-between"
+                >
+                  {selectedCustomer
+                    ? selectedCustomer.name
+                    : "Select customer..."}
+                  <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
-                <Button variant="ghost" size="sm">
-                  Reset
-                </Button>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm">
-                  Create another invoice
-                </Button>
-                <Button size="sm">
-                  Save and send immediately
-                  <ChevronDown className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
+              </PopoverTrigger>
+              <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
+                <Command>
+                  <CommandInput placeholder="Search customers..." />
+                  {customers.length > 0 ? (
+                    <CommandGroup>
+                      {customers.map((customer) => (
+                        <CommandItem
+                          key={customer.id}
+                          onSelect={() => {
+                            setSelectedCustomer(customer);
+                            setOpen(false);
+                          }}
+                        >
+                          {customer.name}
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  ) : (
+                    <CommandEmpty>No customer found.</CommandEmpty>
+                  )}
+                </Command>
+              </PopoverContent>
+            </Popover>
+          </div>
+            <div className="space-y-2">
+              <Label>Term</Label>
+              <Select
+                value={term.id.toString()}
+                onValueChange={(value) =>
+                  setTerm(terms.find((t) => t.id.toString() === value)!)
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select term" />
+                </SelectTrigger>
+                <SelectContent>
+                  {terms.map((term) => (
+                    <SelectItem key={term.id} value={term.id.toString()}>
+                      {term.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 gap-6 p-4 md:grid-cols-2">
-              {/* Form Section */}
-              <div className="space-y-6">
-                <h2 className="text-2xl font-semibold">Create Invoice</h2>
-
-                {/* Date and Term */}
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                  <Label>Customer</Label>
-                  <Popover open={open} onOpenChange={setOpen}>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        aria-expanded={open}
-                        className="w-full justify-between"
+          {/* Customer Selection */}
+          <div className="space-y-2">
+            <Label>Customer</Label>
+            <Popover open={open} onOpenChange={setOpen}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  role="combobox"
+                  aria-expanded={open}
+                  className="w-full justify-between"
+                >
+                  {selectedCustomer
+                    ? selectedCustomer.name
+                    : "Select customer..."}
+                  <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
+                <Command>
+                  <CommandInput placeholder="Search customers..." />
+                  <CommandEmpty>No customer found.</CommandEmpty>
+                  <CommandGroup>
+                    {customers.map((customer) => (
+                      <CommandItem
+                        key={customer.id}
+                        onSelect={() => {
+                          setSelectedCustomer(customer)
+                          setOpen(false)
+                        }}
                       >
-                        {selectedCustomer
-                          ? selectedCustomer.name
-                          : "Select customer..."}
-                        <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-                      <Command>
-                        <CommandInput placeholder="Search customers..." />
-                        {customers.length > 0 ? (
-                          <CommandGroup>
-                            {customers.map((customer) => (
-                              <CommandItem
-                                key={customer.id}
-                                onSelect={() => {
-                                  setSelectedCustomer(customer);
-                                  setOpen(false);
-                                }}
-                              >
-                                {customer.name}
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                        ) : (
-                          <CommandEmpty>No customer found.</CommandEmpty>
-                        )}
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                </div>
-                  <div className="space-y-2">
-                    <Label>Term</Label>
-                    <Select
-                      value={term.id.toString()}
-                      onValueChange={(value) =>
-                        setTerm(terms.find((t) => t.id.toString() === value)!)
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select term" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {terms.map((term) => (
-                          <SelectItem key={term.id} value={term.id.toString()}>
-                            {term.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
+                        {customer.name}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </Command>
+              </PopoverContent>
+            </Popover>
+          </div>
 
-                {/* Customer Selection */}
-                <div className="space-y-2">
-                  <Label>Customer</Label>
-                  <Popover open={open} onOpenChange={setOpen}>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        aria-expanded={open}
-                        className="w-full justify-between"
-                      >
-                        {selectedCustomer
-                          ? selectedCustomer.name
-                          : "Select customer..."}
-                        <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-                      <Command>
-                        <CommandInput placeholder="Search customers..." />
-                        <CommandEmpty>No customer found.</CommandEmpty>
-                        <CommandGroup>
-                          {customers.map((customer) => (
-                            <CommandItem
-                              key={customer.id}
-                              onSelect={() => {
-                                setSelectedCustomer(customer)
-                                setOpen(false)
-                              }}
-                            >
-                              {customer.name}
-                            </CommandItem>
-                          ))}
-                        </CommandGroup>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                </div>
-
-                {/* Items Selection */}
-                <div className="space-y-4">
-                  <Label>Items</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="outline" className="w-full justify-between">
-                        <span>Add items</span>
-                        <Search className="ml-2 h-4 w-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-                      <Command>
-                        <CommandInput placeholder="Search items..." />
-                        {items.length > 0 ? (
-                          <CommandGroup>
-                            {items.map((item) => (
-                              <CommandItem
-                                key={item.id}
-                                onSelect={() => handleAddItem(item)}
-                              >
-                                <span>{item.name}</span>
-                                <span className="ml-auto">${item.price.toFixed(2)}</span>
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                        ) : (
-                          <CommandEmpty>No items found.</CommandEmpty>
-                        )}
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-
-                  {selectedItems.length > 0 && (
-                    <div className="space-y-2">
-                      {selectedItems.map((item) => (
-                        <div
+          {/* Items Selection */}
+          <div className="space-y-4">
+            <Label>Items</Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" className="w-full justify-between">
+                  <span>Add items</span>
+                  <Search className="ml-2 h-4 w-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
+                <Command>
+                  <CommandInput placeholder="Search items..." />
+                  {items.length > 0 ? (
+                    <CommandGroup>
+                      {items.map((item) => (
+                        <CommandItem
                           key={item.id}
-                          className="flex items-center gap-2 rounded-lg border p-2"
+                          onSelect={() => handleAddItem(item)}
                         >
-                          <div className="flex-1">
-                            <div className="font-medium">{item.name}</div>
-                            <div className="text-sm text-muted-foreground">
-                              ${item.price.toFixed(2)}
-                            </div>
-                          </div>
-                          <Input
-                            type="number"
-                            value={item.quantity}
-                            onChange={(e) =>
-                              handleUpdateQuantity(
-                                item.id,
-                                parseInt(e.target.value)
-                              )
-                            }
-                            className="w-20"
-                          />
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => handleRemoveItem(item.id)}
-                          >
-                            <X className="h-4 w-4" />
-                          </Button>
-                        </div>
+                          <span>{item.name}</span>
+                          <span className="ml-auto">${item.price.toFixed(2)}</span>
+                        </CommandItem>
                       ))}
-                      <div className="text-right text-lg font-semibold">
-                        Total: ${total.toFixed(2)}
-                      </div>
-                    </div>
+                    </CommandGroup>
+                  ) : (
+                    <CommandEmpty>No items found.</CommandEmpty>
                   )}
-                </div>
+                </Command>
+              </PopoverContent>
+            </Popover>
 
-                {/* Payment Collection */}
-                <div className="space-y-2">
-                  <Label>Payment Collection</Label>
-                  <Select defaultValue={paymentOptions[0]?.id.toString() ?? ""}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select payment option" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {paymentOptions.map((option) => (
-                        <SelectItem
-                          key={option.id}
-                          value={option.id.toString()}
-                        >
-                          {option.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {/* Advanced Section */}
-                <div className="space-y-4">
-                  <h3 className="font-medium">Advanced</h3>
-                  <div className="space-y-2">
-                    <Label>Message to customer</Label>
-                    <Textarea
-                      placeholder="Add a message to your customer..."
-                      value={message}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Preview Section */}
-              <div className="rounded-lg border bg-white p-6">
-                <div className="space-y-6">
-                  <div className="flex justify-between">
-                    <div>
-                      <h2 className="text-xl font-bold">Demo Coaching Product</h2>
-                      <p className="text-sm text-muted-foreground">
-                        123 Business St
-                        <br />
-                        Anytown, ST 12345
-                        <br />
-                        (555) 123-4567
-                      </p>
-                    </div>
-                    <div className="text-right">
+            {selectedItems.length > 0 && (
+              <div className="space-y-2">
+                {selectedItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center gap-2 rounded-lg border p-2"
+                  >
+                    <div className="flex-1">
+                      <div className="font-medium">{item.name}</div>
                       <div className="text-sm text-muted-foreground">
-                        Date: {format(date, "PP")}
-                        <br />
-                        Due Date: {format(dueDate, "PP")}
+                        ${item.price.toFixed(2)}
                       </div>
                     </div>
+                    <Input
+                      type="number"
+                      value={item.quantity}
+                      onChange={(e) =>
+                        handleUpdateQuantity(
+                          item.id,
+                          parseInt(e.target.value)
+                        )
+                      }
+                      className="w-20"
+                    />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handleRemoveItem(item.id)}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
                   </div>
-
-                  {selectedCustomer && (
-                    <div>
-                      <h3 className="font-medium">Bill To:</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {selectedCustomer.name}
-                        <br />
-                        {selectedCustomer.email}
-                      </p>
-                    </div>
-                  )}
-
-                  {selectedItems.length > 0 && (
-                    <div>
-                      <table className="w-full">
-                        <thead>
-                          <tr className="border-b text-left">
-                            <th className="py-2">Item</th>
-                            <th className="py-2 text-right">Quantity</th>
-                            <th className="py-2 text-right">Price</th>
-                            <th className="py-2 text-right">Total</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {selectedItems.map((item) => (
-                            <tr key={item.id} className="border-b">
-                              <td className="py-2">{item.name}</td>
-                              <td className="py-2 text-right">{item.quantity}</td>
-                              <td className="py-2 text-right">
-                                ${item.price.toFixed(2)}
-                              </td>
-                              <td className="py-2 text-right">
-                                ${(item.price * item.quantity).toFixed(2)}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                        <tfoot>
-                          <tr>
-                            <td colSpan={3} className="py-2 text-right font-medium">
-                              Total:
-                            </td>
-                            <td className="py-2 text-right font-medium">
-                              ${total.toFixed(2)}
-                            </td>
-                          </tr>
-                        </tfoot>
-                      </table>
-                    </div>
-                  )}
-
-                  {message && (
-                    <div className="rounded-lg bg-muted/50 p-4 text-sm">
-                      {message}
-                    </div>
-                  )}
+                ))}
+                <div className="text-right text-lg font-semibold">
+                  Total: ${total.toFixed(2)}
                 </div>
               </div>
+            )}
+          </div>
+
+          {/* Payment Collection */}
+          <div className="space-y-2">
+            <Label>Payment Collection</Label>
+            <Select defaultValue={paymentOptions[0]?.id.toString() ?? ""}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select payment option" />
+              </SelectTrigger>
+              <SelectContent>
+                {paymentOptions.map((option) => (
+                  <SelectItem
+                    key={option.id}
+                    value={option.id.toString()}
+                  >
+                    {option.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Advanced Section */}
+          <div className="space-y-4">
+            <h3 className="font-medium">Advanced</h3>
+            <div className="space-y-2">
+              <Label>Message to customer</Label>
+              <Textarea
+                placeholder="Add a message to your customer..."
+                value={message}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+              />
             </div>
           </div>
         </div>
+
+        {/* Preview Section */}
+        <div className="rounded-lg border bg-white p-6">
+          <div className="space-y-6">
+            <div className="flex justify-between">
+              <div>
+                <h2 className="text-xl font-bold">Demo Coaching Product</h2>
+                <p className="text-sm text-muted-foreground">
+                  123 Business St
+                  <br />
+                  Anytown, ST 12345
+                  <br />
+                  (555) 123-4567
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="text-sm text-muted-foreground">
+                  Date: {format(date, "PP")}
+                  <br />
+                  Due Date: {format(dueDate, "PP")}
+                </div>
+              </div>
+            </div>
+
+            {selectedCustomer && (
+              <div>
+                <h3 className="font-medium">Bill To:</h3>
+                <p className="text-sm text-muted-foreground">
+                  {selectedCustomer.name}
+                  <br />
+                  {selectedCustomer.email}
+                </p>
+              </div>
+            )}
+
+            {selectedItems.length > 0 && (
+              <div>
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b text-left">
+                      <th className="py-2">Item</th>
+                      <th className="py-2 text-right">Quantity</th>
+                      <th className="py-2 text-right">Price</th>
+                      <th className="py-2 text-right">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedItems.map((item) => (
+                      <tr key={item.id} className="border-b">
+                        <td className="py-2">{item.name}</td>
+                        <td className="py-2 text-right">{item.quantity}</td>
+                        <td className="py-2 text-right">
+                          ${item.price.toFixed(2)}
+                        </td>
+                        <td className="py-2 text-right">
+                          ${(item.price * item.quantity).toFixed(2)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colSpan={3} className="py-2 text-right font-medium">
+                        Total:
+                      </td>
+                      <td className="py-2 text-right font-medium">
+                        ${total.toFixed(2)}
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            )}
+
+            {message && (
+              <div className="rounded-lg bg-muted/50 p-4 text-sm">
+                {message}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </PopupWindow>
   )
 }

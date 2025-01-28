@@ -10,6 +10,9 @@ import { Button } from '@/components/ui/button'
 import { NotificationCard } from '../../../ui/notification-card';
 import { closeScreen } from '@/utils'
 import { InvoiceCreator } from '../window/invoice-creator'
+import { NewPayRequest } from '../window/new-pay-request'
+import { NewCustomer } from '../window/new-customer'
+import NewPayment from '../window/new-payment'
 
 // Mock data for the revenue chart
 const revenueData = [
@@ -59,10 +62,19 @@ const timeToPayData = [
 
 export default function Dashboard() {
   const [openInvoice, setOpenInvoice] = useState<boolean>(false);
-  const onClose = () => setOpenInvoice(false);
+  const onClose1 = () => setOpenInvoice(false);
+  const [openRequest, setOpenRequest] = useState<boolean>(false);
+  const onClose2 = () => setOpenRequest(false);
+  const [openCustomer, setOpenCustomer] = useState<boolean>(false);
+  const onClose3 = () => setOpenCustomer(false);
+  const [openPay, setOpenPay] = useState<boolean>(false);
+  const onClose4 = () => setOpenPay(false);
 
   return (<>
-    {openInvoice ? <InvoiceCreator onClose={onClose} /> : <></>}
+    {openInvoice ? <InvoiceCreator onClose={onClose1} onSave={onClose1} /> : <></>}
+    {openRequest ? <NewPayRequest onClose={onClose2} onSave={onClose2} /> : <></>}
+    {openCustomer ? <NewCustomer onClose={onClose3} onSave={onClose3} /> : <></>}
+    {openPay ? <NewPayment onClose={onClose4} onSave={onClose4} /> : <></>}
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
@@ -132,19 +144,19 @@ export default function Dashboard() {
             <h3 className="text-sm font-medium">Create an Invoice</h3>
           </CardContent>
         </AuraCard>
-        <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
+        <AuraCard className="bg-muted/50" onClick={() => setOpenRequest(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Wallet className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Request a Payment</h3>
           </CardContent>
         </AuraCard>
-        <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
+        <AuraCard className="bg-muted/50" onClick={() => setOpenPay(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Clock className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Take a Payment</h3>
           </CardContent>
         </AuraCard>
-        <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
+        <AuraCard className="bg-muted/50" onClick={() => setOpenCustomer(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Users className="h-6 w-6 mb-2" />
             <h3 className="text-sm font-medium">Add a Customer</h3>
