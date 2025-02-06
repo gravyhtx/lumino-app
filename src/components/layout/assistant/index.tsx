@@ -34,7 +34,14 @@ import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet';
 import New from "./new";
 import Chat from "./chat";
 
-const Assistant: React.FC<MainProps> = ({}) => {
+interface AssistantProps {
+  chatData: {
+    name: string
+    icon: React.ReactNode
+    component: React.ReactNode
+  }[]
+}
+const Assistant: React.FC<AssistantProps> = ({ chatData }) => {
   // Single page application
   // Handles changes for each "view" using an object and switching key names
   // Provider for theme, user, etc.
@@ -42,35 +49,15 @@ const Assistant: React.FC<MainProps> = ({}) => {
   // Handles modals, notifications, etc.
   const { currentView } = useHashChange();
 
-  const DefaultView = ({ header }: { header?: string }) => <>
-    <h3 className="text-2xl font-bold tracking-tight">
-      You have no {header ?? 'default'}
-    </h3>
-    <p className="text-sm text-muted-foreground">
-      You can start selling as soon as you add a product.
-    </p>
-    <DialogDemo test="test">
-      <Button className="mt-4">This is a Test</Button>
-    </DialogDemo>
-    <DialogDemo test="best">
-      <Button className="mt-4">This is the Best</Button>
-    </DialogDemo>
-  </>;
-
   const iconClass = "h-5 w-5";
 
-  const viewLinks = [
-    { name: 'New Chat', icon: <MessageSquarePlus className={iconClass} />, component: <New />},
-    { name: 'Report 07/24', icon: <AppWindowMac className={iconClass} />, notifications: 6, component: <Chat /> },
-  ];
-
-  const currentLink = viewLinks.find(link => formatLink(link.name) === formatLink(currentView));
+  const currentLink = chatData.find(link => formatLink(link.name) === formatLink(currentView));
 
   const View = () => {
     return currentLink?.component ?? <New />;
   }
 
-  const NavLinks = () => viewLinks.map((link) => (
+  const NavLinks = () => chatData.map((link) => (
     <NavLink key={link?.name} {...link} />
   ));
 
@@ -89,7 +76,7 @@ const Assistant: React.FC<MainProps> = ({}) => {
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              {viewLinks.map((link) => (
+              {chatData.map((link) => (
                 <NavLink key={link?.name} {...link} />
               ))}
             </nav>

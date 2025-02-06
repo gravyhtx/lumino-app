@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useEffect, useState } from 'react';
 import { ClipboardList, FileText, HandCoins, LayoutDashboard, Link2, Package, Repeat, Users, Wallet } from 'lucide-react';
 import { SideNav } from '@/components/layout/window/side-nav';
@@ -6,7 +7,6 @@ import { Header } from '@/components/layout/window/header';
 import { ViewContainer } from '@/components/layout/views/view-container';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import Dashboard from '@/components/layout/payments/dashboard';
-
 
 export default function Page() {
   const [isLoaded, setIsLoaded] = useState(false);

@@ -34,7 +34,7 @@ export function DatePickerWithRange({
               !date && "text-muted-foreground"
             )}
           >
-            <CalendarIcon />
+            <CalendarIcon />&emsp;
             {date?.from ? (
               date.to ? (
                 <>

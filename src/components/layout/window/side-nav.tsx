@@ -1,7 +1,7 @@
 import React from "react"
 import { LuminoLogo } from "@/components/elements/logo"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn, formatLink } from "@/lib/utils"
 import { Bell, HandCoins } from "lucide-react"
 import Link from "next/link"
 import { NotificationCard } from "./notification-card"
@@ -10,13 +10,19 @@ import { ChatBox } from "./chat-box"
 
 
 interface SideNavProps {
-  links: NavLinkProps[];
-  favorites?: boolean;
-  notify?: boolean;
+  links: NavLinkProps[] | []
+  chatData?: {
+      name: string
+      icon: React.ReactNode
+      component: React.ReactNode
+    }[]
+  favorites?: boolean
+  notify?: boolean
 }
 
 export const SideNav: React.FC<SideNavProps> = ({
   links,
+  chatData,
   favorites,
   notify
 }) => {
@@ -25,6 +31,10 @@ export const SideNav: React.FC<SideNavProps> = ({
     name: '',
     icon: <></>,
   }
+  const chat = chatData ?? []
+  const NavLinks = () => chat.map((link) => (
+    <NavLink href={`#${formatLink(link?.name)}`} key={link?.name} {...link} />
+  ));
   return (
     <div className="sticky top-0 h-screen hidden border-r bg-muted/40 md:block glass-sidebar">
       <div className="flex h-full max-h-screen flex-col gap-2">
@@ -37,29 +47,32 @@ export const SideNav: React.FC<SideNavProps> = ({
             <span className="sr-only">Toggle notifications</span>
           </Button>
         </div>
-        <div className="flex-1 overflow-y-auto">
-          <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            {links.map((link) => (
-              <NavLink key={link?.name} {...link} />
-            ))}
-            {favorites &&
-            <>
-              <div className="my-4 h-px bg-muted/40"></div>
-              <h4 className="text-muted-foreground text-xs uppercase px-2 lg:px-4">
-                Favorites
-              </h4>
-              <div className="mt-2">
-                <NavLink
-                  name="Payment Requests"
-                  href="/payments/payment-requests"
-                  icon={<HandCoins className="h-5 w-5" />}
-                />
-              </div>
-            </>}
-          </nav>
-        </div>
-        <div className="mt-auto p-4">
-          <ChatBox />
+        <div className="h-full flex flex-col">
+          <div className="flex-1 overflow-y-auto">
+            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+              {chatData ? <NavLinks /> :
+              links.map((link) => (
+                <NavLink key={link?.name} {...link} />
+              ))}
+              {favorites &&
+              <>
+                <div className="my-4 h-px bg-muted/40"></div>
+                <h4 className="text-muted-foreground text-xs uppercase px-2 lg:px-4">
+                  Favorites
+                </h4>
+                <div className="mt-2">
+                  <NavLink
+                    name="Payment Requests"
+                    href="/payments/payment-requests"
+                    icon={<HandCoins className="h-5 w-5" />}
+                  />
+                </div>
+              </>}
+            </nav>
+          </div>
+          <div className="mt-auto p-4">
+            <ChatBox />
+          </div>
         </div>
       </div>
     </div>

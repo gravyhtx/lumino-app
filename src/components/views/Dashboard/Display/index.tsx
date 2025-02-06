@@ -46,13 +46,13 @@ export const Display = () => {
   }
   return (<>
     <div className="w-full lg:col-span-1">
-      <Card>
+      <Card className='p-6'>
         <CardTitle>Gross Sales</CardTitle>
         <BarGraph />
       </Card>
     </div>
     <div className="w-full lg:col-span-1">
-      <Card>
+      <Card className=' h-[424px]'>
         <CardHeader>
           <CardTitle>Recent Transactions</CardTitle>
           <CardDescription>Card Description</CardDescription>

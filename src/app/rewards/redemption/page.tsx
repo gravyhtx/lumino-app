@@ -8,6 +8,7 @@ import { Header } from '@/components/layout/window/header';
 import { Home, LineChart, Package, ShoppingCart } from 'lucide-react';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import BadgesAndAchievements from '@/components/layout/rewards/badges';
+import RewardRedemption from '@/components/layout/rewards/redeem';
 
 export default function Dashboard() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,8 +18,8 @@ export default function Dashboard() {
   const iconClass = "h-5 w-5";
   const links = [
     { name: 'Rewards Summary', icon: <Home className={iconClass} />, href: "/rewards"},
-    { name: 'Badges & Achievements', icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
     { name: 'Reward Redemption', icon: <Package className={iconClass} />, href: "/rewards/redemption" },
+    { name: 'Badges & Achievements', icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
     { name: 'Goal Tracking', icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
   ];
   return (<>
@@ -28,7 +29,7 @@ export default function Dashboard() {
       <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
       { isLoaded ?
           <ViewContainer>
-            <BadgesAndAchievements />
+            <RewardRedemption />
           </ViewContainer>
         :
         <div className="flex items-center">

@@ -17,8 +17,8 @@ export default function Dashboard() {
   const iconClass = "h-5 w-5";
   const links = [
     { name: 'Rewards Summary', icon: <Home className={iconClass} />, href: "/rewards"},
-    { name: 'Badges & Achievements', icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
     { name: 'Reward Redemption', icon: <Package className={iconClass} />, href: "/rewards/redemption" },
+    { name: 'Badges & Achievements', icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
     { name: 'Goal Tracking', icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
   ];
   return (<>
