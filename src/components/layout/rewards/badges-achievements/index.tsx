@@ -59,7 +59,7 @@ export default function BadgesAndAchievements() {
             <div className="text-2xl font-bold">
               {nextBadge ? milestones.find((m) => m.name === nextBadge.name)?.percentage + "%" : "N/A"}
             </div>
-            <p className="text-xs text-muted-foreground">{nextBadge?.name || "All badges earned!"}</p>
+            <p className="text-xs text-muted-foreground">{nextBadge?.name ?? "All badges earned!"}</p>
           </CardContent>
         </Card>
       </div>

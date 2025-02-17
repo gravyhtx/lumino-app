@@ -8,7 +8,7 @@ const LoadingBar = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 80) return prev; // Prevent hitting 100% until ready
         return prev + Math.random() * 15; // Random increment for natural feel
