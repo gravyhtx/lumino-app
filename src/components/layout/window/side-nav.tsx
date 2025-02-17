@@ -37,7 +37,7 @@ export const SideNav: React.FC<SideNavProps> = ({
   ));
   return (
     <div className="sticky top-0 h-screen hidden border-r bg-muted/40 md:block glass-sidebar">
-      <div className="flex h-full max-h-screen flex-col gap-2">
+      <div className="flex h-full max-h-screen flex-col gap-2 dark:bg-[hsl(215,27.9%,16.9%)]">
         <div className="flex h-14 items-center border-b border-glass-border px-4 lg:h-[60px] lg:px-5 lumino-banner">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <LuminoLogo />
@@ -47,7 +47,7 @@ export const SideNav: React.FC<SideNavProps> = ({
             <span className="sr-only">Toggle notifications</span>
           </Button>
         </div>
-        <div className="h-full flex flex-col">
+        <div className="h-full flex flex-col dark:bg-[hsl(215,27.9%,16.9%)]">
           <div className="flex-1 overflow-y-auto">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
               {chatData ? <NavLinks /> :

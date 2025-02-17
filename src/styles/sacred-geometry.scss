@@ -24,6 +24,7 @@
   border-radius: 50%;
   border: 1px solid #34c0dc;
   box-sizing: border-box;
+  animation: fadeInFlower 1.5s ease-out forwards;
   
   
   .petal {
@@ -79,5 +80,16 @@
 
     &:nth-child(22) { top: 1.5em; left: -.6em }
     &:nth-child(23) { top: 3.5em; left: -.6em }*/
+  }
+}
+
+@keyframes fadeInFlower {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

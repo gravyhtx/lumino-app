@@ -15,6 +15,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.1.1",
+    "@fontsource/inter": "^5.1.1",
     "@prisma/client": "^5.14.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",

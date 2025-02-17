@@ -31,7 +31,7 @@ export const GenerateIcon = (
         fill={fill??"none"}
         stroke={stroke??"currentColor"}
         strokeWidth={strokeWidth??0}
-        className={cn("dark:invert", className)}
+        className={cn(className)}
         {...props}
       >
         {paths.map(([tag, attrs], index) => (

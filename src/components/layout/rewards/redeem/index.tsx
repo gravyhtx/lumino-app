@@ -7,14 +7,14 @@ import { classnames } from "@/utils"
 
 // Mock data for rewards
 const allRewards = [
-  { id: 1, name: "$50 Cash Back", points: 5000, category: "Cash Rewards", image: "/placeholder.svg?height=100&width=100" },
-  { id: 2, name: "10% Off Next Purchase", points: 2000, category: "Discounts", image: "/placeholder.svg?height=100&width=100" },
-  { id: 3, name: "Exclusive NFT", points: 10000, category: "NFTs", image: "/placeholder.svg?height=100&width=100" },
-  { id: 4, name: "Premium Product", points: 15000, category: "Products", image: "/placeholder.svg?height=100&width=100" },
+  { id: 1, name: `GameStop $100 E-Gift Card`, points: 10000, category: `Digital`, image: `/rewards/reward1.png` },
+  { id: 2, name: `Apple iPad Air 11" - 128GB`, points: 68999, category: `Electronics`, image: `/rewards/reward2.jpg` },
+  { id: 3, name: `Flights for 2 + 3 Nights at the Fountainbleu Miami Beach`, points: 375000, category: `Travel`, image: `/rewards/reward3.png` },
+  { id: 4, name: `Rolex Rolesor Datejust 41 Blue Diamond`, points: 1654000, category: `Products`, image: `/rewards/reward4.jpg` },
   // Add more rewards as needed
 ]
 
-const categories = ["All", "Cash Rewards", "Discounts", "NFTs", "Products"]
+const categories = ["All", "Digital", "Electronics", "Travel", "Products"]
 
 export default function RewardRedemption() {
   const [rewards, setRewards] = useState(allRewards)
@@ -62,10 +62,10 @@ export default function RewardRedemption() {
     <div style={{ width: "100%", padding: "0 20px" }}>
       <h1 className="text-2xl font-bold mb-6">Reward Redemption</h1>
       <div className={classnames('grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full mb-6')}>
-        <InfoCard title="Total Points Available" amount="25,000" timeSince="Current Balance" />
-        <InfoCard title="Points Redeemed This Month" amount="10,000" timeSince="This Month" />
-        <InfoCard title="Highest Value Reward Redeemed" amount="$100" timeSince="All Time" />
-        <InfoCard title="Next Tier Progress" amount="75%" timeSince="500 pts to Gold" />
+        <InfoCard title="Available Points" amount="25,000" timeSince="" />
+        <InfoCard title="Estimated Points Next Month" amount="10,000" timeSince="" />
+        <InfoCard title="Estimated Points Next Year" amount="240,000" timeSince="" />
+        <InfoCard title="Estimated Points Next 3 Years" amount="500,000" timeSince="" />
       </div>
       <Card className="w-full">
         <CardContent className="pt-6">

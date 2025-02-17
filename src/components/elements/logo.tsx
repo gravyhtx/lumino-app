@@ -16,8 +16,8 @@ const paths = {
   ] as [string, React.SVGProps<SVGPathElement>][]
 }
 
-export const LuminoLogoTriangle = GenerateIcon("LuminoLogoTriangle", paths.triangle, '0 0 60 60', 30, 30, "h-8 w-8 fill-[#19e8aa] dark:invert");
-export const LuminoLogoText = GenerateIcon("LuminoLogoText", paths.text, '0 0 140 23', 103.5, 17, "h-4 pl-[8px] fill-white dark:invert");
+export const LuminoLogoTriangle = GenerateIcon("LuminoLogoTriangle", paths.triangle, '0 0 60 60', 30, 30, "logo h-8 w-8 fill-[#19e8aa]");
+export const LuminoLogoText = GenerateIcon("LuminoLogoText", paths.text, '0 0 140 23', 103.5, 17, "logo h-4 pl-[8px] fill-white");
 
 export const LuminoLogo = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   (props, ref) => {

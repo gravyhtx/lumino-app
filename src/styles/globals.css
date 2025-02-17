@@ -76,6 +76,7 @@
 }
 
 html {
+  font-family: var(--font-inter), sans;
   body: 16px;
 }
 
@@ -90,8 +91,16 @@ html {
 }
 
 .lumino-banner {
+  background-color: hsl(224 71.4% 4.1%);
+}
+
+.lumino-banner svg.logo {
   /* background-color: #0B1B33; */
-  background-color: #222;
+  filter: invert(0%) !important;
+}
+
+.dark-nav {
+  background-color: hsl(215 27.9% 16.9%) !important;
 }
 
 .notification-card {

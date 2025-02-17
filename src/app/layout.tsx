@@ -5,13 +5,17 @@ import "@/styles/dark-mode.css"
 import "@/styles/glassomorphic.css";
 import "@/styles/patterns.css";
 import "@/styles/sacred-geometry.scss";
+import "@/styles/inter.css"
 
-import { GeistSans } from "geist/font/sans";
+// import { GeistSans } from "geist/font/sans";
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { SideNav } from "@/components/layout/window/side-nav";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Create T3 App",
@@ -30,7 +34,7 @@ export default function RootLayout({
 
 
   return (
-    <html lang="en" className={`${inter.className}`}>
+    <html lang="en" className={inter.variable}>
       <body>
         <ThemeProvider
           attribute="class"
@@ -38,11 +42,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className={cn(classes)}>
+          {/* <div className={cn(classes)}> */}
             <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
             {children}
             </div>
-          </div>
+          {/* </div> */}
         </ThemeProvider>
       </body>
     </html>
