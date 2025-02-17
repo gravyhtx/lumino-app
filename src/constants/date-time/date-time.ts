@@ -1,4 +1,4 @@
-import { Days, Months } from "../../types/DateTime";
+import type { Days, Months } from "../../types/DateTime";
 
 //* DATE TIME FORMAT
 /**
