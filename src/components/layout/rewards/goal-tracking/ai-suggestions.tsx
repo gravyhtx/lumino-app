@@ -6,22 +6,20 @@ import { Button } from "@/components/ui/button"
 import { Sparkles } from "lucide-react"
 
 interface AISuggestionsProps {
-  suggestion: AIGoalSuggestion
+  suggestion: AIGoalSuggestion | undefined
 }
 
 export function AISuggestions({ suggestion }: AISuggestionsProps) {
-  suggestion = suggestion ? suggestion : {
+  suggestion = suggestion ?? {
     category: "revenue",
     tiers: {
-      conservative: {
-        target: NaN,
-        multiplier: NaN,
-        description: ""
-      }
+      conservative: { target: NaN, multiplier: NaN, description: "" },
+      ambitious: { target: NaN, multiplier: NaN, description: "" },
+      aggressive: { target: NaN, multiplier: NaN, description: "" }
     },
     previousValue: NaN,
     timeframe: "monthly"
-  }
+  };
   const tiers: GoalTier[] = ["conservative", "ambitious", "aggressive"]
 
   return (
