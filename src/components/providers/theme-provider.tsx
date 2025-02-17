@@ -16,7 +16,7 @@ interface LoginModalProps {
 
 const LoginModal = ({isOpen, setIsOpen, logIn}: LoginModalProps) => {
   return (
-    <FlowerOfLife size="200px">
+    <FlowerOfLife opacity="20%">
     <ResponsiveDialog
     title="Login"
     description={`Welcome to Lumino.`}

@@ -5,35 +5,29 @@ import { CircleUser, Home, HandCoins, Medal, BotMessageSquare, Sun, Moon } from 
 import Link from 'next/link';
 import { Settings } from "./settings";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 export const UserMenu: React.FC = () => {
   const [openSettings, setOpenSettings] = useState(false);
-  const { setTheme } = useTheme()
+  const { setTheme } = useTheme();
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/", icon: <Home className="h-5 w-5" />, label: "Home" },
+    { href: "/payments", icon: <HandCoins className="h-5 w-5" />, label: "Payments" },
+    { href: "/rewards", icon: <Medal className="h-5 w-5" />, label: "Rewards" },
+    { href: "/assistant", icon: <BotMessageSquare className="h-5 w-5" />, label: "Assistant" }
+  ];
+
   return (<>
-    <Link href="/">
-      <Button variant="outline" size="icon" className="rounded-full">
-        <Home className="h-5 w-5" />
-        <span className="sr-only">Go to your Dashboard</span>
-      </Button>
-    </Link>
-    <Link href="/payments">
-      <Button variant="ghost" size="icon" className="rounded-full">
-        <HandCoins className="h-5 w-5" />
-        <span className="sr-only">Go to your Dashboard</span>
-      </Button>
-    </Link>
-    <Link href="/rewards">
-      <Button variant="ghost" size="icon" className="rounded-full">
-        <Medal className="h-5 w-5" />
-        <span className="sr-only">Go to your Dashboard</span>
-      </Button>
-    </Link>
-    <Link href="/assistant">
-      <Button variant="ghost" size="icon" className="rounded-full">
-        <BotMessageSquare className="h-5 w-5" />
-        <span className="sr-only">Go to your Dashboard</span>
-      </Button>
-    </Link>
+    {navLinks.map(({ href, icon, label }) => (
+      <Link key={href} href={href}>
+        <Button variant={pathname === href ? "outline" : "ghost"} size="icon" className="rounded-full">
+          {icon}
+          <span className="sr-only">{label}</span>
+        </Button>
+      </Link>
+    ))}
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="rounded-full">
