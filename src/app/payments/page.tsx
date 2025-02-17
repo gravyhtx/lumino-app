@@ -77,7 +77,7 @@ export default function Page() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
                   {links.slice(1).map((link) =>(
-                    <DropdownMenuItem>
+                    <DropdownMenuItem key={link.href}>
                       <Link href={link.href}>{link.name}</Link>
                     </DropdownMenuItem>
                   ))}
