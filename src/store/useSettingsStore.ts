@@ -13,7 +13,7 @@ export interface SettingsState {
 
 export const DEFAULT_SETTINGS: SettingsState = {
   name: 'User',
-  theme: 'system',
+  theme: 'light',
   notifications: true,
   size: 0,
   tooltips: false,
@@ -27,13 +27,10 @@ interface SettingsStore {
 
 export const useSettingsStore = create<SettingsStore>((set) => ({
   state: { ...DEFAULT_SETTINGS },
-  save: (settings) => set((state) => ({
-    state: {
-      ...state.state,
-      ...settings,
-    },
+  save: (settings) => set((prev) => ({
+    state: { ...prev.state, ...settings } // Properly merges new settings into state
   })),
   reset: () => set(() => ({
-    state: { ...DEFAULT_SETTINGS },
+    state: { ...DEFAULT_SETTINGS }
   })),
 }));

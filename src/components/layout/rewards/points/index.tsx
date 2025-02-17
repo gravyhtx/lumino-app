@@ -33,10 +33,10 @@ export default function PointsSummary() {
     <div style={{width: "100%", padding: "0 20px"}}>
       <h1 className="text-2xl font-bold mb-6">Points Summary</h1>
       <div className={classnames('grid gap-4 sm:grid-cols-2 md:grid-cols-4 w-full mb-6')}>
-        <InfoCard title="Total Points Available" amount="1,250" timeSince="Current Balance" />
-        <InfoCard title="Lifetime Points Earned" amount="5,000" timeSince="All Time" />
-        <InfoCard title="Rewards Redeemed" amount="3,750" timeSince="Points Used" />
-        <InfoCard title="Expiring Points" amount="500" timeSince="Next 30 Days" />
+        <InfoCard title="Available Points" amount="1,250" timeSince="Current Balance" />
+        <InfoCard title="Pending Points" amount="5,000" timeSince="All Time" />
+        <InfoCard title="Last Month" amount="3,750" timeSince="Points Used" />
+        <InfoCard title="Last Year" amount="500" timeSince="Next 30 Days" />
       </div>
       <div className={classnames("grid grid-cols-1 lg:grid-cols-[7fr_3fr] gap-8", '')}>
         <div className="w-full lg:col-span-1">

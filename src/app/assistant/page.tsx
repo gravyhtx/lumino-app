@@ -10,12 +10,18 @@ import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import { AppWindowMac, MessageSquarePlus } from 'lucide-react';
 import { formatLink } from '@/lib/utils';
 import { useHashChange } from '@/hooks/useHashChange/useHashChange';
+import { usePathname } from 'next/navigation';
 
 export default function Dashboard() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const pathname = usePathname(); // Track the URL path
+
   useEffect(() => {
-    setIsLoaded(true)
-  },[])
+    setIsLoaded(false); // Set loading to false when the pathname changes
+    const timeout = setTimeout(() => setIsLoaded(true), 300); // Simulate loading delay
+
+    return () => clearTimeout(timeout); // Cleanup timeout on unmount
+  }, [pathname]); // Depend on pathname changes
   const { currentView } = useHashChange();
   const iconClass = "h-5 w-5";
   const chat = [

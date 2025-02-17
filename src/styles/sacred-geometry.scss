@@ -1,0 +1,83 @@
+:root {
+  --flower-size: 1
+}
+
+.flower-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flower-of-life {
+  margin: auto;
+  font-size: 150px;
+  width: calc(3 * var(--flower-size) * 2em);
+  height: calc(3 * var(--flower-size) * 2em);
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid #34c0dc;
+  box-sizing: border-box;
+  
+  
+  .petal {
+    width: calc(var(--flower-size) * 2em);
+    height: calc(var(--flower-size) * 2em);
+    position: absolute;
+    margin: auto;
+    box-sizing: border-box;
+    top: -2em;
+    left: -2em;
+    border-radius: 50%;
+
+    border: 1px solid #34c0dc;
+    /* background: rgba(#fff, .3); */
+    
+    //Center of Circle
+    /*&:after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: #f00;
+      top: 0; left: 0; bottom: 0; right: 0;
+      margin: auto;
+    }*/
+    
+    &:nth-child(1) { top: calc(var(--flower-size) * 0em); left: calc(var(--flower-size) * 2em) }
+    &:nth-child(2) { top: calc(var(--flower-size) * 1em); left: calc(var(--flower-size) * 2em) }
+    &:nth-child(3) { top: calc(var(--flower-size) * 2em); left: calc(var(--flower-size) * 2em) }
+    &:nth-child(4) { top: calc(var(--flower-size) * 3em); left: calc(var(--flower-size) * 2em) }
+    &:nth-child(5) { top: calc(var(--flower-size) * 4em); left: calc(var(--flower-size) * 2em) }
+    
+    &:nth-child(6) { top: calc(var(--flower-size) * .5em); left: calc(var(--flower-size) * 1.15em) }
+    &:nth-child(7) { top: calc(var(--flower-size) * 1.5em); left: calc(var(--flower-size) * 1.15em) }
+    &:nth-child(8) { top: calc(var(--flower-size) * 2.5em); left: calc(var(--flower-size) * 1.15em) }
+    &:nth-child(9) { top: calc(var(--flower-size) * 3.5em); left: calc(var(--flower-size) * 1.15em) }
+    
+    &:nth-child(10) { top: calc(var(--flower-size) * .5em); left: calc(var(--flower-size) * 2.88em) } // 1.44
+    &:nth-child(11) { top: calc(var(--flower-size) * 1.5em); left: calc(var(--flower-size) * 2.88em) }
+    &:nth-child(12) { top: calc(var(--flower-size) * 2.5em); left: calc(var(--flower-size) * 2.88em) }
+    &:nth-child(13) { top: calc(var(--flower-size) * 3.5em); left: calc(var(--flower-size) * 2.88em) }
+    
+    &:nth-child(14) { top: calc(var(--flower-size) * 1em); left: calc(var(--flower-size) * .26em) }
+    &:nth-child(15) { top: calc(var(--flower-size) * 2em); left: calc(var(--flower-size) * .26em) }
+    &:nth-child(16) { top: calc(var(--flower-size) * 3em); left: calc(var(--flower-size) * .26em) }
+    
+    &:nth-child(17) { top: calc(var(--flower-size) * 1em); left: calc(var(--flower-size) * 3.75em) }
+    &:nth-child(18) { top: calc(var(--flower-size) * 2em); left: calc(var(--flower-size) * 3.75em) }
+    &:nth-child(19) { top: calc(var(--flower-size) * 3em); left: calc(var(--flower-size) * 3.75em) }
+/*    
+    &:nth-child(20) { top: 0em; left: .27em }
+    &:nth-child(21) { top: 4em; left: .27em }
+
+    &:nth-child(22) { top: 1.5em; left: -.6em }
+    &:nth-child(23) { top: 3.5em; left: -.6em }*/
+  }
+}

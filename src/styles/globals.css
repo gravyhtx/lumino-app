@@ -79,9 +79,14 @@ html {
   body: 16px;
 }
 
+.dialog-overlay {
+  background: transparent !important;
+}
+
 .dialog-backdrop {
-  @apply backdrop-blur-[8px];
-  background-color: rgba(0, 0, 0, 0.2); /* Black at 20% opacity */
+  @apply backdrop-blur-[4px];
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  background-color: transparent !important;
 }
 
 .lumino-banner {

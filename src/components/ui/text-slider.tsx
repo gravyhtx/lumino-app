@@ -60,10 +60,14 @@ export const StickySlider: React.FC<StickySliderProps> = ({
       const closestPercentage = percentages().reduce((prev, curr) =>
         Math.abs(curr - sliderValue) < Math.abs(prev - sliderValue) ? curr : prev
       );
-      setSliderValue(closestPercentage);
+  
+      if (sliderValue !== closestPercentage) {
+        setSliderValue(closestPercentage); // Prevent unnecessary state updates
+      }
     };
+    
     handleSnap();
-  }, [positions, sliderValue]);
+  }, [positions]); // Removed `sliderValue` from dependencies  
 
   const renderLabels = () => (
     <div className="flex justify-between mt-2"> {/* Changed mt-6 to mt-2 */}

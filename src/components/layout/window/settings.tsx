@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import {
   DialogFooter,
@@ -8,9 +8,9 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useSettingsStore, DEFAULT_SETTINGS, type SettingsState } from "@/store/useSettingsStore";
-import { Separator } from '@radix-ui/react-dropdown-menu';
 import { ResponsiveDialog } from '@/components/ui/responsive-dialog';
 import { StickySlider } from '@/components/ui/text-slider';
+import { Separator } from '@radix-ui/react-dropdown-menu';
 
 interface SettingsProps {
   isOpen: boolean;
@@ -35,6 +35,10 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, setIsOpen }) => {
     reset();
     setSettings(DEFAULT_SETTINGS);
   };
+
+  useEffect(() => {
+    setSettings(state);
+  }, [state]);
 
   return (
     <ResponsiveDialog

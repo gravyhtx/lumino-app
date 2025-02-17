@@ -7,7 +7,7 @@ import { ViewContainer } from '@/components/layout/views/view-container';
 import { Header } from '@/components/layout/window/header';
 import { Home, LineChart, Package, ShoppingCart } from 'lucide-react';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
-import BadgesAndAchievements from '@/components/layout/rewards/badges';
+import BadgesAndAchievements from '@/components/layout/rewards/badges-achievements';
 
 export default function Dashboard() {
   const [isLoaded, setIsLoaded] = useState(false);

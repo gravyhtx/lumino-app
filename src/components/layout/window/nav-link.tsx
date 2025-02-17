@@ -7,11 +7,12 @@ import { Package2, Star } from "lucide-react";
 export interface NavLinkProps {
   name: string;
   href: string;
+  onClick?: () => void;
   icon?: React.ReactNode;
   notifications?: number;
 }
 
-export const NavLink: React.FC<NavLinkProps> = ({ name = "Nav Link", href, icon, notifications }) => {
+export const NavLink: React.FC<NavLinkProps> = ({ name = "Nav Link", href, onClick, icon, notifications }) => {
   // const updateView = useUpdateView();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
@@ -25,7 +26,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ name = "Nav Link", href, icon,
     <div className="relative group">
       <Link
         href={href}
-        // onClick={() => updateView(name)}
+        onClick={onClick}
         className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
       >
         {icon ?? <Package2 className="h-6 w-6" />}

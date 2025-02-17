@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogOverlay,
   DialogTitle,
 } from '@/components/ui/dialog';
 import {
@@ -18,6 +19,7 @@ import {
 } from '@/components/ui/drawer';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { cn } from '@/lib/utils';
+import { FlowerOfLife } from './flower-of-life';
 
 interface ResponsiveDialogProps {
   children: React.ReactNode;
@@ -78,6 +80,7 @@ export const ResponsiveDialog: React.FC<ResponsiveDialogProps> = ({
 
   return isDesktop ? (
     <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogOverlay className="dialog-overlay" />
       <DialogContent className={cn(`glass-settings sm:max-w-[${dialogWidth}] dialog-backdrop`, className?.desktop)}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>

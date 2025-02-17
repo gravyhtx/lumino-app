@@ -1,11 +1,17 @@
 import React, { SetStateAction, useState } from "react";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
+import "@/styles/dark-mode.css"
 import "@/styles/glassomorphic.css";
+import "@/styles/patterns.css";
+import "@/styles/sacred-geometry.scss";
 
 import { GeistSans } from "geist/font/sans";
+import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SideNav } from "@/components/layout/window/side-nav";
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Create T3 App",
@@ -24,7 +30,7 @@ export default function RootLayout({
 
 
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" className={`${inter.className}`}>
       <body>
         <ThemeProvider
           attribute="class"
