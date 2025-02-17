@@ -8,6 +8,7 @@ import { ViewContainer } from "@/components/layout/views/view-container";
 import { Header } from "@/components/layout/window/header";
 import { Home, LineChart, Package, ShoppingCart } from "lucide-react";
 import BouncingDotsLoader from "@/components/layout/loading/BouncingDots";
+import IncentivesHub from "@/components/layout/rewards/incentives-hub";
 
 export default function Dashboard() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,11 +23,11 @@ export default function Dashboard() {
 
   const iconClass = "h-5 w-5";
   const links = [
-    { name: "Rewards Summary", icon: <Home className={iconClass} />, href: "/rewards" },
+    { name: "Incintives Hub", icon: <LineChart className={iconClass} />, href: "/rewards/" },
+    { name: "Goals & Milestones", icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
+    { name: "Points Summary", icon: <Home className={iconClass} />, href: "/rewards/points-summary" },
     { name: "Reward Redemption", icon: <Package className={iconClass} />, href: "/rewards/redemption" },
     { name: "Badges & Achievements", icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
-    { name: "Goals & Milestones", icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
-    { name: "Incintives Hub", icon: <LineChart className={iconClass} />, href: "/rewards/incentives" },
   ];
 
   return (
@@ -37,7 +38,7 @@ export default function Dashboard() {
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
           {isLoaded ? (
             <ViewContainer>
-              <PointsSummary />
+              <IncentivesHub />
             </ViewContainer>
           ) : (
             <div className="flex items-center">

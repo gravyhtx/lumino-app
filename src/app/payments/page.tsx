@@ -46,7 +46,7 @@ export default function Page() {
     <SideNav links={links} />
     <div className="flex flex-col">
       <Header links={links} />
-      <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto pattern polka2">
+      <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

@@ -16,13 +16,13 @@ export default function Dashboard() {
     setIsLoaded(true)
   },[])
   const iconClass = "h-5 w-5";
-  const links = [
-    { name: 'Rewards Summary', icon: <Home className={iconClass} />, href: "/rewards"},
-    { name: 'Reward Redemption', icon: <Package className={iconClass} />, href: "/rewards/redemption" },
-    { name: 'Badges & Achievements', icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
-    { name: 'Goal Tracking', icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
-        { name: "Incintives Hub", icon: <LineChart className={iconClass} />, href: "/rewards/incentives" },
-  ];
+    const links = [
+      { name: "Incintives Hub", icon: <LineChart className={iconClass} />, href: "/rewards/" },
+      { name: "Goals & Milestones", icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
+      { name: "Points Summary", icon: <Home className={iconClass} />, href: "/rewards/points-summary" },
+      { name: "Reward Redemption", icon: <Package className={iconClass} />, href: "/rewards/redemption" },
+      { name: "Badges & Achievements", icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
+    ];
   return (<>
     <SideNav links={links} />
     <div className="flex flex-col">
