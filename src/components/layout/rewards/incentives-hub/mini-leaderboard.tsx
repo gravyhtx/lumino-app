@@ -1,6 +1,6 @@
 "use client"
 
-import type { LeaderboardEntry } from "@/types/incentives"
+import type { LeaderboardEntry } from "./types/incentives"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trophy } from "lucide-react"
 

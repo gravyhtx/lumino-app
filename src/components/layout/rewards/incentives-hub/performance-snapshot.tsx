@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import type { RewardsSummary } from "@/types/incentives"
+import type { RewardsSummary } from "./types/incentives"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"

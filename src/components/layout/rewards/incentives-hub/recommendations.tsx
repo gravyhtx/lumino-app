@@ -1,6 +1,6 @@
 "use client"
 
-import type { Recommendation } from "@/types/incentives"
+import type { Recommendation } from "./types/incentives"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Sparkles } from "lucide-react"

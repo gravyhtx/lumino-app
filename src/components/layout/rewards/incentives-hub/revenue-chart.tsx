@@ -1,6 +1,6 @@
 "use client"
 
-import type { TransactionMetrics } from "@/types/incentives"
+import type { TransactionMetrics } from "./types/incentives"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts"
 

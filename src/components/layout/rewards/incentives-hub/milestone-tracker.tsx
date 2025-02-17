@@ -1,6 +1,6 @@
 "use client"
 
-import type { ActiveMilestone } from "@/types/incentives"
+import type { ActiveMilestone } from "./types/incentives"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 

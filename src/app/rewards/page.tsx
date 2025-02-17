@@ -26,6 +26,7 @@ export default function Dashboard() {
     { name: "Reward Redemption", icon: <Package className={iconClass} />, href: "/rewards/redemption" },
     { name: "Badges & Achievements", icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
     { name: "Goals & Milestones", icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
+    { name: "Incintives Hub", icon: <LineChart className={iconClass} />, href: "/rewards/incentives" },
   ];
 
   return (

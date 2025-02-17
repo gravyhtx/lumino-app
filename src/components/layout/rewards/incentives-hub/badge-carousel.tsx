@@ -1,6 +1,6 @@
 "use client"
 
-import type { BadgePreview } from "@/types/incentives"
+import type { BadgePreview } from "./types/incentives"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trophy, TrendingUp, Award, Users } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
