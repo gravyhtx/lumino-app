@@ -17,4 +17,4 @@ export const FlowerOfLife: React.FC<FlowerOfLifeProps> = ({ size = "150px", widt
       <div className="content">{children}</div>
     </div>
   );
-};
+}; 
