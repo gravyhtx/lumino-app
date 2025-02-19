@@ -6,6 +6,7 @@ import { BadgeCard } from "./badge-card"
 import { MilestoneProgress } from "./milestone-progress"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Icon } from "./types/badges"
 
 const container = {
   hidden: { opacity: 0 },
@@ -64,13 +65,20 @@ export default function BadgesAndAchievements() {
         </Card>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      {/* <div className="grid gap-8 md:grid-cols-2"> */}
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[2fr_1fr]">
         <div>
           <h2 className="text-xl font-semibold mb-4">Badge Showcase</h2>
-          <motion.div variants={container} initial="hidden" animate="show" className="grid gap-4 sm:grid-cols-2">
+          {/* <motion.div variants={container} initial="hidden" animate="show" className="grid gap-4 sm:grid-cols-2"> */}
+          <motion.div variants={container} initial="hidden" animate="show" className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {badges.map((badge) => (
-              <motion.div key={badge.id} variants={item}>
-                <BadgeCard badge={badge} />
+              <motion.div key={badge.id} variants={item} className="h-[320px]">
+                <BadgeCard 
+                  title={badge.name} 
+                  description={badge.description} 
+                  points={badge.points} 
+                  icon={badge.icon as Icon} 
+                />
               </motion.div>
             ))}
           </motion.div>

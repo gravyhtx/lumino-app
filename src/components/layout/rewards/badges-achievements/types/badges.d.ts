@@ -18,3 +18,5 @@ export interface Milestone {
   percentage: number
   unit: string
 }
+
+export type Icon = "award" | "zap" | "timer" | "trophy"

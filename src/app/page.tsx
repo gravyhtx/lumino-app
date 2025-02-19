@@ -7,6 +7,7 @@ import { ViewContainer } from '@/components/layout/views/view-container';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import { Dashboard } from '@/components/views/Dashboard';
 import { usePathname } from 'next/navigation';
+import { LayoutProvider } from '@/components/providers/layout-provider';
 
 export default function Page() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,19 +24,21 @@ export default function Page() {
     { name: 'Dashboard', icon: <LayoutDashboard className={iconClass} />, href: '/'},
   ];
   return (<>
-    <SideNav links={links} favorites />
+    {/* <SideNav links={links} favorites />
     <div className="flex flex-col">
       <Header links={links} />
       <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
       { isLoaded ?
-          <ViewContainer>
+          <ViewContainer> */}
+          <LayoutProvider>
             <Dashboard />
-          </ViewContainer>
+          </LayoutProvider>
+          {/* </ViewContainer>
         :
         <div className="flex items-center">
           <BouncingDotsLoader />
         </div> }
       </main>
-    </div>
+    </div> */}
   </>)
 }

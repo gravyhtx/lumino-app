@@ -6,7 +6,7 @@ import { SideNav } from "@/components/layout/window/side-nav";
 import PointsSummary from "@/components/layout/rewards/points";
 import { ViewContainer } from "@/components/layout/views/view-container";
 import { Header } from "@/components/layout/window/header";
-import { Home, LineChart, Package, ShoppingCart } from "lucide-react";
+import { Coins, Home, LineChart, Package, ShoppingCart } from "lucide-react";
 import BouncingDotsLoader from "@/components/layout/loading/BouncingDots";
 import IncentivesHub from "@/components/layout/rewards/incentives-hub";
 
@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   const iconClass = "h-5 w-5";
   const links = [
-    { name: "Incintives Hub", icon: <LineChart className={iconClass} />, href: "/rewards/" },
+    { name: "Incentives Hub", icon: <Coins className={iconClass} />, href: "/rewards/" },
     { name: "Goals & Milestones", icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
     { name: "Points Summary", icon: <Home className={iconClass} />, href: "/rewards/points-summary" },
     { name: "Reward Redemption", icon: <Package className={iconClass} />, href: "/rewards/redemption" },

@@ -5,7 +5,7 @@ export const badges: Badge[] = [
   {
     id: "1",
     name: "Kickoff",
-    icon: "CreditCard",
+    icon: "award",
     points: 50,
     earnedDate: "2025-01-12",
     criteria: "Process your first transaction",
@@ -14,7 +14,7 @@ export const badges: Badge[] = [
   {
     id: "2",
     name: "Revenue Generator",
-    icon: "DollarSign",
+    icon: "zap",
     points: 100,
     earnedDate: "2025-01-20",
     criteria: "Process $5,000 in transactions",
@@ -23,7 +23,7 @@ export const badges: Badge[] = [
   {
     id: "3",
     name: "Growth Mode",
-    icon: "TrendingUp",
+    icon: "timer",
     points: 70,
     earnedDate: "2025-01-25",
     criteria: "Complete 25 successful transactions",
@@ -32,7 +32,7 @@ export const badges: Badge[] = [
   {
     id: "4",
     name: "Trusted Partner",
-    icon: "Star",
+    icon: "star",
     points: 150,
     criteria: "Maintain 4.5+ stars after 10 reviews",
     description: "Your customers love you! A 4.5+ star rating means you're delivering value and trust.",
@@ -41,7 +41,7 @@ export const badges: Badge[] = [
   {
     id: "5",
     name: "Elite Earner",
-    icon: "Award",
+    icon: "trophy",
     points: 200,
     criteria: "Process $10,000+ in transactions",
     description: "You've joined the top tier of earners! Keep scaling and unlock even greater rewards.",
@@ -50,13 +50,70 @@ export const badges: Badge[] = [
   {
     id: "6",
     name: "Connector",
-    icon: "Users",
+    icon: "users",
     points: 250,
     criteria: "Refer 3 businesses to Lumino",
     description: "Success loves company! You've helped three businesses unlock better payment solutions with Lumino.",
     isLocked: true,
   },
 ]
+
+// export const badges: Badge[] = [
+//   {
+//     id: "1",
+//     name: "Kickoff",
+//     icon: "CreditCard",
+//     points: 50,
+//     earnedDate: "2025-01-12",
+//     criteria: "Process your first transaction",
+//     description: "You've taken your first step toward financial freedom! Keep processing to unlock bigger rewards.",
+//   },
+//   {
+//     id: "2",
+//     name: "Revenue Generator",
+//     icon: "DollarSign",
+//     points: 100,
+//     earnedDate: "2025-01-20",
+//     criteria: "Process $5,000 in transactions",
+//     description: "You're making moves! $5,000 processed and counting—keep going for the next milestone.",
+//   },
+//   {
+//     id: "3",
+//     name: "Growth Mode",
+//     icon: "TrendingUp",
+//     points: 70,
+//     earnedDate: "2025-01-25",
+//     criteria: "Complete 25 successful transactions",
+//     description: "You're building momentum! 25 transactions down, and the road to success is wide open.",
+//   },
+//   {
+//     id: "4",
+//     name: "Trusted Partner",
+//     icon: "Star",
+//     points: 150,
+//     criteria: "Maintain 4.5+ stars after 10 reviews",
+//     description: "Your customers love you! A 4.5+ star rating means you're delivering value and trust.",
+//     isLocked: true,
+//   },
+//   {
+//     id: "5",
+//     name: "Elite Earner",
+//     icon: "Award",
+//     points: 200,
+//     criteria: "Process $10,000+ in transactions",
+//     description: "You've joined the top tier of earners! Keep scaling and unlock even greater rewards.",
+//     isLocked: true,
+//   },
+//   {
+//     id: "6",
+//     name: "Connector",
+//     icon: "Users",
+//     points: 250,
+//     criteria: "Refer 3 businesses to Lumino",
+//     description: "Success loves company! You've helped three businesses unlock better payment solutions with Lumino.",
+//     isLocked: true,
+//   },
+// ]
 
 export const milestones: Milestone[] = [
   {

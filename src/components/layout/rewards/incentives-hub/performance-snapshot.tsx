@@ -24,7 +24,7 @@ export function PerformanceSnapshot({ summary }: PerformanceSnapshotProps) {
                 animate={{ scale: 1, opacity: 1 }}
                 className="text-4xl font-bold"
               >
-                ${summary.currentMonth.total.toLocaleString()}
+                {summary.currentMonth.total.toLocaleString()}
               </motion.div>
               <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
                 <div>
@@ -33,7 +33,7 @@ export function PerformanceSnapshot({ summary }: PerformanceSnapshotProps) {
                 </div>
                 <div>
                   <span className="text-muted-foreground">Bonuses:</span>
-                  <span className="ml-1">${summary.currentMonth.bonuses.toLocaleString()}</span>
+                  <span className="ml-1">{summary.currentMonth.bonuses.toLocaleString()}</span>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@ export function PerformanceSnapshot({ summary }: PerformanceSnapshotProps) {
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Current Multiplier</h3>
               <div className="text-2xl font-bold text-primary">{summary.multiplier.current}x</div>
               <p className="text-sm text-muted-foreground mt-1">
-                ${summary.multiplier.remaining.toLocaleString()} until {summary.multiplier.next}x
+                {summary.multiplier.remaining.toLocaleString()} until {summary.multiplier.next}x
               </p>
             </div>
           </div>

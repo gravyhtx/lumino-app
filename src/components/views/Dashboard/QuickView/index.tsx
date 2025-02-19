@@ -70,7 +70,7 @@ export const QuickView: React.FC<InfoCardsProps> = ({
   console.log({ tabId, title: title[tabId], value: value[tabId] });
 
   return(
-    <div style={{width: "100%", padding: "0 20px", margin}}>
+    <div style={{width: "100%", margin}}>
       <Tabs defaultValue="overview" className="space-y-4">
         <div className="flex items-center justify-between mb-4">
           <TabsList style={{ border: '1px solid rgba(255, 255, 255, .2)' }}>

@@ -1,57 +1,68 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import type { Badge } from "./types/badges"
-import { iconMap } from "./data/mock-data"
-import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Award, Zap, Timer, Trophy, Users, DollarSign, Star, TrendingUp, CreditCard } from "lucide-react"
+import { Card } from "@/components/ui/card"
 
 interface BadgeCardProps {
-  badge: Badge
+  title: string
+  description: string
+  points: number
+  icon: keyof typeof icons
 }
 
-export function BadgeCard({ badge }: BadgeCardProps) {
-  const [isHovered, setIsHovered] = useState(false)
-  const Icon = iconMap[badge.icon as keyof typeof iconMap]
+const icons = {
+  award: Award,
+  zap: Zap,
+  timer: Timer,
+  trophy: Trophy,
+  users: Users,
+  dollarSign: DollarSign,
+  star: Star,
+  trendingUp: TrendingUp,
+  creditCard: CreditCard,
+}
+
+export function BadgeCard({ title, description, points, icon }: BadgeCardProps) {
+  const Icon = icons[icon] || Trophy; // Default to Trophy if undefined
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-          >
-            <Card className={`relative overflow-hidden ${badge.isLocked ? "opacity-50" : ""}`}>
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 z-0" />
-              <CardHeader className="relative z-10 p-4">
-                <div className="flex items-center justify-between">
-                  <div className="rounded-full bg-primary/10 p-2">
-                    <Icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-sm font-medium text-primary">+{badge.points} pts</span>
-                </div>
-              </CardHeader>
-              <CardContent className="relative z-10 p-4 pt-0">
-                <h3 className="font-semibold mb-1">{badge.name}</h3>
-                <CardDescription className="text-xs">{badge.criteria}</CardDescription>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </TooltipTrigger>
-        <TooltipContent side="bottom" className="p-4 max-w-[200px]">
-          <p className="font-medium mb-1">{badge.name}</p>
-          <p className="text-sm text-muted-foreground mb-2">{badge.criteria}</p>
-          {badge.earnedDate && (
-            <p className="text-xs text-muted-foreground">
-              Earned on: {new Date(badge.earnedDate).toLocaleDateString()}
-            </p>
-          )}
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <div className="group relative h-[320px] w-[250px] [perspective:1000px] overflow-visible">
+      {/* Inner flipping container */}
+      <div className="absolute inset-0 h-full w-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+        
+        {/* Front of card */}
+        <Card className="!absolute inset-0 flex flex-col rounded-xl border-0 bg-card p-4 [backface-visibility:hidden] h-full">
+          <div className="flex h-[60%] items-center justify-center rounded-t-lg bg-gradient-to-br from-background/50 to-background/10 backdrop-blur-sm">
+            <Icon className="h-16 w-16 text-primary" />
+          </div>
+          <div className="mt-4 space-y-2 flex-grow">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-muted-foreground">ACHIEVEMENT</span>
+            </div>
+            <h3 className="text-lg font-semibold">{title}</h3>
+            <p className="text-sm text-muted-foreground">{description}</p>
+          </div>
+          <div className="absolute bottom-3 right-3 rounded bg-primary px-2 py-1 text-sm font-medium text-primary-foreground">
+            +{points} pts
+          </div>
+        </Card>
+
+        {/* Back of card */}
+        <Card className="!absolute inset-0 flex flex-col items-center justify-center rounded-xl border-0 bg-card p-6 [backface-visibility:hidden] [transform:rotateY(180deg)] h-full">
+          <div className="relative mb-4">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary/10">
+              <Icon className="h-12 w-12 text-primary" />
+            </div>
+            <div className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-green-500 ring-2 ring-background" />
+          </div>
+          <h3 className="mb-1 text-xl font-semibold">{title}</h3>
+          <p className="mb-6 text-muted-foreground">Achievement</p>
+          <button className="w-full rounded-md bg-primary/10 px-4 py-2 text-primary hover:bg-primary/20">
+            Track
+          </button>
+        </Card>
+
+      </div>
+    </div>
   )
 }
-
