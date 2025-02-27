@@ -149,11 +149,11 @@ export const BarGraph: React.FC<BarGraphProps> = ({
   size = { width: "100%", height: 350 },
   barDataKey = "total",
   barFillColor,
-  barRadius = [8, 8, 8, 8],
+  barRadius = [12, 12, 12, 12],
   showAxis = true,
   margin = { top: 5, right: 10, bottom: 20, left: 10 },
   showGrid = false,
-  barSize = 16, // Slimmer bars
+  barSize = 25, // Slimmer bars
   maxBarSize = 30,
 }) => {
   const chartWidth = Array.isArray(size) ? size[0] : (size?.width ?? "100%")
