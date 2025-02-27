@@ -48,11 +48,12 @@ export const Display = () => {
     <div className="w-full lg:col-span-1">
       <Card className='p-6'>
         <CardTitle>Gross Sales</CardTitle>
+        <br/>
         <BarGraph />
       </Card>
     </div>
     <div className="w-full lg:col-span-1">
-      <Card className=' h-[424px]'>
+      <Card className=' h-[448px]'>
         <CardHeader>
           <CardTitle>Recent Transactions</CardTitle>
           <CardDescription>Card Description</CardDescription>

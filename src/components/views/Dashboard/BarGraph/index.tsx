@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import React, { SVGProps } from "react";
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis } from "recharts";
 // import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 // import useData from "~/hooks/useData";
 // import { useValue } from "~/hooks/useValue";
@@ -109,8 +109,8 @@ type Size = number | `${number}%` | 'auto';
 interface AxisProps {
   fill?: string;
   fontSize?: number;
-  tickLine?: boolean | [x: boolean, y: boolean];
-  axisLine?: boolean | [x: boolean, y: boolean];
+  tickLine?: boolean | SVGProps<SVGTextElement>;
+  axisLine?: boolean | SVGProps<SVGLineElement>;
   label?: {
     value?: string;
     color?: string;
@@ -121,88 +121,144 @@ interface AxisProps {
 
 interface BarGraphProps {
   data?: {
-    name: string;
-    [key: string]: unknown;
-  }[];
-  xAxis?: AxisProps;
-  yAxis?: AxisProps;
-  size?: [width: Size | undefined, height: Size | undefined] | { width?: Size | undefined, height?: Size | undefined };
-  barDataKey?: string; // Key for bar data
-  barFillColor?: string;
-  barRadius?: [number, number, number, number];
-  showAxis?: boolean;
+    name: string
+    [key: string]: unknown
+  }[]
+  xAxis?: AxisProps
+  yAxis?: AxisProps
+  size?: [width: Size | undefined, height: Size | undefined] | { width?: Size | undefined; height?: Size | undefined }
+  barDataKey?: string // Key for bar data
+  barFillColor?: string
+  barRadius?: [number, number, number, number]
+  showAxis?: boolean
   margin?: {
-    top: number | undefined;
-    right: number | undefined;
-    bottom: number | undefined;
-    left: number | undefined;
+    top: number | undefined
+    right: number | undefined
+    bottom: number | undefined
+    left: number | undefined
   }
+  showGrid?: boolean
+  barSize?: number
+  maxBarSize?: number
 }
 
 export const BarGraph: React.FC<BarGraphProps> = ({
   data,
-  // xAxis = {},
-  // yAxis = {},
-  size = { width: '100%', height: 350 },
+  xAxis,
+  yAxis,
+  size = { width: "100%", height: 350 },
   barDataKey = "total",
-  // barFillColor = "currentColor",
-  // barRadius = [4, 4, 0, 0],
-  // showAxis = true,
-  margin
+  barFillColor,
+  barRadius = [8, 8, 8, 8],
+  showAxis = true,
+  margin = { top: 5, right: 10, bottom: 20, left: 10 },
+  showGrid = false,
+  barSize = 16, // Slimmer bars
+  maxBarSize = 30,
 }) => {
-  const chartWidth = Array.isArray(size) ? size[0] : size?.width ?? '100%';
-  const chartHeight = Array.isArray(size) ? size[1] : size?.height ?? '100%';
+  const chartWidth = Array.isArray(size) ? size[0] : (size?.width ?? "100%")
+  const chartHeight = Array.isArray(size) ? size[1] : (size?.height ?? "100%")
 
   return (
-    <ResponsiveContainer width={chartWidth} height={chartHeight}>
-      <BarChart data={data ?? dummyData} margin={margin}>
-      <XAxis
-          dataKey="name"
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-        />
-        <YAxis
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-          tickFormatter={(value) => `$${value}`}
-        />
-        <Bar
-          dataKey={barDataKey ?? "name"}
-          fill="currentColor"
-          radius={[4, 4, 0, 0]}
-          className="fill-primary"
-        />
-        {/* { showAxis && (
-        <XAxis
-          dataKey="name"
-          stroke={xAxis.fill ?? "#888888"}
-          fontSize={xAxis.fontSize ?? 12}
-          tickLine={useValue(xAxis.tickLine).get(0, false)}
-          axisLine={useValue(xAxis.axisLine).get(0, false)}
-          label={{ ...xAxis.label }}
+    <div className="w-full h-full rounded-lg">
+      <ResponsiveContainer width={chartWidth} height={chartHeight}>
+        <BarChart data={data ?? dummyData} margin={margin} barSize={barSize} maxBarSize={maxBarSize}>
+          {showAxis && (
+            <>
+              <XAxis
+                dataKey="name"
+                stroke="hsl(var(--muted-foreground))"
+                fontSize={12}
+                tickLine={false}
+                axisLine={false}
+                {...xAxis}
+                className="text-muted-foreground"
+              />
+              <YAxis
+                stroke="hsl(var(--muted-foreground))"
+                fontSize={12}
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(value) => `$${value}`}
+                {...yAxis}
+                className="text-muted-foreground"
+              />
+            </>
+          )}
+
+          {showGrid && (
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--muted))" opacity={0.2} />
+          )}
+          <Bar
+            dataKey={barDataKey}
+            fill={barFillColor || "hsl(var(--primary))"}
+            radius={barRadius}
+            className="fill-primary"
           />
-        )} */}
-        {/* { showAxis && (
-          <YAxis
-            stroke={yAxis.fill ?? "#888888"}
-            fontSize={yAxis.fontSize ?? 12}
-            tickLine={useValue(xAxis.tickLine).get(1, false)}
-            axisLine={useValue(xAxis.axisLine).get(1, false)}
-            label={{ ...yAxis.label }}
-            tickFormatter={(value) => `$${value}`}
-          />
-        )}
-        <Bar
-          dataKey={barDataKey}
-          fill={barFillColor}
-          radius={barRadius}
-          className="fill-primary"
-        /> */}
-      </BarChart>
-    </ResponsiveContainer>
-  );
-};
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  )
+}
+
+// interface BarGraphProps {
+//   data?: {
+//     name: string;
+//     [key: string]: unknown;
+//   }[];
+//   xAxis?: AxisProps;
+//   yAxis?: AxisProps;
+//   size?: [width: Size | undefined, height: Size | undefined] | { width?: Size | undefined, height?: Size | undefined };
+//   barDataKey?: string; // Key for bar data
+//   barFillColor?: string;
+//   barRadius?: [number, number, number, number];
+//   showAxis?: boolean;
+//   margin?: {
+//     top: number | undefined;
+//     right: number | undefined;
+//     bottom: number | undefined;
+//     left: number | undefined;
+//   }
+// }
+
+// export const BarGraph: React.FC<BarGraphProps> = ({
+//   data,
+//   // xAxis = {},
+//   // yAxis = {},
+//   size = { width: '100%', height: 350 },
+//   barDataKey = "total",
+//   // barFillColor = "currentColor",
+//   // barRadius = [4, 4, 0, 0],
+//   // showAxis = true,
+//   margin
+// }) => {
+//   const chartWidth = Array.isArray(size) ? size[0] : size?.width ?? '100%';
+//   const chartHeight = Array.isArray(size) ? size[1] : size?.height ?? '100%';
+
+//   return (
+//     <ResponsiveContainer width={chartWidth} height={chartHeight}>
+//       <BarChart data={data ?? dummyData} margin={margin}>
+//       <XAxis
+//           dataKey="name"
+//           stroke="#888888"
+//           fontSize={12}
+//           tickLine={false}
+//           axisLine={false}
+//         />
+//         <YAxis
+//           stroke="#888888"
+//           fontSize={12}
+//           tickLine={false}
+//           axisLine={false}
+//           tickFormatter={(value) => `$${value}`}
+//         />
+//         <Bar
+//           dataKey={barDataKey ?? "name"}
+//           fill="currentColor"
+//           radius={[4, 4, 0, 0]}
+//           className="fill-primary"
+//         />
+//       </BarChart>
+//     </ResponsiveContainer>
+//   );
+// };

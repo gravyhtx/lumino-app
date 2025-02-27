@@ -38,7 +38,7 @@ export const SideNav: React.FC<SideNavProps> = ({
   return (
     <div className="sticky top-0 h-screen hidden border-r bg-muted/40 md:block glass-sidebar">
       <div className="flex h-full max-h-screen flex-col gap-2 dark:bg-[hsl(215,27.9%,16.9%)]">
-        <div className="flex flex-shrink-0 h-14 items-center border-b border-glass-border px-4 h-[60px] lg:px-5 lumino-banner">
+        <div className="flex flex-shrink-0 h-14 items-center border-b border-glass-border px-4 h-[60px] lg:px-5 lumino-banner dark:bg-lumi-dark-blue">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <LuminoLogo />
           </Link>

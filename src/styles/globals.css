@@ -33,6 +33,12 @@
     --ring: 224 71.4% 4.1%;
 
     --radius: 0.5rem;
+
+    --lumi-blue: #0b1b33;
+    --lumi-dark-blue: #02041d;
+
+    --lumi-accent-green: #00F3AD;
+    --lumi-accent-blue: #08FFFC;
   }
 
   .dark {

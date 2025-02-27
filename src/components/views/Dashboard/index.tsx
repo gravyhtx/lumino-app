@@ -21,13 +21,17 @@ export const Dashboard = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'sales' | 'rewards' | 'goals'>('overview');
 
   return (
-    <div style={{display: "flex",flexDirection: "column", height: "100%", justifyContent: "space-evenly"}}>
-      <div className={''}>
+    <div className="space-y-6 flex flex-col items-center justify-between w-full"
+      // style={{display: "flex",flexDirection: "column", height: "100%", justifyContent: "space-evenly"}}
+      >
+        {/* <div className="flex items-center justify-between w-full">
+          <h2 className="text-2xl text-left font-semibold">Welcome, Lumino.</h2>
+        </div> */}
         <QuickView
           tabId={activeTab}
           onTabChange={(tab) => setActiveTab(tab)} />
-      </div>
-      <div className={classnames("grid grid-cols-1 lg:grid-cols-[7fr_3fr] gap-8", '')}>
+
+      <div className={classnames("grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-8 w-full", '')}>
         <Display />
       </div>
     </div>
