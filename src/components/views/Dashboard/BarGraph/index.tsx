@@ -191,7 +191,7 @@ export const BarGraph: React.FC<BarGraphProps> = ({
           )}
           <Bar
             dataKey={barDataKey}
-            fill={barFillColor || "hsl(var(--primary))"}
+            fill={barFillColor ?? "hsl(var(--primary))"}
             radius={barRadius}
             className="fill-primary"
           />
