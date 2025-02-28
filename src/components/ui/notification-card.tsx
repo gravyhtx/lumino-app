@@ -36,7 +36,7 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({ transaction,
             "bg-gradient-to-br from-white/10 to-white/5",
             "backdrop-blur-md",
             "border border-white/20",
-            "text-black",
+            "text-black dark:text-white",
             "notification-card"
           )}
         >

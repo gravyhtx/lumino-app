@@ -36,7 +36,7 @@ export const SideNav: React.FC<SideNavProps> = ({
     <NavLink href={`#${formatLink(link?.name)}`} key={link?.name} {...link} />
   ));
   return (
-    <div className="sticky top-0 h-screen hidden border-r bg-muted/40 md:block glass-sidebar">
+    <div className="sticky top-0 h-screen hidden border-r bg-lumi-blue/40 dark:bg-[hsl(215, 71%, 19%)] md:block glass-sidebar">
       <div className="flex h-full max-h-screen flex-col gap-2 dark:bg-[hsl(215,27.9%,16.9%)]">
         <div className="flex flex-shrink-0 h-14 items-center border-b border-glass-border px-4 h-[60px] lg:px-5 lumino-banner dark:bg-lumi-dark-blue">
           <Link href="/" className="flex items-center gap-2 font-semibold">
@@ -47,7 +47,7 @@ export const SideNav: React.FC<SideNavProps> = ({
             <span className="sr-only">Toggle notifications</span>
           </Button>
         </div>
-        <div className="h-full flex flex-col h-[calc(100vh-60px)] dark:bg-[hsl(215,27.9%,16.9%)]">
+        <div className="h-full flex flex-col h-[calc(100vh-60px)]">
           <div className="flex-1 overflow-y-auto">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4 dark:text-white">
               {chatData ? <NavLinks /> :

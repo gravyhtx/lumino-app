@@ -5,7 +5,7 @@ import { SideNav } from '@/components/layout/window/side-nav';
 import { Header } from '@/components/layout/window/header';
 import { ViewContainer } from '@/components/layout/views/view-container';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
-import { Dashboard } from '@/components/views/Dashboard';
+import { Dashboard } from '@/components/layout/Dashboard';
 import { usePathname } from 'next/navigation';
 import { LayoutProvider } from '@/components/providers/layout-provider';
 

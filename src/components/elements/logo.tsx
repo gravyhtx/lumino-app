@@ -19,7 +19,10 @@ const paths = {
 export const LuminoLogoTriangle = GenerateIcon("LuminoLogoTriangle", paths.triangle, '0 0 60 60', 30, 30, "logo h-8 w-8 fill-[#19e8aa]");
 export const LuminoLogoText = GenerateIcon("LuminoLogoText", paths.text, '0 0 140 23', 103.5, 17, "logo h-4 pl-[8px] fill-white");
 
-export const LuminoLogo = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+interface LuminoLogoProps {
+  close?: boolean;
+}
+export const LuminoLogo = forwardRef<HTMLDivElement & LuminoLogoProps, React.HTMLAttributes<HTMLDivElement>>(
   (props, ref) => {
     return (
       <div ref={ref} className="flex items-center" {...props}>
@@ -29,8 +32,6 @@ export const LuminoLogo = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
     );
   }
 );
-
-
 
 const logoColor = "#19e8aa";
 

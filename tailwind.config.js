@@ -56,7 +56,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "lumi-blue": "#0b1b33",
+        "lumi-blue": "var(--lumi-blue)",
         "lumi-dark-blue": "#02041d",
         "lumi-accent-green": "#00F3AD",
         "lumi-accent-blue": "#08FFFC",

@@ -10,7 +10,7 @@ interface ViewContainerProps {
 }
 
 export const ViewContainer: React.FC<ViewContainerProps> = ({ children, classes, header }) => {
-  const dark = "dark:bg-[#0a0b1e] dark:bg-gradient-to-br dark:from-[#0a0b1e] dark:via-[#252644] dark:to-[#0a0b1e]"
+  const dark = "dark:bg-[#0a0b1e20] dark:bg-gradient-to-br dark:from-[#0a0b1e20] dark:via-[#25264450] dark:to-[#0a0b1e20]"
   return (<>
     {/* <div className={cn("w-full flex flex-col h-full", classes)}> */}
       {/* {header && (
@@ -19,8 +19,9 @@ export const ViewContainer: React.FC<ViewContainerProps> = ({ children, classes,
         </h1>
       )} */}
       <div className={cn(
-        "w-full h-full flex flex-col flex-1 rounded-lg border border-dashed shadow-sm p-4 bg-animation",
-        // dark,
+        // "w-full h-full flex flex-col flex-1 rounded-lg border border-dashed shadow-sm p-4 bg-animation",
+        "w-full h-full flex flex-col flex-1 rounded-lg shadow-sm p-4 bg-animation",
+        dark,
         classes)}>
         {children}
       </div>
