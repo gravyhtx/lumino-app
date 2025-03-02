@@ -109,9 +109,9 @@
 }
 
 .glass-sidebar {
-  @apply backdrop-blur-md bg-background/60 border-r border-glass-border;
+  @apply backdrop-blur-md border-r border-glass-border;
   background-image: var(--prism-gradient);
-  background-color: #eeeeee90
+  /* background-color: #eeeeee90 */
 }
 
 .glass-header {

@@ -86,6 +86,10 @@ html {
   body: 16px;
 }
 
+body {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 .dialog-overlay {
   background: transparent !important;
 }
@@ -142,4 +146,17 @@ html {
     transparent 100%
   );
   pointer-events: none;
+}
+
+.view-box {
+  /* border-image: linear-gradient(
+    45deg,
+    rgba(255, 200, 200, 0.5),
+    rgba(200, 255, 200, 0.5),
+    rgba(200, 200, 255, 0.5)
+  ) 1; */
+  border: 1px solid rgba(200, 200, 255, 0.1);
+  border-width: 1px;
+  border-radius: var(--radius);
+  box-shadow: 0 0 50px rgba(200, 200, 255, .2);
 }

@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { GenerateIcon } from "./icon";
+import { motion } from 'framer-motion';
 
 const paths = {
   triangle: [
@@ -19,15 +20,26 @@ const paths = {
 export const LuminoLogoTriangle = GenerateIcon("LuminoLogoTriangle", paths.triangle, '0 0 60 60', 30, 30, "logo h-8 w-8 fill-[#19e8aa]");
 export const LuminoLogoText = GenerateIcon("LuminoLogoText", paths.text, '0 0 140 23', 103.5, 17, "logo h-4 pl-[8px] fill-white");
 
-interface LuminoLogoProps {
+interface LuminoLogoProps extends React.HTMLAttributes<HTMLDivElement> {
   close?: boolean;
 }
-export const LuminoLogo = forwardRef<HTMLDivElement & LuminoLogoProps, React.HTMLAttributes<HTMLDivElement>>(
-  (props, ref) => {
+
+export const LuminoLogo = forwardRef<HTMLDivElement, LuminoLogoProps>(
+  ({ close, ...props }, ref) => {
     return (
       <div ref={ref} className="flex items-center" {...props}>
         <LuminoLogoTriangle />
-        <LuminoLogoText />
+        <motion.div
+          initial={{ width: "auto", opacity: 1 }}
+          animate={{
+            width: close ? 0 : "auto",
+            opacity: close ? 0 : 1,
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="overflow-hidden"
+        >
+          <LuminoLogoText />
+        </motion.div>
       </div>
     );
   }

@@ -36,8 +36,8 @@ export const Header: React.FC<HeaderProps> = ({ links }) => {
     <header 
       ref={headerRef}
       className={cn(
-        "flex h-14 items-center gap-4 border-b px-4 lg:h-[60px] lg:px-6 sticky top-0 z-10 transition-all duration-200 dark:bg-lumi-blue",
-        scrolled ? "glass-header shadow-lg" : "bg-background/60 dark:bg-lumi-blue/60"
+        "flex h-14 items-center gap-4 border-b px-4 lg:h-[60px] lg:px-6 sticky top-0 z-10 transition-all duration-200 dark:bg-lumi-blue/60",
+        !scrolled ? "glass-header shadow-lg" : "bg-background/80 dark:bg-lumi-blue/80"
       )}
     >
       <Sheet>

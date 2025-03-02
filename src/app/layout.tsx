@@ -1,5 +1,6 @@
 import React, { SetStateAction, useState } from "react";
 import { cn } from "@/lib/utils";
+import 'animate.css';
 import "@/styles/globals.css";
 import "@/styles/dark-mode.css"
 import "@/styles/glassomorphic.css";
@@ -30,7 +31,7 @@ export default function RootLayout({
 }) {
 
   const useClasses = false;
-  const classes = useClasses ? "grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]" : "min-h-screen w-full";
+  // const classes = useClasses ? "grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]" : "min-h-screen w-full";
 
 
   return (
@@ -42,11 +43,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <div className={cn(classes)}> */}
-            <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+          <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
             {children}
-            </div>
-          {/* </div> */}
+          </div>
         </ThemeProvider>
       </body>
     </html>

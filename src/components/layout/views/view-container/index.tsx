@@ -20,7 +20,7 @@ export const ViewContainer: React.FC<ViewContainerProps> = ({ children, classes,
       )} */}
       <div className={cn(
         // "w-full h-full flex flex-col flex-1 rounded-lg border border-dashed shadow-sm p-4 bg-animation",
-        "w-full h-full flex flex-col flex-1 rounded-lg shadow-sm p-4 bg-animation",
+        "w-full h-full flex flex-col flex-1 view-box rounded-lg p-4 md:p-6 lg:p-8 bg-animation",
         dark,
         classes)}>
         {children}

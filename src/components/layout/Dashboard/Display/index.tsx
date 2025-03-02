@@ -56,10 +56,10 @@ export const Display = () => {
     </div>
     <div className="w-full lg:col-span-1">
       <Card className=' h-[448px]'>
-        <CardHeader>
+        <div className='p-6'>
           <CardTitle>Recent Transactions</CardTitle>
-          <CardDescription>Card Description</CardDescription>
-        </CardHeader>
+          {/* <CardDescription>Card Description</CardDescription> */}
+        </div>
         <RecentSales />
       </Card>
     </div>
