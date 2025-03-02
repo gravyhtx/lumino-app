@@ -2,6 +2,7 @@ import { Avatar } from "@radix-ui/react-avatar"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import styles from "./recents.module.css";
 import { classnames } from "@/utils";
+import { Separator } from "@/components/ui/separator";
 
 export interface Transaction {
   date: string;
@@ -51,11 +52,11 @@ export const RecentSales = () => {
                   </TooltipTrigger>
                   <TooltipContent className="z-50 bg-muted text-popover-foreground p-3 rounded-sm shadow-md w-64">
                     <div className="text-sm">
-                      <p><span className="font-semibold">Date:</span> {tx.date}</p>
-                      <p><span className="font-semibold">Time:</span> {tx.time}</p>
-                      <p><span className="font-semibold">Name:</span> {tx.name}</p>
-                      <p><span className="font-semibold">Email:</span> {tx.email}</p>
-                      <p className="mt-1 font-semibold text-primary">{tx.amount}</p>
+                      <p className="font-bold">{tx.name}</p>
+                      <p>{tx.email}</p>
+                      <Separator className="my-1" />
+                      <p className="font-semibold text-primary">{tx.amount}</p>
+                      <small>{tx.date} {tx.time}</small>
                     </div>
                   </TooltipContent>
                 </Tooltip>

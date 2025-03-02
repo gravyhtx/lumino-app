@@ -31,7 +31,7 @@ export function ChatBox() {
             onChange={(e) => setMessage(e.target.value)}
             className="glass-effect"
           />
-          <Button type="submit" size="icon" className="glass-effect">
+          <Button type="submit" size="icon" className="glass-effect dark:text-muted-foreground">
             <Send className="h-4 w-4" />
             <span className="sr-only">Send message</span>
           </Button>
