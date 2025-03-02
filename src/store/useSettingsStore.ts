@@ -9,6 +9,7 @@ export interface SettingsState {
   notifications: boolean;
   size: SizeTypes;
   tooltips: boolean;
+  isNavOpen?: boolean;
 }
 
 export const DEFAULT_SETTINGS: SettingsState = {
@@ -17,12 +18,14 @@ export const DEFAULT_SETTINGS: SettingsState = {
   notifications: true,
   size: 0,
   tooltips: false,
+  isNavOpen: true,
 };
 
 interface SettingsStore { 
   state: SettingsState;
   save: (settings: Partial<SettingsState>) => void;
   reset: () => void;
+  toggleNav: () => void;
 }
 
 export const useSettingsStore = create<SettingsStore>((set) => ({
@@ -32,5 +35,8 @@ export const useSettingsStore = create<SettingsStore>((set) => ({
   })),
   reset: () => set(() => ({
     state: { ...DEFAULT_SETTINGS }
+  })),
+  toggleNav: () => set((prev) => ({
+    state: { ...prev.state, isNavOpen: !prev.state.isNavOpen },
   })),
 }));

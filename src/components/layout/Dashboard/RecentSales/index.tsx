@@ -50,7 +50,9 @@ export const RecentSales = () => {
                       <div className="ml-auto text-sm font-medium">{tx.amount}</div>
                     </div>
                   </TooltipTrigger>
-                  <TooltipContent className="z-50 bg-muted text-popover-foreground p-3 rounded-sm shadow-md w-64">
+                  <TooltipContent
+                    side={index < 2 ? "bottom" : "top"}
+                    className="z-50 bg-muted text-popover-foreground p-3 rounded-sm shadow-md w-64">
                     <div className="text-sm">
                       <p className="font-bold">{tx.name}</p>
                       <p>{tx.email}</p>

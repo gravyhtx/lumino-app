@@ -8,6 +8,7 @@ import { Package2 } from "lucide-react"
 import { NotificationCard } from "./notification-card"
 import { UserMenu } from "./user-menu"
 import { NavLink, NavLinkProps } from "./nav-link"
+import { motion } from 'framer-motion';
 
 interface HeaderProps {
   links: NavLinkProps[]
@@ -33,7 +34,10 @@ export const Header: React.FC<HeaderProps> = ({ links }) => {
     icon: <></>,
   }
   return (
-    <header 
+    <motion.header 
+      initial={{ width: "100%" }}
+      animate={{ width: `auto` }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       ref={headerRef}
       className={cn(
         "flex h-14 items-center gap-4 border-b px-4 lg:h-[60px] lg:px-6 sticky top-0 z-10 transition-all duration-200 dark:bg-lumi-blue/60",
@@ -72,6 +76,6 @@ export const Header: React.FC<HeaderProps> = ({ links }) => {
       <div className="w-full flex-1">
       </div>
       <UserMenu />
-  </header>
+  </motion.header>
   )
 }

@@ -8,6 +8,8 @@ import { NotificationCard } from "./notification-card"
 import { NavLink, type NavLinkProps } from "./nav-link"
 import { ChatBox } from "./chat-box"
 import { Separator } from "@/components/ui/separator"
+import { useSettingsStore } from "@/store/useSettingsStore"
+import { motion } from 'framer-motion';
 
 
 interface SideNavProps {
@@ -30,7 +32,9 @@ export const SideNav: React.FC<SideNavProps> = ({
   const [closeNav, setCloseNav] = useState(false)
   const [hovering, setHovering] = useState(false)
 
-  const toggleNav = () => setCloseNav((prev) => !prev)
+  // const toggleNav = () => setCloseNav((prev) => !prev)
+  const { state, toggleNav } = useSettingsStore();
+  const isNavOpen = state.isNavOpen;
 
   const handleMouseEnter = () => setHovering(true)
   const handleMouseLeave = () => setHovering(false)
@@ -41,12 +45,16 @@ export const SideNav: React.FC<SideNavProps> = ({
   }
   const chat = chatData ?? []
   const NavLinks = () => chat.map((link) => (
-    <NavLink close={closeNav} href={`#${formatLink(link?.name)}`} key={link?.name} {...link} />
+    <NavLink close={!isNavOpen} href={`#${formatLink(link?.name)}`} key={link?.name} {...link} />
   ));
   return (
-    <div className={cn(
-        "sticky top-0 h-screen border-r bg-muted/40 dark:bg-lumi-blue/50 md:block glass-sidebar transition-all duration-300",
-        closeNav ? "w-[70px]" : "md:w-[220px] lg:w-[280px]"
+    <motion.div
+      initial={{ width: 70 }}
+      animate={{ width: isNavOpen ? 280 : 70 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={cn(
+        "sticky top-0 h-screen border-r bg-muted/40 dark:bg-lumi-blue/50 md:block glass-sidebar",
+        !isNavOpen ? "w-[70px]" : "md:w-[220px] lg:w-[280px]"
       )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -54,9 +62,9 @@ export const SideNav: React.FC<SideNavProps> = ({
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex flex-shrink-0 h-14 items-center border-b border-glass-border px-4 h-[60px] lg:px-5 lumino-banner dark:bg-lumi-dark-blue">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <LuminoLogo close={closeNav} />
+            <LuminoLogo close={!isNavOpen} />
           </Link>
-          {!closeNav &&
+          {isNavOpen &&
             <Button variant="link" size="icon" className={cn("ml-auto h-8 w-8 glass-notify", notify?"active":"")}>
               <Bell stroke={notify?"white":"#888"} className="h-4 w-4" />
               <span className="sr-only">Toggle notifications</span>
@@ -67,11 +75,11 @@ export const SideNav: React.FC<SideNavProps> = ({
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4 dark:text-white">
               {chatData ? <NavLinks /> :
               links.map((link) => (
-                <NavLink close={closeNav} key={link?.name} {...link} />
+                <NavLink close={!isNavOpen} key={link?.name} {...link} />
               ))}
               {favorites &&
               <>
-                {!closeNav ?
+                {isNavOpen ?
                   <><div className="my-4 h-px bg-muted/40"></div>
                   <h4 className="text-muted-foreground text-xs uppercase px-2 lg:px-4">
                     Favorites
@@ -81,7 +89,7 @@ export const SideNav: React.FC<SideNavProps> = ({
                 }
                 <div className="mt-2">
                   <NavLink
-                    close={closeNav}
+                    close={!isNavOpen}
                     name="Payment Requests"
                     href="/payments/payment-requests"
                     icon={<HandCoins className="h-5 w-5" />}
@@ -90,7 +98,7 @@ export const SideNav: React.FC<SideNavProps> = ({
               </>}
             </nav>
           </div>
-          {!closeNav &&
+          {isNavOpen &&
             <div className="mt-auto p-4">
               <ChatBox />
             </div>}
@@ -101,10 +109,10 @@ export const SideNav: React.FC<SideNavProps> = ({
             onClick={toggleNav}
             className="absolute top-1/2 right-[-25px] transform -translate-y-1/4 bg-lumi-dark-blue p-2 rounded-full border border-muted shadow-lg hover:bg-opacity-80 transition-all"
           >
-            {closeNav ? <ChevronRight className="h-5 w-5 text-white" /> : <ChevronLeft className="h-5 w-5 text-white" />}
+            {!isNavOpen ? <ChevronRight className="h-5 w-5 text-white" /> : <ChevronLeft className="h-5 w-5 text-white" />}
           </button>
         )}
       </div>
-    </div>
+    </motion.div>
   )
 }

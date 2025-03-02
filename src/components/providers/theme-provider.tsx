@@ -7,6 +7,9 @@ import { ResponsiveDialog } from '@/components/ui/responsive-dialog'
 import { Button } from "@/components/ui/button"
 import { Input } from "../ui/input"
 import { FlowerOfLife } from "../ui/flower-of-life"
+import { cn } from "@/lib/utils"
+import { useSettingsStore } from "@/store/useSettingsStore"
+import { motion } from 'framer-motion';
 
 interface LoginModalProps {
   isOpen: boolean
@@ -56,9 +59,42 @@ export function ThemeProvider({
 }: React.ComponentProps<typeof NextThemesProvider>) {
   const [isOpen, setIsOpen] = React.useState(true)
   const {isLoggedIn, logIn } = useUserStore();
+
+  const { state } = useSettingsStore();
+  const isNavOpen = state.isNavOpen;
+
+  const [sidebarWidth, setSidebarWidth] = React.useState(280); // Default for lg screens
+
+  React.useEffect(() => {
+    const updateWidth = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setSidebarWidth(isNavOpen ? 70 : 280); // lg: 280px, collapsed: 70px
+      } else if (width >= 768) {
+        setSidebarWidth(isNavOpen ? 70 : 220); // md: 220px, collapsed: 70px
+      } else {
+        setSidebarWidth(isNavOpen ? 70 : 220); // Default for smaller screens
+      }
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+
+    return () => window.removeEventListener("resize", updateWidth);
+  }, [isNavOpen]);
+
   return (
     <NextThemesProvider {...props}>
-      { isLoggedIn ? children
+      { isLoggedIn ? 
+      <motion.div
+        initial={{ width: "100%" }}
+        animate={{ width: `auto` }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className={cn(
+          `grid min-h-screen w-full`, 
+          isNavOpen ? `md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]` : `grid-cols-[70px_1fr]`)}>
+        {children}
+      </motion.div>
       : <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]"><LoginModal isOpen={isOpen} setIsOpen={setIsOpen} logIn={logIn} /></div>}
     </NextThemesProvider>)
 }

@@ -4,6 +4,7 @@ import { useUpdateView } from "@/store/useViewStore";
 import { Badge } from "@/components/ui/badge";
 import { Package2, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from 'framer-motion';
 
 export interface NavLinkProps {
   name: string;
@@ -32,7 +33,13 @@ export const NavLink: React.FC<NavLinkProps> = ({ name = "Nav Link", href, onCli
         className={`mx-[${close ? "0" : "-0.65rem"}] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground`}
       >
         {icon ?? <Package2 className="h-6 w-6" />}
-        {!close && name}
+        <motion.span
+          initial={{ opacity: 0, width: 0 }}
+          animate={{ opacity: close ? 0 : 1, width: close ? 0 : "auto" }}
+          transition={{ duration: 0.3, delay: close ? 0 : 0.3 }}
+          className="overflow-hidden">
+          {!close && name}
+        </motion.span>
         {/* {notifications &&
           <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full group-hover:opacity-0">
             {notifications}
