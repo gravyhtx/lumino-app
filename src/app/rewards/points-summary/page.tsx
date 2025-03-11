@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/window/header';
 import { Home, LineChart, Package, ShoppingCart } from 'lucide-react';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import IncentivesHub from '@/components/layout/rewards/incentives-hub';
+import PointsSummary from '@/components/layout/rewards/points';
 
 export default function Dashboard() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,7 +29,7 @@ export default function Dashboard() {
       <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
       { isLoaded ?
           <ViewContainer>
-            <IncentivesHub />
+            <PointsSummary />
           </ViewContainer>
         :
         <div className="flex items-center">

@@ -10,6 +10,7 @@ export interface SettingsState {
   size: SizeTypes;
   tooltips: boolean;
   isNavOpen?: boolean;
+  advancedMode: boolean;
 }
 
 export const DEFAULT_SETTINGS: SettingsState = {
@@ -19,6 +20,7 @@ export const DEFAULT_SETTINGS: SettingsState = {
   size: 0,
   tooltips: false,
   isNavOpen: true,
+  advancedMode: false,
 };
 
 interface SettingsStore { 
@@ -26,6 +28,7 @@ interface SettingsStore {
   save: (settings: Partial<SettingsState>) => void;
   reset: () => void;
   toggleNav: () => void;
+  toggleAdvancedMode: () => void;
 }
 
 export const useSettingsStore = create<SettingsStore>((set) => ({
@@ -39,4 +42,8 @@ export const useSettingsStore = create<SettingsStore>((set) => ({
   toggleNav: () => set((prev) => ({
     state: { ...prev.state, isNavOpen: !prev.state.isNavOpen },
   })),
+  toggleAdvancedMode: () =>
+    set((prev) => ({
+      state: { ...prev.state, advancedMode: !prev.state.advancedMode }, // Toggle advancedMode
+    })),
 }));

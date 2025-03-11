@@ -5,12 +5,18 @@ import { AISuggestions } from "./ai-suggestions"
 import { GoalProgress } from "./goal-progress"
 import { Leaderboard } from "./leaderboard"
 import { StreakTracker } from "./streak-tracker"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Advanced } from "@/components/ui/advanced"
 
 export default function GoalsPage() {
   return (
     <div className="container mx-auto p-6 max-w-7xl">
-      <h1 className="text-3xl font-bold mb-8">Goal Tracking & Suggestions</h1>
+      {/* <h1 className="text-3xl font-bold">Goal Tracking</h1>
+      <div className="mb-8">Earn Points Multipliers</div> */}
+      <Advanced
+        title="Goal Tracking"
+        description="Earn Points Multipliers"
+        className="mb-8" />
 
       <div className="grid gap-6 mb-8 md:grid-cols-4">
         <Card>
@@ -35,11 +41,11 @@ export default function GoalsPage() {
 
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium">Upcoming Deadlines</CardTitle>
+            <CardTitle className="text-sm font-medium">Active Multiplier</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">3</div>
-            <p className="text-xs text-muted-foreground">Next 7 Days</p>
+            <div className="text-2xl font-bold">1.5x</div>
+            <p className="text-xs text-muted-foreground">7 Days Remaining</p>
           </CardContent>
         </Card>
 
