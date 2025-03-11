@@ -10,7 +10,7 @@ export interface SettingsState {
   size: SizeTypes;
   tooltips: boolean;
   isNavOpen?: boolean;
-  advancedMode: boolean;
+  advancedMode?: boolean;
 }
 
 export const DEFAULT_SETTINGS: SettingsState = {
