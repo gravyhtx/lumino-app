@@ -25,6 +25,8 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, setIsOpen }) => {
     notifications: state.notifications,
     size: state.size,
     tooltips: state.tooltips,
+    isNavOpen: state.isNavOpen,
+    advancedMode: state.advancedMode,
   });
 
   const handleSave = () => {
