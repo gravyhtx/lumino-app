@@ -5,7 +5,7 @@ import { SideNav } from '@/components/layout/window/side-nav';
 import PointsSummary from '@/components/layout/rewards/points';
 import { ViewContainer } from '@/components/layout/views/view-container';
 import { Header } from '@/components/layout/window/header';
-import { Home, LineChart, Package, ShoppingCart } from 'lucide-react';
+import { Coins, Gamepad2, Home, LineChart, Package, ShoppingCart } from 'lucide-react';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import BadgesAndAchievements from '@/components/layout/rewards/badges';
 import RewardRedemption from '@/components/layout/rewards/redeem';
@@ -16,13 +16,14 @@ export default function Dashboard() {
     setIsLoaded(true)
   },[])
   const iconClass = "h-5 w-5";
-    const links = [
-      { name: "Incentives Hub", icon: <LineChart className={iconClass} />, href: "/rewards/" },
-      { name: "Goals & Milestones", icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
-      { name: "Points Summary", icon: <Home className={iconClass} />, href: "/rewards/points-summary" },
-      { name: "Reward Redemption", icon: <Package className={iconClass} />, href: "/rewards/redemption" },
-      { name: "Badges & Achievements", icon: <ShoppingCart className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
-    ];
+  const links = [
+    { name: "Incentives Hub", icon: <Coins className={iconClass} />, href: "/rewards/" },
+    { name: "Goal Tracking", icon: <LineChart className={iconClass} />, href: "/rewards/goal-tracking" },
+    { name: "Points Summary", icon: <Home className={iconClass} />, href: "/rewards/points-summary" },
+    { name: "Reward Redemption", icon: <Package className={iconClass} />, href: "/rewards/redemption" },
+    { name: "Badges & Achievements", icon: <Gamepad2 className={iconClass} />, notifications: 6, href: "/rewards/achievements" },
+  ];
+
   return (<>
     <SideNav links={links} />
     <div className="flex flex-col">
