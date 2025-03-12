@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
-import { Globe, PlusIcon, Telescope } from "lucide-react";
+import { Ellipsis, Globe, PlusIcon, Telescope } from "lucide-react";
 
 // Mock data from database
 const initialConversations = [
@@ -119,6 +119,7 @@ export default function Chat() {
         <Button><PlusIcon /></Button>
         <Button><Globe />&nbsp;Search</Button>
         <Button><Telescope />&nbsp;Deep Research</Button>
+        <Button><Ellipsis /></Button>
         <Input
           placeholder="Type your message..."
           value={input}
