@@ -19,6 +19,7 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { LayoutProvider } from '@/components/providers/layout-provider';
 
 export default function Page() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -42,60 +43,9 @@ export default function Page() {
     { name: 'Payment Links', icon: <Link2 className={iconClass} />, href: '/payments/payment-links' },
     { name: 'Virtual Terminal', icon: <Wallet className={iconClass} />, href: '/payments/virtual-terminal' },
   ];
-  return (<>
-    <SideNav links={links} />
-    <div className="flex flex-col">
-      <Header links={links} />
-      <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1">
-              <BreadcrumbLink href="/payments">Payments</BreadcrumbLink>
-                <span className="sr-only">Toggle menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <DropdownMenuItem>
-                  <Link href="/">Home</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/rewards">Rewards</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/assistant">Assistant</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1">
-                <BreadcrumbLink href="/payments">Dashboard</BreadcrumbLink>
-                  <span className="sr-only">Toggle menu</span>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start">
-                  {links.slice(1).map((link) =>(
-                    <DropdownMenuItem key={link.href}>
-                      <Link href={link.href}>{link.name}</Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-      { isLoaded ?
-          <ViewContainer>
-            <Dashboard />
-          </ViewContainer>
-        :
-        <div className="flex items-center justify-center items-center h-full">
-          <BouncingDotsLoader opts={{ size: "20px" }} />
-        </div> }
-      </main>
-    </div>
-  </>)
+  return (
+    <LayoutProvider>
+      <Dashboard />
+    </LayoutProvider>
+  )
 }

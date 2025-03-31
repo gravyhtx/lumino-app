@@ -20,13 +20,50 @@ export interface Transaction {
   amount: string;
 }
 
-const transactions = Array(20).fill({
-  date: "02/07/24",
-  time: "1:03 PM",
-  name: "Olivia Martin",
-  email: "olivia.martin@email.com",
-  amount: "+$1,999.00",
-}) as Transaction[];
+const transactions = [
+  {
+    date: "02/07/24",
+    time: "1:03 PM",
+    name: "Olivia Martin",
+    email: "olivia.martin@email.com",
+    amount: "+$1,999.00",
+  },
+  {
+    date: "02/07/24",
+    time: "1:03 PM",
+    name: "Olivia Martin",
+    email: "olivia.martin@email.com",
+    amount: "-$100.00",
+  },
+  {
+    date: "02/07/24",
+    time: "1:03 PM",
+    name: "Olivia Martin",
+    email: "olivia.martin@email.com",
+    amount: "+$1,999.00",
+  },
+  {
+    date: "02/07/24",
+    time: "1:03 PM",
+    name: "Olivia Martin",
+    email: "olivia.martin@email.com",
+    amount: "-$80.00",
+  },
+  {
+    date: "02/07/24",
+    time: "1:03 PM",
+    name: "Olivia Martin",
+    email: "olivia.martin@email.com",
+    amount: "+$1,999.00",
+  },
+  {
+    date: "02/07/24",
+    time: "1:03 PM",
+    name: "Olivia Martin",
+    email: "olivia.martin@email.com",
+    amount: "+$1,999.00",
+  },
+] as Transaction[];
 
 export const RecentSales = () => {
   return (
@@ -36,7 +73,10 @@ export const RecentSales = () => {
         <div className="relative h-full">
           <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-prism-gradient to-transparent pointer-events-none z-10"></div>
           <div className="h-full overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-muted-foreground">
-              {transactions.map((tx, index) => (
+            {transactions.map((tx, index) => {
+              const amountColor = tx.amount.startsWith("+") ? "text-lumi-accent-green" : "text-muted-foreground";
+              
+              return (
                 <Tooltip key={index}>
                   <TooltipTrigger asChild>
                     <div className="flex items-center py-2 border-b border-muted last:border-none hover:bg-muted/20 transition-all rounded-sm cursor-pointer">
@@ -47,7 +87,7 @@ export const RecentSales = () => {
                         <p className={classnames("text-sm font-medium", styles.name)}>{tx.name}</p>
                         <p className={classnames("text-xs text-muted-foreground", styles.email)}>{tx.email}</p>
                       </div>
-                      <div className="ml-auto text-sm font-medium">{tx.amount}</div>
+                      <div className={classnames("ml-auto text-sm font-medium")}>{tx.amount}</div>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent
@@ -57,12 +97,13 @@ export const RecentSales = () => {
                       <p className="font-bold">{tx.name}</p>
                       <p>{tx.email}</p>
                       <Separator className="my-1" />
-                      <p className="font-semibold text-primary">{tx.amount}</p>
+                      <p className={classnames("font-semibold text-primary", amountColor)}>{tx.amount}</p>
                       <small>{tx.date} {tx.time}</small>
                     </div>
                   </TooltipContent>
                 </Tooltip>
-              ))}
+              )}
+            )}
           </div>
         </div>
       </div>

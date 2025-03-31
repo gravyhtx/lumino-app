@@ -61,7 +61,8 @@ export default {
         "lumi-dark-blue": "#02041d",
         "lumi-accent-green": "#00F3AD",
         "lumi-accent-blue": "#08FFFC",
-        "glass-border": "rgba(255, 255, 255, 0.08)", // Light mode
+        "lumi-accent-red": "rgb(253, 43, 43)",
+        "glass-border": "rgba(255, 0, 0, 0.08)", // Light mode
         "glass-background": "rgba(255, 255, 255, 0.05)", // Light mode
         dark: {
           "glass-border": "rgba(255, 255, 255, 0.1)", // Dark mode

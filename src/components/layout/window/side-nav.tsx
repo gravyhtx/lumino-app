@@ -10,6 +10,7 @@ import { ChatBox } from "./chat-box"
 import { Separator } from "@/components/ui/separator"
 import { useSettingsStore } from "@/store/useSettingsStore"
 import { motion } from 'framer-motion';
+import { useBreakpoint } from "@/hooks/useBreakpoint"
 
 
 interface SideNavProps {
@@ -29,7 +30,7 @@ export const SideNav: React.FC<SideNavProps> = ({
   favorites,
   notify
 }) => {
-  const [closeNav, setCloseNav] = useState(false)
+
   const [hovering, setHovering] = useState(false)
 
   // const toggleNav = () => setCloseNav((prev) => !prev)
@@ -47,6 +48,11 @@ export const SideNav: React.FC<SideNavProps> = ({
   const NavLinks = () => chat.map((link) => (
     <NavLink close={!isNavOpen} href={`#${formatLink(link?.name)}`} key={link?.name} {...link} />
   ));
+
+  const { isDesktop } = useBreakpoint()
+
+  if (!isDesktop) return null // Only show on desktop
+  
   return (
     <motion.div
       initial={{ width: 70 }}

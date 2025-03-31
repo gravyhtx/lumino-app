@@ -51,7 +51,7 @@ export const InfoCard: React.ForwardRefExoticComponent<InfoCardProps | InfoCardP
         <div className="text-2xl font-bold">
           {amount}
         </div>
-        <p className="text-xs text-muted-foreground dark:text-[#08FFFC]">
+        <p className="text-xs text-muted-foreground highlighted dark:text-[#08FFFC]">
           {timeSince}
         </p>
       </CardContent>

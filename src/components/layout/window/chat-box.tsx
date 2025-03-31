@@ -12,7 +12,7 @@ export function ChatBox() {
 
   return (
     <motion.div className={cn(
-      "fixed bottom-0 left-0 z-99 border-glass-border bg-muted/40 shadow-lg rounded-xl transition-all",
+      "fixed bottom-0 left-0 z-99 border-glass-border mx-2 bg-muted/40 shadow-lg rounded-xl transition-all",
       expanded ? "h-[300px] w-[400px]" : ""
       )}>
     <Card className={

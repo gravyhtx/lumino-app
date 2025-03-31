@@ -18,11 +18,13 @@
       rgba(255,255,255,0.05) 50%,
       rgba(148,187,233,0.1) 100%
     );
+    --glass-shadow: rgba(0, 0, 0, 0.2);
   }
 
   .dark {
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-background: rgba(0, 0, 0, 0.2);
+    --glass-shadow: rgba(0, 0, 0, 1);
   }
 }
 
@@ -37,6 +39,13 @@
   background: var(--prism-gradient);
   backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
+}
+
+.glass-card h3 {
+  text-shadow: 2px 2px 5px var(--glass-shadow);
+}
+.glass-card svg {
+  filter: drop-shadow(2px 2px 5px var(--glass-shadow));
 }
 
 .glass-card::before {

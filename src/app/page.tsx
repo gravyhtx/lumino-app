@@ -23,22 +23,9 @@ export default function Page() {
   const links = [
     { name: 'Dashboard', icon: <LayoutDashboard className={iconClass} />, href: '/'},
   ];
-  return (<>
-    {/* <SideNav links={links} favorites />
-    <div className="flex flex-col">
-      <Header links={links} />
-      <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full overflow-auto">
-      { isLoaded ?
-          <ViewContainer> */}
-          <LayoutProvider>
-            <Dashboard />
-          </LayoutProvider>
-          {/* </ViewContainer>
-        :
-        <div className="flex items-center">
-          <BouncingDotsLoader />
-        </div> }
-      </main>
-    </div> */}
-  </>)
+  return (
+    <LayoutProvider>
+      <Dashboard />
+    </LayoutProvider>
+  )
 }

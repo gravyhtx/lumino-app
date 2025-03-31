@@ -39,6 +39,7 @@
 
     --lumi-accent-green: #00F3AD;
     --lumi-accent-blue: #08FFFC;
+    --lumi-accent-shadow: #08FFFC20;
   }
 
   .dark {
@@ -69,6 +70,7 @@
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
     --ring: 216 12.2% 83.9%;
+    --lumi-accent-shadow: #08FFFC50;
   }
 }
 
@@ -163,4 +165,8 @@ body {
 
 .recharts-tooltip-label {
   color: black;
+}
+
+p.highlighted {
+  text-shadow: 2px 1px 1px var(--lumi-accent-shadow);
 }

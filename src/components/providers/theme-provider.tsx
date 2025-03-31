@@ -10,6 +10,7 @@ import { FlowerOfLife } from "../ui/flower-of-life"
 import { cn } from "@/lib/utils"
 import { useSettingsStore } from "@/store/useSettingsStore"
 import { motion } from 'framer-motion';
+import { useBreakpoint } from "@/hooks/useBreakpoint"
 
 interface LoginModalProps {
   isOpen: boolean
@@ -57,11 +58,18 @@ export function ThemeProvider({
   children,
   ...props
 }: React.ComponentProps<typeof NextThemesProvider>) {
-  const [isOpen, setIsOpen] = React.useState(true)
-  const {isLoggedIn, logIn } = useUserStore();
+  const [ isOpen, setIsOpen ] = React.useState(true)
+  const { isLoggedIn, logIn } = useUserStore();
+  const { isDesktop } = useBreakpoint();
 
   const { state } = useSettingsStore();
   const isNavOpen = state.isNavOpen;
+  
+  const gridClasses = isDesktop
+  ? isNavOpen
+    ? "md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]"
+    : "grid-cols-[70px_1fr]"
+  : "grid-cols-1"
 
   const [sidebarWidth, setSidebarWidth] = React.useState(280); // Default for lg screens
 
@@ -90,9 +98,7 @@ export function ThemeProvider({
         initial={{ width: "100%" }}
         animate={{ width: `auto` }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={cn(
-          `grid min-h-screen w-full`, 
-          isNavOpen ? `md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]` : `grid-cols-[70px_1fr]`)}>
+        className={cn("grid min-h-screen w-full", gridClasses)}>
         {children}
       </motion.div>
       : <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]"><LoginModal isOpen={isOpen} setIsOpen={setIsOpen} logIn={logIn} /></div>}
