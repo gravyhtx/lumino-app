@@ -21,7 +21,7 @@ export const Dashboard = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'sales' | 'rewards' | 'goals'>('overview');
 
   return (
-    <div className="space-y-6 flex flex-col items-center justify-between w-full"
+    <div className="space-y-6 flex flex-col items-center justify-between w-full max-w-[1230px] mx-auto my-auto"
       // style={{display: "flex",flexDirection: "column", height: "100%", justifyContent: "space-evenly"}}
       >
         {/* <div className="flex items-center justify-between w-full">

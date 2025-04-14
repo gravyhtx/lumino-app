@@ -83,7 +83,7 @@ export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
     <div className="flex flex-col w-full">
       <Header links={navlinks()} />
       {!isDesktop && <MobileNavBreadcrumb links={navlinks()} section={sectionLabel} />}
-      <main className="flex-1 flex flex-col gap-4 p-4 lg:gap-6 lg:p-6 overflow-auto">
+      <main className="flex-1 flex flex-col gap-4 p-4 lg:gap-6 lg:p-6 overflow-auto w-full h-full">
         <Suspense fallback={<div className="flex items-center justify-center h-full"><BouncingDotsLoader /></div>}>
           {isLoaded ? <ViewContainer>{children}</ViewContainer> : <BouncingDotsLoader />}
         </Suspense>

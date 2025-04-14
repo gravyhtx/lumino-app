@@ -85,9 +85,7 @@ export const QuickView: React.FC<InfoCardsProps> = ({
               </TabsTrigger>
             ))}
           </TabsList>
-          <div className="ml-auto">
-            <DatePickerWithRange />
-          </div>
+            <DatePickerWithRange className="w-full sm:w-auto ml-auto" />
         </div>
         {/* <Card className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
           <Card className="bg-lumi-dark-blue">

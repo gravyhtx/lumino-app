@@ -12,15 +12,10 @@ interface ViewContainerProps {
 export const ViewContainer: React.FC<ViewContainerProps> = ({ children, classes, header }) => {
   const dark = "dark:bg-[#0a0b1e20] dark:bg-gradient-to-br dark:from-[#0a0b1e20] dark:via-[#25264450] dark:to-[#0a0b1e20]"
   return (<>
-    {/* <div className={cn("w-full flex flex-col h-full", classes)}> */}
-      {/* {header && (
-        <h1 className={cn("text-lg font-semibold md:text-2xl mb-4", header?.classes)}>
-          {header.text}
-        </h1>
-      )} */}
       <div className={cn(
-        // "w-full h-full flex flex-col flex-1 rounded-lg border border-dashed shadow-sm p-4 bg-animation",
-        "w-full h-full flex flex-col flex-1 view-box rounded-lg p-4 md:p-6 lg:p-8 bg-animation",
+        "flex flex-col flex-1 view-box rounded-lg p-4 md:p-6 lg:p-8 bg-animation",
+        "w-full h-full",
+        // "max-w-[1230px] mx-auto",
         dark,
         classes)}>
         {children}
