@@ -30,7 +30,7 @@ export function BadgeCarousel({ badges }: BadgeCarouselProps) {
               <div key={badge.id} className={`p-4 rounded-lg border ${badge.isLocked ? "opacity-50" : "bg-primary/5"}`}>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="rounded-full bg-primary/10 p-2">
-                    <Icon className="h-5 w-5 text-primary" />
+                    <Icon className="h-5 w-5 text-[#00ff6a]" />
                   </div>
                   <div>
                     <h4 className="font-medium">{badge.name}</h4>

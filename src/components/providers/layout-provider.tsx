@@ -6,7 +6,7 @@ import { Header } from '@/components/layout/window/header';
 import { ViewContainer } from '@/components/layout/views/view-container';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import { usePathname } from "next/navigation";
-import { ClipboardList, Coins, FileText, HandCoins, Home, LayoutDashboard, LineChart, Link2, Package, Repeat, ShoppingCart, Users, Wallet } from "lucide-react";
+import { Banknote, ClipboardList, Coins, FileText, HandCoins, Home, LayoutDashboard, LineChart, Link2, Package, Repeat, ShoppingCart, Users, Wallet } from "lucide-react";
 import type { NavLinkProps } from "../layout/window/nav-link";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { MobileNavBreadcrumb } from "../layout/window/mobile-nav-breadcrumb";
@@ -53,6 +53,9 @@ export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
     chat: [
       { name: "New Chat", icon: <LayoutDashboard className={iconClass} />, href: "/assistant" },
       { name: "12/23/2024", icon: <LayoutDashboard className={iconClass} />, href: "/assistant/12-23-2024" },
+    ],
+    banking: [
+      { name: "Dashboard", icon: <Banknote className={iconClass} />, href: "/banking" },
     ]
   };
 
@@ -63,6 +66,7 @@ export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
       case "payments": return links.payments;
       case "rewards": return links.rewards;
       case "assistant": return links.chat;
+      case "banking": return links.banking;
       default: return links.home;
     }
   };
@@ -71,7 +75,8 @@ export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
     payments: "Payments",
     rewards: "Rewards",
     chat: "Chat",
-    home: "Home"
+    home: "Home",
+    banking: "Banking",
   };
 
   const sectionLabel = sectionLabelMap[sectionKey] ?? "Home";

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { CircleUser, Home, HandCoins, Medal, BotMessageSquare, Sun, Moon, Sparkles, CreditCard } from "lucide-react"
+import { CircleUser, Home, HandCoins, Medal, BotMessageSquare, Sun, Moon, Sparkles, CreditCard, Banknote } from "lucide-react"
 import Link from 'next/link';
 import { Settings } from "./settings";
 import { useTheme } from "next-themes";
@@ -16,7 +16,8 @@ export const UserMenu: React.FC = () => {
     { href: "/", icon: <Home className="h-5 w-5" />, label: "Home" },
     { href: "/payments", icon: <CreditCard className="h-5 w-5" />, label: "Payments" },
     { href: "/rewards", icon: <Medal className="h-5 w-5" />, label: "Rewards" },
-    { href: "/assistant", icon: <Sparkles className="h-5 w-5" />, label: "Assistant" }
+    { href: "/assistant", icon: <Sparkles className="h-5 w-5" />, label: "Assistant" },
+    { href: "/banking", icon: <Banknote className="h-5 w-5" />, label: "Banking" }
   ];
 
   return (<>
