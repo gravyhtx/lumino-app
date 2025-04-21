@@ -217,7 +217,17 @@ export default function BankingApp() {
   )
 }
 
-function TransactionItem({ name, category, amount, date, type }) {
+type TransactionType = "income" | "expense" | "pending"
+
+interface TransactionItemProps {
+  name: string
+  category: string
+  amount: string
+  date: string
+  type: TransactionType
+}
+
+function TransactionItem({ name, category, amount, date, type }: TransactionItemProps) {
   return (
     <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200">
       <div className="flex items-center gap-3">
