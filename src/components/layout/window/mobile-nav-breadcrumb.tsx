@@ -53,6 +53,9 @@ export const MobileNavBreadcrumb: React.FC<MobileNavBreadcrumbProps> = ({
                 <DropdownMenuItem>
                   <Link href="/assistant">Assistant</Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/banking">Banking</Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </BreadcrumbItem>
