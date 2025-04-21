@@ -100,6 +100,18 @@ export const SideNav: React.FC<SideNavProps> = ({
                     href="/payments/payment-requests"
                     icon={<HandCoins className="h-5 w-5" />}
                   />
+                  <NavLink
+                    close={!isNavOpen}
+                    name="Invoices"
+                    href="/payments/invoices"
+                    icon={<HandCoins className="h-5 w-5" />}
+                  />
+                  <NavLink
+                    close={!isNavOpen}
+                    name="Incentives"
+                    href="/rewards/incentives"
+                    icon={<HandCoins className="h-5 w-5" />}
+                  />
                 </div>
               </>}
             </nav>

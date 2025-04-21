@@ -21,14 +21,16 @@ export const UserMenu: React.FC = () => {
   ];
 
   return (<>
-    {navLinks.map(({ href, icon, label }) => (
-      <Link key={href} href={href}>
-        <Button variant={pathname === href ? "outline" : "ghost"} size="icon" className="rounded-full">
-          {icon}
-          <span className="sr-only">{label}</span>
-        </Button>
-      </Link>
-    ))}
+    <div className="hidden md:flex items-center gap-2">
+      {navLinks.map(({ href, icon, label }) => (
+        <Link key={href} href={href}>
+          <Button variant={pathname === href ? "outline" : "ghost"} size="icon" className="rounded-full">
+            {icon}
+            <span className="sr-only">{label}</span>
+          </Button>
+        </Link>
+      ))}
+    </div>
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="rounded-full">
