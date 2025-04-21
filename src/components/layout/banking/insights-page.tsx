@@ -6,9 +6,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function InsightsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="px-4 py-6 bg-white">
+      <header className="px-4 py-6 ">
         <h1 className="text-xl font-bold">Financial Insights</h1>
         <p className="text-sm text-slate-500">Track your spending and savings</p>
       </header>
@@ -17,7 +17,7 @@ export default function InsightsPage() {
       <main className="flex-1 px-4 py-6 space-y-6 overflow-auto">
         {/* Summary Cards */}
         <div className="grid grid-cols-2 gap-4">
-          <Card className="bg-white">
+          <Card className="">
             <CardHeader className="pb-2">
               <CardDescription className="text-xs">Monthly Income</CardDescription>
               <CardTitle className="text-lg font-bold flex items-center">
@@ -30,7 +30,7 @@ export default function InsightsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-white">
+          <Card className="">
             <CardHeader className="pb-2">
               <CardDescription className="text-xs">Monthly Expenses</CardDescription>
               <CardTitle className="text-lg font-bold flex items-center">

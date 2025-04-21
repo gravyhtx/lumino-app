@@ -27,7 +27,7 @@ export default function ConsolidatedDashboard() {
   const [showCardNumber, setShowCardNumber] = useState(false)
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50">
+    <div className="flex flex-col min-h-screen">
       {/* Header */}
       <header className="px-6 py-4 bg-white border-b">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
@@ -438,7 +438,7 @@ interface TransactionItemProps {
 
 function TransactionItem({ name, category, amount, date, type }: TransactionItemProps) {
   return (
-    <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors">
+    <div className="flex items-center justify-between p-3 rounded-lg border border-slate-200">
       <div className="flex items-center gap-3">
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center ${
@@ -455,7 +455,7 @@ function TransactionItem({ name, category, amount, date, type }: TransactionItem
         </div>
         <div>
           <p className="font-medium text-sm">{name}</p>
-          <p className="text-xs text-slate-500">{category}</p>
+          <p className="text-xs">{category}</p>
         </div>
       </div>
       <div className="text-right">
@@ -466,7 +466,7 @@ function TransactionItem({ name, category, amount, date, type }: TransactionItem
         >
           {amount}
         </p>
-        <p className="text-xs text-slate-500">{date}</p>
+        <p className="text-xs">{date}</p>
       </div>
     </div>
   )

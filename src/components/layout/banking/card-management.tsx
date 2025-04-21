@@ -15,9 +15,9 @@ export default function CardManagement() {
   const [isOnlinePaymentsEnabled, setIsOnlinePaymentsEnabled] = useState(true)
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="px-4 py-6 bg-white flex items-center">
+      <header className="px-4 py-6 flex items-center">
         <Button variant="ghost" size="icon" className="mr-2">
           <ArrowLeft className="h-5 w-5" />
         </Button>
