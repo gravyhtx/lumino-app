@@ -25,13 +25,17 @@ export function DatePickerWithRange({
             id="date"
             variant="outline"
             className={cn(
-              "w-full sm:w-[300px] justify-start text-left font-normal",
-              !date && "text-muted-foreground"
+              // 👇 these styles make it circular on mobile
+              "justify-center text-left font-normal",
+              "p-2 sm:px-4 sm:py-2 sm:w-[300px]",
+              "rounded-full sm:rounded-md",
+              "w-10 h-10 sm:h-auto sm:w-auto",
+              "transition-all"
             )}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            <span className="block sm:hidden">Pick Date</span>
-            <span className="hidden sm:block">
+            <CalendarIcon className="h-4 w-4" />
+            <span className="sr-only">Pick Date</span>
+            <span className="hidden ml-2 sm:block">
               {date?.from ? (
                 date.to ? (
                   <>

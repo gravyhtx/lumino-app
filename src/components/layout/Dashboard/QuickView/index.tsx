@@ -73,7 +73,7 @@ export const QuickView: React.FC<InfoCardsProps> = ({
   return(
     <div style={{width: "100%", margin}}>
       <Tabs defaultValue="overview" className="space-y-4">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-4">
+        <div className="flex flex-wrap items-center justify-between mb-6">
           <TabsList style={{ border: '1px solid rgba(255, 255, 255, .2)' }}>
             {(['overview', 'sales', 'rewards', 'goals'] as const).map((tab) => (
               <TabsTrigger
@@ -85,7 +85,9 @@ export const QuickView: React.FC<InfoCardsProps> = ({
               </TabsTrigger>
             ))}
           </TabsList>
+          <span className="">
             <DatePickerWithRange className="w-full sm:w-auto ml-auto" />
+          </span>
         </div>
         <TabsContent value={tabId} className="space-y-4">
           <div className={classnames('grid gap-4 sm:grid-cols-2 md:grid-cols-4', styles.cards)}>
