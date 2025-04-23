@@ -461,7 +461,7 @@ function TransactionItem({ name, category, amount, date, type }: TransactionItem
       <div className="text-right">
         <p
           className={`font-medium ${
-            type === "income" ? "text-green-600" : type === "expense" ? "text-slate-900" : "text-yellow-600"
+            type === "income" ? "text-green-600" : type === "expense" ? "text-white-900" : "text-yellow-600"
           }`}
         >
           {amount}
