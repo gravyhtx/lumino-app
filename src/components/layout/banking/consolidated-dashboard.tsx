@@ -29,7 +29,7 @@ export default function ConsolidatedDashboard() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="px-6 py-4 bg-white border-b">
+      {/* <header className="px-6 py-4 bg-white border-b">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
             <h1 className="text-xl font-bold">Lumino</h1>
@@ -47,7 +47,7 @@ export default function ConsolidatedDashboard() {
             </Avatar>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
       <main className="flex-1 px-4 py-6 max-w-7xl mx-auto w-full">
