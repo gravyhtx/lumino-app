@@ -2,8 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { PlusIcon, Globe, Telescope, Ellipsis, Mic } from "lucide-react"
+import { PlusIcon, Globe, Telescope, Ellipsis } from "lucide-react"
 
 export default function ChatClone() {
   const [messages, setMessages] = useState<string[]>([])
@@ -32,46 +31,55 @@ export default function ChatClone() {
   }
 
   return (
-    <div className="flex flex-col h-screen p-6 space-y-4">
-      <h1 className="text-xl font-bold">{thinking ? "New Chat" : randomMessage()}</h1>
+    <div className="flex flex-col items-center justify-center w-full min-h-[calc(100vh-64px)] px-4">
+      <div className="w-full max-w-2xl flex flex-col gap-4">
+        
+        {/* Header */}
+        <div className="text-center">
+          <h1 className="text-xl font-bold">{thinking ? "New Chat" : randomMessage()}</h1>
+        </div>
 
-      <div className="flex-1 overflow-y-auto space-y-4">
-        {messages.map((msg, i) => (
-          <div key={i} className="self-end max-w-[75%] p-3 rounded-lg bg-blue-500 text-white">
-            {msg}
-          </div>
-        ))}
-        {thinking && (
-          <div className="self-start max-w-[75%] p-3 rounded-lg bg-muted text-muted-foreground animate-pulse">
-            Thinking...
-          </div>
-        )}
-      </div>
+        {/* Messages */}
+        <div className="flex flex-col gap-4 overflow-y-auto">
+          {messages.map((msg, i) => (
+            <div key={i} className="self-end max-w-[75%] p-3 rounded-lg bg-blue-500 text-white">
+              {msg}
+            </div>
+          ))}
+          {thinking && (
+            <div className="self-start max-w-[75%] p-3 rounded-lg bg-muted text-muted-foreground animate-pulse">
+              Thinking...
+            </div>
+          )}
+        </div>
 
-      <div className="w-full flex items-end border border-border rounded-full p-1 bg-background shadow-inner">
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <PlusIcon className="w-5 h-5" />
-        </Button>
-        <Button variant="ghost" className="gap-2">
-          <Globe className="w-4 h-4" /> Search
-        </Button>
-        <Button variant="ghost" className="gap-2">
-          <Telescope className="w-4 h-4" /> Deep Research
-        </Button>
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <Ellipsis className="w-5 h-5" />
-        </Button>
-        <textarea
-          ref={inputRef}
-          rows={1}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
-          className="flex-1 resize-none overflow-hidden border-none bg-transparent outline-none text-sm p-2"
-        />
-        <Button onClick={handleSend} className="rounded-full h-9 px-4 font-semibold">
-          Send
-        </Button>
+        {/* Input Bar */}
+        <div className="flex items-end border border-border rounded-full p-2 bg-background shadow-inner">
+          <Button variant="ghost" size="icon" className="rounded-full">
+            <PlusIcon className="w-5 h-5" />
+          </Button>
+          <Button variant="ghost" className="gap-2">
+            <Globe className="w-4 h-4" /> Search
+          </Button>
+          <Button variant="ghost" className="gap-2">
+            <Telescope className="w-4 h-4" /> Deep Research
+          </Button>
+          <Button variant="ghost" size="icon" className="rounded-full">
+            <Ellipsis className="w-5 h-5" />
+          </Button>
+          <textarea
+            ref={inputRef}
+            rows={1}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type your message..."
+            className="flex-1 resize-none overflow-hidden border-none bg-transparent outline-none text-sm p-2"
+          />
+          <Button onClick={handleSend} className="rounded-full h-9 px-4 font-semibold">
+            Send
+          </Button>
+        </div>
+
       </div>
     </div>
   )

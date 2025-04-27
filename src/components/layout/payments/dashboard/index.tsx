@@ -204,7 +204,7 @@ export default function Dashboard() {
                     style={{ backgroundColor: item.color }}
                   />
                   <div>{item.name}</div>
-                  <div className="ml-auto">
+                  <div className="ml-auto  text-lumi-accent-green">
                     ${item.value.toLocaleString()} ({item.count})
                   </div>
                 </div>
@@ -248,7 +248,7 @@ export default function Dashboard() {
                     style={{ backgroundColor: item.color }}
                   />
                   <div>{item.name}</div>
-                  <div className="ml-auto">{item.value}%</div>
+                  <div className="ml-auto text-lumi-accent-green">{item.value}%</div>
                 </div>
               ))}
             </div>

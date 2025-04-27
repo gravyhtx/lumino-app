@@ -29,7 +29,7 @@ export function PerformanceSnapshot({ summary }: PerformanceSnapshotProps) {
               <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
                 <div>
                   <span className="text-muted-foreground">Points:</span>
-                  <span className="ml-1 text-black">{summary.currentMonth.points.toLocaleString()}</span>
+                  <span className="ml-1 text-blue">{summary.currentMonth.points.toLocaleString()}</span>
                 </div>
                 <div>
                   <span className="text-muted-foreground">Bonuses:</span>
