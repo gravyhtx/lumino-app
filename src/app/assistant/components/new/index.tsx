@@ -1,39 +1,44 @@
-"use client"
+"use client";
 
-import React, { useState, useRef, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { PlusIcon, Globe, Telescope, Ellipsis } from "lucide-react"
+import React, { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { PlusIcon, Globe, Telescope, AudioLines, ArrowUp } from "lucide-react";
 
 export default function ChatClone() {
-  const [messages, setMessages] = useState<string[]>([])
-  const [input, setInput] = useState("")
-  const [thinking, setThinking] = useState(false)
-  const inputRef = useRef<HTMLTextAreaElement>(null)
+  const [messages, setMessages] = useState<string[]>([]);
+  const [input, setInput] = useState("");
+  const [thinking, setThinking] = useState(false);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSend = () => {
-    if (!input.trim()) return
-    setMessages((prev) => [...prev, input.trim()])
-    setThinking(true)
-    setInput("")
-  }
+    if (!input.trim()) return;
+    setMessages((prev) => [...prev, input.trim()]);
+    setThinking(true);
+    setInput("");
+  };
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.style.height = "auto"
-      inputRef.current.style.height = inputRef.current.scrollHeight + "px"
+      inputRef.current.style.height = "auto";
+      inputRef.current.style.height = inputRef.current.scrollHeight + "px";
     }
-  }, [input])
+  }, [input]);
 
   const randomMessage = () => {
-    const messages = ["What can I help you with?", "Need assistance?", "How can I assist you today?", "Where should we begin?"];
+    const messages = [
+      "What can I help you with?",
+      "Need assistance?",
+      "How can I assist you today?",
+      "Where should we begin?",
+    ];
     const randomIndex = Math.floor(Math.random() * messages.length);
     return messages[randomIndex];
-  }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-[calc(100vh-64px)] px-4">
       <div className="w-full max-w-2xl flex flex-col gap-4">
-        
+
         {/* Header */}
         <div className="text-center">
           <h1 className="text-xl font-bold">{thinking ? "New Chat" : randomMessage()}</h1>
@@ -53,34 +58,49 @@ export default function ChatClone() {
           )}
         </div>
 
-        {/* Input Bar */}
-        <div className="flex items-end border border-border rounded-full p-2 bg-background shadow-inner">
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <PlusIcon className="w-5 h-5" />
-          </Button>
-          <Button variant="ghost" className="gap-2">
-            <Globe className="w-4 h-4" /> Search
-          </Button>
-          <Button variant="ghost" className="gap-2">
-            <Telescope className="w-4 h-4" /> Deep Research
-          </Button>
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <Ellipsis className="w-5 h-5" />
-          </Button>
-          <textarea
-            ref={inputRef}
-            rows={1}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your message..."
-            className="flex-1 resize-none overflow-hidden border-none bg-transparent outline-none text-sm p-2"
-          />
-          <Button onClick={handleSend} className="rounded-full h-9 px-4 font-semibold">
-            Send
-          </Button>
+        {/* Input Section */}
+        <div className="flex flex-col border border-border rounded-2xl bg-background shadow-inner p-2 w-full">
+          {/* Input Row */}
+          <div className="w-full">
+            <textarea
+              ref={inputRef}
+              rows={1}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Type your message..."
+              className="w-full resize-none overflow-hidden border-none bg-transparent outline-none text-sm p-2"
+            />
+          </div>
+
+          {/* Buttons Row */}
+          <div className="flex items-center justify-between gap-2 mt-2">
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon" className="rounded-full">
+                <PlusIcon className="w-5 h-5" />
+              </Button>
+              <Button variant="ghost" className="gap-2">
+                <Globe className="w-4 h-4" /> Search
+              </Button>
+              <Button variant="ghost" className="gap-2">
+                <Telescope className="w-4 h-4" /> Deep Research
+              </Button>
+            </div>
+
+            <Button
+              onClick={handleSend}
+              className="rounded-full h-9 px-4 font-semibold"
+              disabled={!input.trim()}
+            >
+              {input.trim() ? (
+                <ArrowUp className="h-5 w-5" />
+              ) : (
+                <AudioLines className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
 
       </div>
     </div>
-  )
+  );
 }
