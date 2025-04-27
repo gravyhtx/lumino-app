@@ -18,7 +18,7 @@ export function PerformanceSnapshot({ summary }: PerformanceSnapshotProps) {
         <CardContent className="p-6">
           <div className="grid gap-6 md:grid-cols-3">
             <div>
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Total Points & Bonuses This Month</h3>
+              <h3 className="text-sm font-medium text-white mb-2">Total Points & Bonuses This Month</h3>
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -29,29 +29,29 @@ export function PerformanceSnapshot({ summary }: PerformanceSnapshotProps) {
               <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
                 <div>
                   <span className="text-muted-foreground">Points:</span>
-                  <span className="ml-1 text-blue">{summary.currentMonth.points.toLocaleString()}</span>
+                  <span className="ml-1 text-lumi-accent-blue">{summary.currentMonth.points.toLocaleString()}</span>
                 </div>
                 <div>
                   <span className="text-muted-foreground">Bonuses:</span>
-                  <span className="ml-1">{summary.currentMonth.bonuses.toLocaleString()}</span>
+                  <span className="ml-1 text-lumi-accent-green">{summary.currentMonth.bonuses.toLocaleString()}</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Reward Level Progress</h3>
+              <h3 className="text-sm font-medium text-white mb-2">Reward Level Progress</h3>
               <div className="space-y-2">
                 <Progress value={summary.rewardLevel.progress} className="h-2" />
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-lumi-accent-yellow">
                   Level {summary.rewardLevel.current} → {summary.rewardLevel.next}
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Current Multiplier</h3>
+              <h3 className="text-sm font-medium text-white mb-2">Current Multiplier</h3>
               <div className="text-2xl font-bold text-primary">{summary.multiplier.current}x</div>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p className="text-sm text-lumi-accent-blue mt-1">
                 {summary.multiplier.remaining.toLocaleString()} until {summary.multiplier.next}x
               </p>
             </div>

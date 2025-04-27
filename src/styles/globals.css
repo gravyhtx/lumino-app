@@ -40,6 +40,7 @@
     --lumi-accent-green: #00F3AD;
     --lumi-accent-blue: #08FFFC;
     --lumi-accent-shadow: #08FFFC20;
+    --lumi-accent-yellow: rgb(253, 255, 113);
   }
 
   .dark {

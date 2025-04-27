@@ -30,12 +30,12 @@ export function MiniLeaderboard({ entries }: MiniLeaderboardProps) {
                 <span className="text-2xl font-bold text-primary">#{entry.rank}</span>
                 <div>
                   <p className="font-medium">{entry.businessName}</p>
-                  <p className="text-sm text-muted-foreground">{entry.category}</p>
+                  <p className="text-sm text-lumi-accent-yellow">{entry.category}</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="font-medium">{entry.points.toLocaleString()} pts</p>
-                <p className="text-sm text-primary">+{entry.growth}%</p>
+                <p className="font-medium text-lumi-accent-green">{entry.points.toLocaleString()} pts</p>
+                <p className="text-sm text-lumi-accent-blue">+{entry.growth}%</p>
               </div>
             </div>
           ))}

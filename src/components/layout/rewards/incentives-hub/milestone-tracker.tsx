@@ -20,17 +20,17 @@ export function MilestoneTracker({ milestones }: MilestoneTrackerProps) {
             <div className="flex justify-between">
               <div>
                 <h4 className="font-medium">{milestone.name}</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-lumi-accent-yellow">
                   Est. completion: {new Date(milestone.estimatedCompletion).toLocaleDateString()}
                 </p>
               </div>
               <div className="text-right">
-                <span className="font-medium text-primary">+{milestone.points}</span>
+                <span className="font-medium text-lumi-accent-green">+{milestone.points}</span>
                 <p className="text-sm text-muted-foreground">points</p>
               </div>
             </div>
             <Progress value={milestone.progress} className="h-2" />
-            <p className="text-sm text-muted-foreground text-right">{milestone.progress}% Complete</p>
+            <p className="text-sm text-lumi-accent-blue text-right">{milestone.progress}% Complete</p>
           </div>
         ))}
       </CardContent>

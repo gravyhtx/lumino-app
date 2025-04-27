@@ -27,7 +27,7 @@ export function Recommendations({ recommendations }: RecommendationsProps) {
                   <h4 className="font-medium">{rec.title}</h4>
                   <p className="text-sm text-muted-foreground">{rec.description}</p>
                 </div>
-                <span className="text-sm font-medium text-primary">{rec.reward}</span>
+                <span className="text-sm font-medium text-lumi-accent-green">{rec.reward}</span>
               </div>
               {rec.deadline && (
                 <p className="text-sm text-muted-foreground mb-3">
