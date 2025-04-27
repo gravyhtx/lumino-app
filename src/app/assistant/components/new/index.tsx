@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { PlusIcon, Globe, Telescope, AudioLines, ArrowUp, Mic, Ellipsis } from "lucide-react";
+import { PlusIcon, Globe, Telescope, AudioLines, ArrowUp, Mic, Ellipsis, Square, StopCircle } from "lucide-react";
 
 export default function ChatClone() {
   const [messages, setMessages] = useState<string[]>([]);
@@ -102,9 +102,11 @@ export default function ChatClone() {
               >
                 {input.trim() ? (
                   <ArrowUp className="h-5 w-5" />
-                ) : (
-                  <AudioLines className="h-5 w-5" />
-                )}
+                ) : !thinking ? (
+                    <AudioLines className="h-5 w-5" />
+                  ) : (
+                    <StopCircle className="h-5 w-5" />
+                  )}
               </Button>
             </div>
           </div>
