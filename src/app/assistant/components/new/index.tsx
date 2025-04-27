@@ -49,12 +49,12 @@ export default function ChatClone() {
         {/* Messages */}
         <div className="flex flex-col gap-4 overflow-y-auto">
           {messages.map((msg, i) => (
-            <div key={i} className="self-end max-w-[75%] p-3 rounded-lg bg-blue-500 text-white">
+            <div key={i} className="self-end max-w-[75%] p-4 rounded-lg bg-blue-500 text-white">
               {msg}
             </div>
           ))}
           {thinking && (
-            <div className="self-start max-w-[75%] p-3 rounded-lg bg-muted text-muted-foreground animate-pulse">
+            <div className="self-start max-w-[75%] p-4 rounded-lg bg-muted text-muted-foreground animate-pulse mb-4">
               Thinking...
             </div>
           )}
