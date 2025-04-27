@@ -34,7 +34,7 @@ export function MiniLeaderboard({ entries }: MiniLeaderboardProps) {
                 </div>
               </div>
               <div className="text-right">
-                <p className="font-medium text-lumi-accent-green">{entry.points.toLocaleString()} pts</p>
+                <p className="font-medium">{entry.points.toLocaleString()} pts</p>
                 <p className="text-sm text-lumi-accent-blue">+{entry.growth}%</p>
               </div>
             </div>

@@ -22,8 +22,8 @@ export function RevenueChart({ data }: RevenueChartProps) {
               <XAxis dataKey="month" />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="revenue" fill="hsl(var(--primary))" opacity={0.9} />
-              <Bar dataKey="volume" fill="hsl(var(--primary))" opacity={0.5} />
+              <Bar dataKey="revenue" fill="#08FFFC" />
+              <Bar dataKey="volume" fill="#00F3AD" />
             </BarChart>
           </ResponsiveContainer>
         </div>
