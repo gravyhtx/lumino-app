@@ -2,10 +2,11 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { PlusIcon, Globe, Telescope, AudioLines, ArrowUp } from "lucide-react";
+import { PlusIcon, Globe, Telescope, AudioLines, ArrowUp, Mic, Ellipsis } from "lucide-react";
 
 export default function ChatClone() {
   const [messages, setMessages] = useState<string[]>([]);
+  const [welcomeMessage, setWelcomeMessage] = useState<string>("");
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -17,13 +18,6 @@ export default function ChatClone() {
     setInput("");
   };
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.style.height = "auto";
-      inputRef.current.style.height = inputRef.current.scrollHeight + "px";
-    }
-  }, [input]);
-
   const randomMessage = () => {
     const messages = [
       "What can I help you with?",
@@ -32,8 +26,16 @@ export default function ChatClone() {
       "Where should we begin?",
     ];
     const randomIndex = Math.floor(Math.random() * messages.length);
-    return messages[randomIndex];
+    return String(messages[randomIndex]);
   };
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.style.height = "auto";
+      inputRef.current.style.height = inputRef.current.scrollHeight + "px";
+    }
+    if (!welcomeMessage) setWelcomeMessage(randomMessage());
+  }, [input]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-[calc(100vh-64px)] px-4">
@@ -41,7 +43,7 @@ export default function ChatClone() {
 
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-xl font-bold">{thinking ? "New Chat" : randomMessage()}</h1>
+          <h1 className="text-xl font-bold">{thinking ? "New Chat" : welcomeMessage}</h1>
         </div>
 
         {/* Messages */}
@@ -75,28 +77,36 @@ export default function ChatClone() {
           {/* Buttons Row */}
           <div className="flex items-center justify-between gap-2 mt-2">
             <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" className="rounded-full">
+              <Button variant="ghost" size="icon" className="rounded-full border-2 border-muted/40">
                 <PlusIcon className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" className="gap-2">
+              <Button variant="ghost" className="gap-2 border-2 border-muted/40">
                 <Globe className="w-4 h-4" /> Search
               </Button>
-              <Button variant="ghost" className="gap-2">
+              <Button variant="ghost" className="gap-2 border-2 border-muted/40">
                 <Telescope className="w-4 h-4" /> Deep Research
+              </Button>
+              <Button variant="ghost" className="gap-2 border-2 border-muted/40">
+                <Ellipsis className="w-4 h-4" />
               </Button>
             </div>
 
-            <Button
-              onClick={handleSend}
-              className="rounded-full h-9 px-4 font-semibold"
-              disabled={!input.trim()}
-            >
-              {input.trim() ? (
-                <ArrowUp className="h-5 w-5" />
-              ) : (
-                <AudioLines className="h-5 w-5" />
-              )}
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" className="gap-2 border-2 border-muted/40">
+                <Mic className="w-4 h-4" />
+              </Button>
+              <Button
+                onClick={handleSend}
+                className="rounded-full h-9 px-4 font-semibold"
+                disabled={!input.trim()}
+              >
+                {input.trim() ? (
+                  <ArrowUp className="h-5 w-5" />
+                ) : (
+                  <AudioLines className="h-5 w-5" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
 
