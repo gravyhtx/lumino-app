@@ -38,8 +38,8 @@ export default function ChatClone() {
   }, [input]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-[calc(100vh-64px)] px-4">
-      <div className="w-full max-w-2xl flex flex-col gap-4">
+    <div className="flex flex-col items-center justify-center w-full h-full px-4">
+      <div className="w-full max-w-2xl flex flex-col gap-4 justify-center">
 
         {/* Header */}
         <div className="text-center">
