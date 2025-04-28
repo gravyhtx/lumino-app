@@ -37,7 +37,7 @@ export const InfoCard: React.ForwardRefExoticComponent<InfoCardProps | InfoCardP
     <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
   </svg>;
 
-  const cardIcon = typeof icon === 'string' ? <Icon name={icon as IconName} size={20} color="currentColor" /> : icon;
+  const cardIcon = typeof icon === 'string' ? <Icon className="text-lumi-accent-yellow" color="rgb(253, 255, 113)" name={icon as IconName} size={20} /> : icon;
 
   return(
     <Card ref={ref} aria-label={title} style={{ border: "1px solid rgba(255, 255, 255, .2)"}}>
