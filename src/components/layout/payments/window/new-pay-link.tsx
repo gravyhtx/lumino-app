@@ -131,7 +131,7 @@ export default function NewPayLink({ onClose }: NewPayLinkProps) {
                     <Checkbox
                       id="cash-discount"
                       checked={applyCashDiscount}
-                      onCheckedChange={setApplyCashDiscount}
+                      // onCheckedChange={setApplyCashDiscount}
                       className="mt-1"
                     />
                     <div>
@@ -150,7 +150,7 @@ export default function NewPayLink({ onClose }: NewPayLinkProps) {
                     <Checkbox
                       id="auto-adjust"
                       checked={autoAdjustPrices}
-                      onCheckedChange={setAutoAdjustPrices}
+                      // onCheckedChange={setAutoAdjustPrices}
                       className="mt-1"
                     />
                     <div>
@@ -174,7 +174,7 @@ export default function NewPayLink({ onClose }: NewPayLinkProps) {
                     <Checkbox
                       id="payment-on-file"
                       checked={requirePaymentOnFile}
-                      onCheckedChange={setRequirePaymentOnFile}
+                      // onCheckedChange={setRequirePaymentOnFile}
                     />
                     <Label htmlFor="payment-on-file">Yes, require the payment-on-file</Label>
                   </div>
