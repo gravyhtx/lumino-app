@@ -25,7 +25,7 @@ export default function GoalsPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{activeGoals.length}</div>
-            <p className="text-xs text-muted-foreground">Current</p>
+            <p className="text-xs text-lumi-accent-blue">Current</p>
           </CardContent>
         </Card>
 
@@ -35,7 +35,7 @@ export default function GoalsPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">This Quarter</p>
+            <p className="text-xs text-lumi-accent-blue">This Quarter</p>
           </CardContent>
         </Card>
 
@@ -45,7 +45,7 @@ export default function GoalsPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1.5x</div>
-            <p className="text-xs text-muted-foreground">7 Days Remaining</p>
+            <p className="text-xs text-lumi-accent-blue">7 Days Remaining</p>
           </CardContent>
         </Card>
 
@@ -55,7 +55,7 @@ export default function GoalsPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">80%</div>
-            <p className="text-xs text-muted-foreground">All Time</p>
+            <p className="text-xs text-lumi-accent-blue">All Time</p>
           </CardContent>
         </Card>
       </div>

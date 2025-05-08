@@ -19,7 +19,7 @@ export function MilestoneProgress({ milestone }: MilestoneProgressProps) {
           <Icon className="h-4 w-4 text-primary" />
           <span className="text-sm font-medium">{milestone.name}</span>
         </div>
-        <span className="text-sm text-muted-foreground">{milestone.percentage}% Complete</span>
+        <span className="text-sm text-lumi-accent-blue">{milestone.percentage}% Complete</span>
       </div>
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}

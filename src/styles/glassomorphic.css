@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(221, 231, 235, 0.08);
     --glass-background: rgba(255, 255, 255, 0.05);
     --glass-shine: linear-gradient(
       120deg,
@@ -22,7 +22,7 @@
   }
 
   .dark {
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(237, 240, 242, 0.1);
     --glass-background: rgba(0, 0, 0, 0.2);
     --glass-shadow: rgba(0, 0, 0, 1);
   }

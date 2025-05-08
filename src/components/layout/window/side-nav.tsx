@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { LuminoLogo } from "@/components/elements/logo"
 import { Button } from "@/components/ui/button"
 import { cn, formatLink } from "@/lib/utils"
-import { Bell, ChevronLeft, ChevronRight, HandCoins } from "lucide-react"
+import { Bell, ChevronLeft, ChevronRight, Coins, FileText, HandCoins } from "lucide-react"
 import Link from "next/link"
 import { NotificationCard } from "./notification-card"
 import { NavLink, type NavLinkProps } from "./nav-link"
@@ -104,13 +104,13 @@ export const SideNav: React.FC<SideNavProps> = ({
                     close={!isNavOpen}
                     name="Invoices"
                     href="/payments/invoices"
-                    icon={<HandCoins className="h-5 w-5" />}
+                    icon={<FileText className="h-5 w-5" />}
                   />
                   <NavLink
                     close={!isNavOpen}
                     name="Incentives"
                     href="/rewards/incentives"
-                    icon={<HandCoins className="h-5 w-5" />}
+                    icon={<Coins className="h-5 w-5" />}
                   />
                 </div>
               </>}

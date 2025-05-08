@@ -35,7 +35,7 @@ export function StreakTracker({ currentStreak, bestStreak, nextMilestone, reward
         </div>
         <div className="space-y-2">
           <Progress value={progress} className="h-2" />
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-lumi-accent-yellow">
             {nextMilestone - currentStreak} months until {reward}
           </p>
         </div>

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Search, CheckCircle2, XCircle, ArrowUpDown } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import NewPayLink from '../window/new-pay-link'
 
 // Mock data
 const paymentLinks = [
@@ -50,6 +51,8 @@ const paymentLinks = [
 ]
 
 export default function PayLinks() {
+  const [openWindow, setOpenWindow] = useState<boolean>(false);
+  const onClose = () => setOpenWindow(false);
   const [searchQuery, setSearchQuery] = useState('')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc')
 
@@ -64,7 +67,8 @@ export default function PayLinks() {
       return sortDirection === 'asc' ? dateA - dateB : dateB - dateA
     })
 
-  return (
+  return (<>
+  {openWindow ? <NewPayLink onClose={onClose} onSave={onClose} /> : <></>}
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Payment Links</h1>
@@ -80,7 +84,7 @@ export default function PayLinks() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <Button>New Payment Link</Button>
+        <Button onClick={() => setOpenWindow(true)}>New Payment Link</Button>
       </div>
 
       <div className="border rounded-lg">
@@ -129,5 +133,5 @@ export default function PayLinks() {
         </table>
       </div>
     </div>
-  )
+  </>)
 }

@@ -38,7 +38,7 @@ export default function BadgesAndAchievements() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{earnedBadges.length}</div>
-            <p className="text-xs text-muted-foreground">All Time</p>
+            <p className="text-xs text-lumi-accent-yellow">All Time</p>
           </CardContent>
         </Card>
 
@@ -48,7 +48,7 @@ export default function BadgesAndAchievements() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{milestones.length - earnedBadges.length}</div>
-            <p className="text-xs text-muted-foreground">In Progress</p>
+            <p className="text-xs text-lumi-accent-yellow">In Progress</p>
           </CardContent>
         </Card>
 
@@ -60,7 +60,7 @@ export default function BadgesAndAchievements() {
             <div className="text-2xl font-bold">
               {nextBadge ? milestones.find((m) => m.name === nextBadge.name)?.percentage + "%" : "N/A"}
             </div>
-            <p className="text-xs text-muted-foreground">{nextBadge?.name ?? "All badges earned!"}</p>
+            <p className="text-xs text-lumi-accent-yellow">{nextBadge?.name ?? "All badges earned!"}</p>
           </CardContent>
         </Card>
       </div>

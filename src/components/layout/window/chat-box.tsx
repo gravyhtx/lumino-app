@@ -9,11 +9,16 @@ import { motion } from 'framer-motion';
 export function ChatBox() {
   const [message, setMessage] = useState("")
   const [expanded, setExpanded] = useState(false)
+  const quickPrompts = [
+    "Quick prompt #1",
+    "Quick prompt #2",
+    "Quick prompt #3"
+  ];
 
   return (
     <motion.div className={cn(
-      "fixed bottom-0 left-0 z-99 border-glass-border mx-2 bg-muted/40 shadow-lg rounded-xl transition-all",
-      expanded ? "h-[300px] w-[400px]" : ""
+      "fixed bottom-0 left-0 z-99 border-glass-border mx-2 mb-4 bg-muted/40 shadow-lg rounded-xl transition-all",
+      expanded ? "h-[320px]" : ""
       )}>
     <Card className={
       cn("relative flex flex-col h-full w-full",
@@ -24,7 +29,23 @@ export function ChatBox() {
         <CardTitle className="text-sm">AI Assistant</CardTitle>
       </CardHeader>
       <CardContent className="text-sm text-muted-foreground">
-        How can I help you today?
+      {
+        expanded ? (
+          quickPrompts.map((prompt, index) => (
+            <Button
+              key={index}
+              className="w-full mb-2 dark:text-muted-foreground text-left glass-effect rounded-xl border shadow-lg hover:bg-muted/60"
+            >
+              <ul className={`flex items-center p-2last:mb-0 italic`}>
+              <Bot className="h-4 w-4 mr-2 shrink-0" />
+              {prompt}
+              </ul> 
+            </Button>
+          ))
+        ) : (
+          "How can I help you today?"
+        )
+      }
       </CardContent>
       <CardFooter>
         <form 
@@ -35,11 +56,11 @@ export function ChatBox() {
             setMessage("")
           }}
         >
-          {expanded &&
+          {/* {expanded &&
           <Button size="icon" className="glass-effect dark:text-muted-foreground">
             <Plus className="h-4 w-4" />
             <span className="sr-only">Voice message</span>
-          </Button>}
+          </Button>} */}
           <Input
             placeholder="Type a message..."
             value={message}

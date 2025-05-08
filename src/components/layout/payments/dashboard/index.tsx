@@ -140,26 +140,26 @@ export default function Dashboard() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <FileText className="h-6 w-6 mb-2 text-lumi-accent-blue" />
-            <h3 className="text-sm font-medium text-lumi-accent-yellow">Create an Invoice</h3>
+            <FileText className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <h3 className="text-sm font-medium text-white">Create an Invoice</h3>
           </CardContent>
         </AuraCard>
         <AuraCard className="bg-muted/50" onClick={() => setOpenRequest(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <Wallet className="h-6 w-6 mb-2 text-lumi-accent-blue" />
-            <h3 className="text-sm font-medium text-lumi-accent-yellow">Request a Payment</h3>
+            <Wallet className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <h3 className="text-sm font-medium text-white">Request a Payment</h3>
           </CardContent>
         </AuraCard>
         <AuraCard className="bg-muted/50" onClick={() => setOpenPay(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <Clock className="h-6 w-6 mb-2 text-lumi-accent-blue" />
-            <h3 className="text-sm font-medium text-lumi-accent-yellow">Take a Payment</h3>
+            <Clock className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <h3 className="text-sm font-medium text-white">Take a Payment</h3>
           </CardContent>
         </AuraCard>
         <AuraCard className="bg-muted/50" onClick={() => setOpenCustomer(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <Users className="h-6 w-6 mb-2 text-lumi-accent-blue" />
-            <h3 className="text-sm font-medium text-lumi-accent-yellow">Add a Customer</h3>
+            <Users className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <h3 className="text-sm font-medium text-white">Add a Customer</h3>
           </CardContent>
         </AuraCard>
       </div>

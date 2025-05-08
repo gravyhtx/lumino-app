@@ -21,12 +21,12 @@ export function GoalProgress({ goal }: GoalProgressProps) {
         <div className="space-y-2">
           <Progress value={progress} className="h-2" />
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">
+            <span className="text-lumi-accent-green">
               ${goal.current.toLocaleString()} / ${goal.target.toLocaleString()}
             </span>
             <span className="font-medium text-primary">{goal.multiplier}x Multiplier</span>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-lumi-accent-blue">
             {daysLeft} days remaining • {Math.round(progress)}% Complete
           </p>
         </div>
