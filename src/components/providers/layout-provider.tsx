@@ -6,7 +6,7 @@ import { Header } from '@/components/layout/window/header';
 import { ViewContainer } from '@/components/layout/views/view-container';
 import BouncingDotsLoader from '@/components/layout/loading/BouncingDots';
 import { usePathname } from "next/navigation";
-import { Banknote, ClipboardList, Coins, FileText, HandCoins, Home, LayoutDashboard, LineChart, Link2, Package, Repeat, ShoppingCart, Users, Wallet } from "lucide-react";
+import { Banknote, BarChart2Icon, BarChart3, ClipboardList, Coins, CreditCard, FileText, HandCoins, Home, Landmark, LayoutDashboard, Library, LineChart, Link2, Package, RefreshCcw, Repeat, Settings2, ShoppingCart, Users, Wallet, WalletCards } from 'lucide-react';
 import type { NavLinkProps } from "../layout/window/nav-link";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { MobileNavBreadcrumb } from "../layout/window/mobile-nav-breadcrumb";
@@ -55,10 +55,10 @@ export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
       { name: "12/23/2024", icon: <LayoutDashboard className={iconClass} />, href: "/assistant/12-23-2024" },
     ],
     banking: [
-      { name: "Dashboard", icon: <Banknote className={iconClass} />, href: "/banking" },
-      { name: "Transactions", icon: <Banknote className={iconClass} />, href: "/banking/transactions" },
-      { name: "Card Management", icon: <Banknote className={iconClass} />, href: "/banking/card" },
-      { name: "Banking Insights", icon: <Banknote className={iconClass} />, href: "/banking/insights" },
+      { name: "Overview", icon: <Landmark className={iconClass} />, href: "/banking" },
+      { name: "Transactions", icon: <RefreshCcw className={iconClass} />, href: "/banking/transactions" },
+      { name: "Banking Insights", icon: <BarChart3 className={iconClass} />, href: "/banking/insights" },
+      { name: "Card Management", icon: <WalletCards className={iconClass} />, href: "/banking/card" },
     ]
   };
 

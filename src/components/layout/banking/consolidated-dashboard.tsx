@@ -36,10 +36,10 @@ export default function ConsolidatedDashboard() {
           </div>
           <div className="flex items-center gap-3">
             <Button variant="ghost" size="icon" className="rounded-full">
-              <Bell className="h-5 w-5 text-slate-700" />
+              <Bell className="h-5 w-5 text-lumi-slate" />
             </Button>
             <Button variant="ghost" size="icon" className="rounded-full">
-              <Settings className="h-5 w-5 text-slate-700" />
+              <Settings className="h-5 w-5 text-lumi-slate" />
             </Button>
             <Avatar className="h-9 w-9 border border-slate-200">
               <AvatarImage src="/placeholder.svg?height=36&width=36" alt="User" />
@@ -281,8 +281,8 @@ export default function ConsolidatedDashboard() {
               <h2 className="text-xl font-bold">Card Management</h2>
 
               {/* Virtual Card */}
-              <div className="relative overflow-hidden rounded-xl">
-                <div className="bg-gradient-to-r from-lumi-green via-lumi-emerald to-lumi-teal p-4 rounded-xl aspect-[16/9] relative overflow-hidden">
+              <div className="relative overflow-hidden rounded-md shadow-lg">
+                <div className="bg-gradient-to-r from-lumi-green via-lumi-emerald to-lumi-teal p-4 aspect-[16/9] relative overflow-hidden">
                   <div className="absolute inset-0 bg-black/10"></div>
                   <div className="flex flex-col justify-between h-full">
                     <div className="flex justify-between items-start">
@@ -342,7 +342,7 @@ export default function ConsolidatedDashboard() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="bg-slate-100 p-2 rounded-full">
-                        <CreditCard className="h-4 w-4 text-slate-700" />
+                        <CreditCard className="h-4 w-4 text-lumi-slate" />
                       </div>
                       <div>
                         <p className="text-sm font-medium">Card Status</p>
@@ -355,7 +355,7 @@ export default function ConsolidatedDashboard() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="bg-slate-100 p-2 rounded-full">
-                        <Download className="h-4 w-4 text-slate-700" />
+                        <Download className="h-4 w-4 text-lumi-slate" />
                       </div>
                       <div>
                         <p className="text-sm font-medium">Spending Limit</p>
@@ -438,7 +438,7 @@ interface TransactionItemProps {
 
 function TransactionItem({ name, category, amount, date, type }: TransactionItemProps) {
   return (
-    <div className="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+    <div className="flex items-center justify-between p-3 pr-5 rounded-xl border border-slate-200">
       <div className="flex items-center gap-3">
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center ${
@@ -461,7 +461,7 @@ function TransactionItem({ name, category, amount, date, type }: TransactionItem
       <div className="text-right">
         <p
           className={`font-medium ${
-            type === "income" ? "text-green-600" : type === "expense" ? "text-white-900" : "text-yellow-600"
+            type === "income" ? "text-lumi-green" : type === "expense" ? "text-foreground" : "text-lumi-gold"
           }`}
         >
           {amount}

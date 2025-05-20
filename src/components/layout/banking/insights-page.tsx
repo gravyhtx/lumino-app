@@ -10,7 +10,7 @@ export default function InsightsPage() {
       {/* Header */}
       <header className="px-4 py-6 ">
         <h1 className="text-xl font-bold">Financial Insights</h1>
-        <p className="text-sm text-slate-500">Track your spending and savings</p>
+        <p className="text-sm text-lumi-slate">Track your spending and savings</p>
       </header>
 
       {/* Main Content */}
@@ -57,7 +57,7 @@ export default function InsightsPage() {
                 <span className="font-medium">$1,240.00</span>
               </div>
               <Progress value={38} className="h-2" />
-              <p className="text-xs text-slate-500">38% of total expenses</p>
+              <p className="text-xs text-lumi-slate">38% of total expenses</p>
             </div>
 
             <div className="space-y-2">
@@ -66,7 +66,7 @@ export default function InsightsPage() {
                 <span className="font-medium">$845.50</span>
               </div>
               <Progress value={26} className="h-2" />
-              <p className="text-xs text-slate-500">26% of total expenses</p>
+              <p className="text-xs text-lumi-slate">26% of total expenses</p>
             </div>
 
             <div className="space-y-2">
@@ -75,7 +75,7 @@ export default function InsightsPage() {
                 <span className="font-medium">$650.00</span>
               </div>
               <Progress value={20} className="h-2" />
-              <p className="text-xs text-slate-500">20% of total expenses</p>
+              <p className="text-xs text-lumi-slate">20% of total expenses</p>
             </div>
 
             <div className="space-y-2">
@@ -84,7 +84,7 @@ export default function InsightsPage() {
                 <span className="font-medium">$325.75</span>
               </div>
               <Progress value={10} className="h-2" />
-              <p className="text-xs text-slate-500">10% of total expenses</p>
+              <p className="text-xs text-lumi-slate">10% of total expenses</p>
             </div>
 
             <div className="space-y-2">
@@ -93,7 +93,7 @@ export default function InsightsPage() {
                 <span className="font-medium">$184.08</span>
               </div>
               <Progress value={6} className="h-2" />
-              <p className="text-xs text-slate-500">6% of total expenses</p>
+              <p className="text-xs text-lumi-slate">6% of total expenses</p>
             </div>
           </CardContent>
         </Card>
@@ -102,7 +102,7 @@ export default function InsightsPage() {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Savings Goals</h2>
-            <Button variant="ghost" size="sm" className="text-xs text-slate-500">
+            <Button variant="ghost" size="sm" className="text-xs text-lumi-slate">
               Add New
               <ChevronRight className="h-4 w-4 ml-1" />
             </Button>
@@ -115,7 +115,7 @@ export default function InsightsPage() {
             </CardHeader>
             <CardContent>
               <Progress value={40} className="h-2 mb-2" />
-              <div className="flex justify-between text-xs text-slate-500">
+              <div className="flex justify-between text-xs text-lumi-slate">
                 <span>40% complete</span>
                 <span>$1,800 to go</span>
               </div>
@@ -129,7 +129,7 @@ export default function InsightsPage() {
             </CardHeader>
             <CardContent>
               <Progress value={54} className="h-2 mb-2" />
-              <div className="flex justify-between text-xs text-slate-500">
+              <div className="flex justify-between text-xs text-lumi-slate">
                 <span>54% complete</span>
                 <span>$4,600 to go</span>
               </div>
@@ -153,7 +153,7 @@ export default function InsightsPage() {
                       <div className="w-2 h-10 bg-slate-900 rounded-full mr-3"></div>
                       <div>
                         <p className="text-sm font-medium">March 2025</p>
-                        <p className="text-xs text-slate-500">Current month</p>
+                        <p className="text-xs text-lumi-slate">Current month</p>
                       </div>
                     </div>
                     <p className="font-medium">$3,245.33</p>
@@ -164,7 +164,7 @@ export default function InsightsPage() {
                       <div className="w-2 h-10 bg-slate-300 rounded-full mr-3"></div>
                       <div>
                         <p className="text-sm font-medium">February 2025</p>
-                        <p className="text-xs text-slate-500">Previous month</p>
+                        <p className="text-xs text-lumi-slate">Previous month</p>
                       </div>
                     </div>
                     <div className="text-right">
@@ -183,7 +183,7 @@ export default function InsightsPage() {
                       <div className="w-2 h-10 bg-slate-900 rounded-full mr-3"></div>
                       <div>
                         <p className="text-sm font-medium">March 2025</p>
-                        <p className="text-xs text-slate-500">Current month</p>
+                        <p className="text-xs text-lumi-slate">Current month</p>
                       </div>
                     </div>
                     <p className="font-medium">$4,580.00</p>
@@ -194,7 +194,7 @@ export default function InsightsPage() {
                       <div className="w-2 h-10 bg-slate-300 rounded-full mr-3"></div>
                       <div>
                         <p className="text-sm font-medium">February 2025</p>
-                        <p className="text-xs text-slate-500">Previous month</p>
+                        <p className="text-xs text-lumi-slate">Previous month</p>
                       </div>
                     </div>
                     <div className="text-right">

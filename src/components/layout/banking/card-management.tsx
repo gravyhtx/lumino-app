@@ -48,9 +48,9 @@ export default function CardManagement() {
       {/* Main Content */}
       <main className="flex-1 px-4 py-6 space-y-6 overflow-auto">
         {/* Virtual Card */}
-        <div className="relative overflow-hidden rounded-xl">
+        <div className="relative overflow-hidden rounded-lg shadow-lg">
           <div
-            className={`bg-gradient-to-r from-lumi-green via-lumi-emerald to-lumi-teal p-5 rounded-xl aspect-[16/9] relative overflow-hidden ${isCardFrozen ? "opacity-70" : ""}`}
+            className={`bg-gradient-to-r from-lumi-green via-lumi-emerald to-lumi-teal w-full max-w-[400px] mx-auto p-5 rounded-lg aspect-[16/9] relative overflow-hidden ${isCardFrozen ? "opacity-70" : ""}`}
           >
             {isCardFrozen && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/30">
@@ -85,7 +85,7 @@ export default function CardManagement() {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-3 max-w-[500px] w-full mx-auto">
           <Button variant="outline" size="sm" className="flex flex-col items-center py-3 h-auto">
             <CreditCard className="h-5 w-5 mb-1" />
             <span className="text-xs">Freeze</span>
@@ -109,19 +109,19 @@ export default function CardManagement() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-xs text-slate-500">Card Number</p>
+                <p className="text-xs text-lumi-slate">Card Number</p>
                 <p className="font-medium">{showCardNumber ? "4589 7458 2145 9874" : "•••• •••• •••• 4589"}</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500">CVV</p>
+                <p className="text-xs text-lumi-slate">CVV</p>
                 <p className="font-medium">{showCardNumber ? "123" : "•••"}</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500">Expiry Date</p>
+                <p className="text-xs text-lumi-slate">Expiry Date</p>
                 <p className="font-medium">05/28</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500">Card Type</p>
+                <p className="text-xs text-lumi-slate">Card Type</p>
                 <p className="font-medium">Virtual Debit</p>
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function CardManagement() {
             <Separator />
 
             <div>
-              <p className="text-xs text-slate-500">Billing Address</p>
+              <p className="text-xs text-lumi-slate">Billing Address</p>
               <p className="font-medium">123 Main Street</p>
               <p className="text-sm">San Francisco, CA 94105</p>
             </div>
@@ -146,7 +146,7 @@ export default function CardManagement() {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label htmlFor="freeze-card">Freeze Card</Label>
-                <p className="text-xs text-slate-500">Temporarily disable your card</p>
+                <p className="text-xs text-lumi-slate">Temporarily disable your card</p>
               </div>
               <Switch id="freeze-card" checked={isCardFrozen} onCheckedChange={setIsCardFrozen} />
             </div>
@@ -156,7 +156,7 @@ export default function CardManagement() {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label htmlFor="contactless">Contactless Payments</Label>
-                <p className="text-xs text-slate-500">Enable tap-to-pay functionality</p>
+                <p className="text-xs text-lumi-slate">Enable tap-to-pay functionality</p>
               </div>
               <Switch id="contactless" checked={isContactlessEnabled} onCheckedChange={setIsContactlessEnabled} />
             </div>
@@ -164,7 +164,7 @@ export default function CardManagement() {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label htmlFor="online-payments">Online Payments</Label>
-                <p className="text-xs text-slate-500">Allow online and in-app purchases</p>
+                <p className="text-xs text-lumi-slate">Allow online and in-app purchases</p>
               </div>
               <Switch
                 id="online-payments"
@@ -185,7 +185,7 @@ export default function CardManagement() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Daily Limit</p>
-                <p className="text-xs text-slate-500">Maximum daily spending</p>
+                <p className="text-xs text-lumi-slate">Maximum daily spending</p>
               </div>
               <div className="flex items-center">
                 <p className="font-medium">$1,000</p>
@@ -198,7 +198,7 @@ export default function CardManagement() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Monthly Limit</p>
-                <p className="text-xs text-slate-500">Maximum monthly spending</p>
+                <p className="text-xs text-lumi-slate">Maximum monthly spending</p>
               </div>
               <div className="flex items-center">
                 <p className="font-medium">$5,000</p>
@@ -211,7 +211,7 @@ export default function CardManagement() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">ATM Withdrawal</p>
-                <p className="text-xs text-slate-500">Maximum ATM withdrawal</p>
+                <p className="text-xs text-lumi-slate">Maximum ATM withdrawal</p>
               </div>
               <div className="flex items-center">
                 <p className="font-medium">$500</p>
@@ -237,26 +237,26 @@ export default function CardManagement() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center p-3 bg-lumi-dark-blue rounded-lg">
-              <Shield className="h-10 w-10 text-slate-700 mr-3" />
+              <Shield className="h-10 w-10 text-white2 mr-3" />
               <div>
-                <p className="font-medium">Purchase Protection</p>
-                <p className="text-xs text-slate-500">Your card is protected against fraudulent transactions</p>
+                <p className="font-medium text-white2">Purchase Protection</p>
+                <p className="text-xs text-lumi-slate">Your card is protected against fraudulent transactions</p>
               </div>
             </div>
 
             <div className="flex items-center p-3 bg-lumi-dark-blue rounded-lg">
-              <Smartphone className="h-10 w-10 text-slate-700 mr-3" />
+              <Smartphone className="h-10 w-10 text-white2 mr-3" />
               <div>
-                <p className="font-medium">Mobile Notifications</p>
-                <p className="text-xs text-slate-500">Receive alerts for all card transactions</p>
+                <p className="font-medium text-white2">Mobile Notifications</p>
+                <p className="text-xs text-lumi-slate">Receive alerts for all card transactions</p>
               </div>
             </div>
 
             <div className="flex items-center p-3 bg-lumi-dark-blue rounded-lg">
-              <CreditCard className="h-10 w-10 text-slate-700 mr-3" />
+              <CreditCard className="h-10 w-10 text-white2 mr-3" />
               <div>
-                <p className="font-medium">Virtual Card Number</p>
-                <p className="text-xs text-slate-500">Use a different number for online purchases</p>
+                <p className="font-medium text-white2">Virtual Card Number</p>
+                <p className="text-xs text-lumi-slate">Use a different number for online purchases</p>
               </div>
             </div>
           </CardContent>
