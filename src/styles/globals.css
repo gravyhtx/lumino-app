@@ -34,7 +34,7 @@
 
     --radius: 2rem;
 
-    --lumi-blue: #0b1b33;
+    --lumi-blue:rgb(13, 32, 59);
     --lumi-dark-blue: #02041d;
 
     --lumi-accent-green: #00F3AD;
@@ -79,7 +79,8 @@
     --lumi-accent-shadow: #08FFFC50;
 
     --lumi-blue:rgb(47, 120, 230);
-    --lumi-dark-blue:rgb(21, 51, 149);
+    --lumi-dark-blue:rgb(17, 23, 46);
+    /* --lumi-dark-blue:rgb(21, 51, 149); */
     --lumi-accent:rgb(157, 176, 204); /* slate-400 */
     --lumi-highlight:rgb(226, 238, 255); /* slate-200 */
     

@@ -94,7 +94,7 @@ export default {
         "lumi-black": colors.slate[900],
         "lumi-black2": colors.black,
         // "lumi-accent-blue": "#08FFFC",
-        "lumi-dark-blue":      "#1a1f36",
+        "lumi-dark-blue":      "var(--lumi-dark-blue)",
         "lumi-darker-blue":    "#02041d",
         "lumi-dark-green":      "rgb(40, 132, 76)",
         // Accent HEX colors
