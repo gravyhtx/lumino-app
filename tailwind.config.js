@@ -110,7 +110,7 @@ export default {
         "lumi-accent-steel2":   colors.slate[300],
         "lumi-accent-yellow": "rgb(253, 255, 151)",
         "lumi-accent-yellow2": colors.yellow[400],
-        "lumi-accent-red":     "rgb(253, 43, 43)",
+        "lumi-accent-red":     "rgb(255, 79, 79)",
         "lumi-accent-red2":     "rgb(225, 44, 44)",
         "lumi-accent-gold":  "rgb(255, 247, 159)",
         "lumi-accent-gold2":  "rgb(250, 232, 113)",

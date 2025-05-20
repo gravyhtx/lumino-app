@@ -22,11 +22,11 @@ export default function InsightsPage() {
               <CardDescription className="text-xs">Monthly Income</CardDescription>
               <CardTitle className="text-lg font-bold flex items-center">
                 $4,580.00
-                <TrendingUp className="h-4 w-4 ml-1 text-green-500" />
+                <TrendingUp className="h-4 w-4 ml-1 text-lumi-accent-green" />
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-green-600">+12% from last month</p>
+              <p className="text-xs text-lumi-accent-green">+12% from last month</p>
             </CardContent>
           </Card>
 
@@ -35,11 +35,11 @@ export default function InsightsPage() {
               <CardDescription className="text-xs">Monthly Expenses</CardDescription>
               <CardTitle className="text-lg font-bold flex items-center">
                 $3,245.33
-                <TrendingDown className="h-4 w-4 ml-1 text-red-500" />
+                <TrendingDown className="h-4 w-4 ml-1 text-lumi-accent-red" />
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-red-600">+8% from last month</p>
+              <p className="text-xs text-lumi-accent-red">+8% from last month</p>
             </CardContent>
           </Card>
         </div>

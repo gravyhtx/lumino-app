@@ -56,6 +56,9 @@ export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
     ],
     banking: [
       { name: "Dashboard", icon: <Banknote className={iconClass} />, href: "/banking" },
+      { name: "Transactions", icon: <Banknote className={iconClass} />, href: "/banking/transactions" },
+      { name: "Card Management", icon: <Banknote className={iconClass} />, href: "/banking/card" },
+      { name: "Banking Insights", icon: <Banknote className={iconClass} />, href: "/banking/insights" },
     ]
   };
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeft, ChevronRight, CreditCard, Eye, EyeOff, Lock, Plus, Shield, Smartphone } from "lucide-react"
+import { ArrowLeft, ChevronRight, CreditCard, Eye, EyeOff, Lock, Plus, Search, Settings, Shield, Smartphone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
@@ -62,6 +62,21 @@ export default function CardManagement() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-3">
+          <Button variant="outline" size="sm" className="flex flex-col items-center py-3 h-auto">
+            <CreditCard className="h-5 w-5 mb-1" />
+            <span className="text-xs">Freeze</span>
+          </Button>
+          <Button variant="outline" size="sm" className="flex flex-col items-center py-3 h-auto">
+            <Settings className="h-5 w-5 mb-1" />
+            <span className="text-xs">Limits</span>
+          </Button>
+          <Button variant="outline" size="sm" className="flex flex-col items-center py-3 h-auto">
+            <Search className="h-5 w-5 mb-1" />
+            <span className="text-xs">Details</span>
+          </Button>
         </div>
 
         <div className="flex justify-center">
@@ -216,7 +231,7 @@ export default function CardManagement() {
             <CardDescription>Additional security options for your card</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center p-3 bg-slate-50 rounded-lg">
+            <div className="flex items-center p-3 bg-lumi-dark-blue rounded-lg">
               <Shield className="h-10 w-10 text-slate-700 mr-3" />
               <div>
                 <p className="font-medium">Purchase Protection</p>
@@ -224,7 +239,7 @@ export default function CardManagement() {
               </div>
             </div>
 
-            <div className="flex items-center p-3 bg-slate-50 rounded-lg">
+            <div className="flex items-center p-3 bg-lumi-dark-blue rounded-lg">
               <Smartphone className="h-10 w-10 text-slate-700 mr-3" />
               <div>
                 <p className="font-medium">Mobile Notifications</p>
@@ -232,7 +247,7 @@ export default function CardManagement() {
               </div>
             </div>
 
-            <div className="flex items-center p-3 bg-slate-50 rounded-lg">
+            <div className="flex items-center p-3 bg-lumi-dark-blue rounded-lg">
               <CreditCard className="h-10 w-10 text-slate-700 mr-3" />
               <div>
                 <p className="font-medium">Virtual Card Number</p>
