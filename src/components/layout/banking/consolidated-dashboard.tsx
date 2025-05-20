@@ -349,7 +349,7 @@ export default function ConsolidatedDashboard() {
                         <p className="text-xs text-slate-500">Active and working</p>
                       </div>
                     </div>
-                    <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Active</Badge>
+                    <Badge className="bg-green-100 text-lumi-dark-green hover:bg-lumi-light-green">Active</Badge>
                   </div>
 
                   <div className="flex items-center justify-between">
@@ -442,7 +442,7 @@ function TransactionItem({ name, category, amount, date, type }: TransactionItem
       <div className="flex items-center gap-3">
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center ${
-            type === "income" ? "bg-green-100" : type === "expense" ? "bg-red-100" : "bg-yellow-100"
+            type === "income" ? "bg-lumi-light-green" : type === "expense" ? "bg-lumi-light-red" : "bg-lumi-light-yellow"
           }`}
         >
           {type === "income" ? (

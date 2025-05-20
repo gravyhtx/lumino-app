@@ -27,7 +27,7 @@ export function BadgeCarousel({ badges }: BadgeCarouselProps) {
           {badges.map((badge) => {
             const Icon = iconMap[badge.icon as keyof typeof iconMap]
             return (
-              <div key={badge.id} className={`p-4 rounded-lg border ${badge.isLocked ? "opacity-50" : "bg-primary/5"}`}>
+              <div key={badge.id} className={`p-4 rounded-md border ${badge.isLocked ? "opacity-50" : "bg-primary/5"}`}>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="rounded-full bg-primary/10 p-2">
                     <Icon className="h-5 w-5 text-lumi-accent-yellow" />

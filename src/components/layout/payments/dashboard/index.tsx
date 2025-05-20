@@ -140,25 +140,25 @@ export default function Dashboard() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <AuraCard className="bg-muted/50" onClick={() => setOpenInvoice(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <FileText className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <FileText className="h-6 w-6 mb-2 text-lumi-accent-blue" />
             <h3 className="text-sm font-medium text-white">Create an Invoice</h3>
           </CardContent>
         </AuraCard>
         <AuraCard className="bg-muted/50" onClick={() => setOpenRequest(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <Wallet className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <Wallet className="h-6 w-6 mb-2 text-lumi-accent-emerald" />
             <h3 className="text-sm font-medium text-white">Request a Payment</h3>
           </CardContent>
         </AuraCard>
         <AuraCard className="bg-muted/50" onClick={() => setOpenPay(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <Clock className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <Clock className="h-6 w-6 mb-2 text-lumi-accent-fuchsia" />
             <h3 className="text-sm font-medium text-white">Take a Payment</h3>
           </CardContent>
         </AuraCard>
         <AuraCard className="bg-muted/50" onClick={() => setOpenCustomer(true)}>
           <CardContent className="flex flex-col items-center justify-center p-6">
-            <Users className="h-6 w-6 mb-2 text-lumi-accent-green" />
+            <Users className="h-6 w-6 mb-2 text-lumi-accent-orange" />
             <h3 className="text-sm font-medium text-white">Add a Customer</h3>
           </CardContent>
         </AuraCard>
@@ -204,7 +204,7 @@ export default function Dashboard() {
                     style={{ backgroundColor: item.color }}
                   />
                   <div>{item.name}</div>
-                  <div className="ml-auto  text-lumi-accent-green">
+                  <div className="ml-auto  text-lumi-highlight">
                     ${item.value.toLocaleString()} ({item.count})
                   </div>
                 </div>
@@ -248,7 +248,7 @@ export default function Dashboard() {
                     style={{ backgroundColor: item.color }}
                   />
                   <div>{item.name}</div>
-                  <div className="ml-auto text-lumi-accent-green">{item.value}%</div>
+                  <div className="ml-auto text-lumi-highlight">{item.value}%</div>
                 </div>
               ))}
             </div>

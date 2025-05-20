@@ -141,7 +141,7 @@ export const recommendations: Recommendation[] = [
     type: "milestone",
     title: "Next Badge Within Reach",
     description: "Complete 5 more transactions to unlock the Elite Performer badge",
-    reward: "1500 Points",
+    reward: "1500pts",
     action: "Track Progress",
   },
 ]

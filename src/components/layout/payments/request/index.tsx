@@ -21,6 +21,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { NewPayRequest } from '../window/new-pay-request'
 
 // Mock data
 const paymentRequests = [
@@ -109,7 +110,11 @@ export default function PayRequest() {
     }
   }
 
-  return (
+    const [openWindow, setOpenWindow] = useState<boolean>(false);
+    const onClose = () => setOpenWindow(false);
+
+  return (<>
+    {openWindow && <NewPayRequest onClose={onClose} />}
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Payment Requests</h1>
@@ -146,7 +151,7 @@ export default function PayRequest() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>New Payment Request</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setOpenWindow(true)}>New Payment Request</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <Upload className="mr-2 h-4 w-4" />
@@ -253,5 +258,5 @@ export default function PayRequest() {
         )}
       </div>
     </div>
-  )
+  </>)
 }

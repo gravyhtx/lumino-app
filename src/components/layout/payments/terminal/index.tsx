@@ -89,10 +89,10 @@ export default function Terminal() {
                 <Input id="zip" placeholder="Enter zip code" />
               </div>
               <div className="flex items-center gap-2">
-                <PaymentIcon type="Visa" format="flatRounded" width={50} />
-                <PaymentIcon type="Mastercard" format="flatRounded" width={50} />
-                <PaymentIcon type="Discover" format="flatRounded" width={50} />
-                <PaymentIcon type="Amex" format="flatRounded" width={50} />
+                <PaymentIcon type="Visa" format="flatRounded" width={55} />
+                <PaymentIcon type="Mastercard" format="flatRounded" width={55} />
+                <PaymentIcon type="Discover" format="flatRounded" width={55} />
+                <PaymentIcon type="Amex" format="flatRounded" width={55} />
               </div>
             </div>
           </TabsContent>

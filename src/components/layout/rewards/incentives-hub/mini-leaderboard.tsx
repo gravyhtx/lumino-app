@@ -2,6 +2,7 @@
 
 import type { LeaderboardEntry } from "./types/incentives"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 import { Trophy } from "lucide-react"
 
 interface MiniLeaderboardProps {
@@ -13,7 +14,7 @@ export function MiniLeaderboard({ entries }: MiniLeaderboardProps) {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Trophy className="h-5 w-5 text-primary" />
+          <Trophy className="h-5 w-5 text-primary text-lumi-yellow" />
           Top Performers
         </CardTitle>
       </CardHeader>
@@ -22,20 +23,23 @@ export function MiniLeaderboard({ entries }: MiniLeaderboardProps) {
           {entries.map((entry) => (
             <div
               key={entry.rank}
-              className={`flex items-center justify-between p-4 rounded-lg ${
+              className={`flex items-center justify-between p-4 rounded-md ${
                 entry.isCurrentUser ? "bg-primary/10" : "hover:bg-accent"
               }`}
             >
               <div className="flex items-center gap-4">
-                <span className="text-2xl font-bold text-primary">#{entry.rank}</span>
+                <span className={cn(
+                  "text-2xl font-bold text-primary",
+                  entry.rank === 1 ? "text-lumi-accent-gold" : entry.rank === 2 ? "text-lumi-accent-silver" : entry.rank === 3 ? "text-lumi-accent-bronze" : ""
+                )}>#{entry.rank}</span>
                 <div>
                   <p className="font-medium">{entry.businessName}</p>
-                  <p className="text-sm text-lumi-accent-yellow">{entry.category}</p>
+                  <p className="text-sm text-lumi-accent-steel">{entry.category}</p>
                 </div>
               </div>
               <div className="text-right">
                 <p className="font-medium">{entry.points.toLocaleString()} pts</p>
-                <p className="text-sm text-lumi-accent-blue">+{entry.growth}%</p>
+                <p className="text-sm text-lumi-accent-purple">+{entry.growth}%</p>
               </div>
             </div>
           ))}

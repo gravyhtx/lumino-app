@@ -41,6 +41,11 @@
     --lumi-accent-blue: #08FFFC;
     --lumi-accent-shadow: #08FFFC20;
     --lumi-accent-yellow: rgb(253, 255, 113);
+
+    --lumi-accent:rgb(81, 94, 111); /* slate-600 */
+    --lumi-highlight:rgb(42, 57, 82); /* slate-800 */
+
+    --lumi-active: rgb(58, 71, 133);
   }
 
   .dark {
@@ -72,6 +77,13 @@
     --input: 215 27.9% 16.9%;
     --ring: 216 12.2% 83.9%;
     --lumi-accent-shadow: #08FFFC50;
+
+    --lumi-blue:rgb(47, 120, 230);
+    --lumi-dark-blue:rgb(21, 51, 149);
+    --lumi-accent:rgb(157, 176, 204); /* slate-400 */
+    --lumi-highlight:rgb(226, 238, 255); /* slate-200 */
+    
+    --lumi-active: rgb(58, 71, 133);
   }
 }
 

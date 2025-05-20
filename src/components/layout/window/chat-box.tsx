@@ -37,8 +37,8 @@ export function ChatBox() {
               className="w-full mb-2 dark:text-muted-foreground text-left glass-effect rounded-xl border shadow-lg hover:bg-muted/60"
             >
               <ul className={`flex items-center p-2last:mb-0 italic`}>
-              <Bot className="h-4 w-4 mr-2 shrink-0" />
-              {prompt}
+                <Bot className="h-4 w-4 mr-2 shrink-0" />
+                <span className="text-shadow-lg text-shadow-black">{prompt}</span>
               </ul> 
             </Button>
           ))

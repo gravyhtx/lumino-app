@@ -142,8 +142,8 @@ export function InvoiceCreator({ onClose, onSave }: InvoiceCreatorProps) {
     //         </div>
     <PopupWindow
       onClose={onClose}
-      onSave={onSave}
-      saveButtonText="Save and Send Immediately"
+      onSave={onClose}
+      saveButtonText="Send Invoice"
       dropdown={<Dropdown />}
       columns>
       <div className="grid grid-cols-1 gap-6 p-4 md:grid-cols-2">
@@ -365,7 +365,7 @@ export function InvoiceCreator({ onClose, onSave }: InvoiceCreatorProps) {
           <div className="space-y-6">
             <div className="flex justify-between">
               <div>
-                <h2 className="text-xl font-bold">Demo Coaching Product</h2>
+                <h2 className="text-xl font-bold text-black" contentEditable>Demo Coaching Product</h2>
                 <p className="text-sm text-muted-foreground">
                   123 Business St
                   <br />

@@ -85,7 +85,7 @@ export const RecentSales = () => {
                   </Avatar>
                   <div className="ml-4 w-[65%]">
                     <p className={classnames("text-sm font-medium", styles.name)}>{tx.name}</p>
-                    <p className={classnames("text-xs text-muted-foreground", styles.email)}>{tx.email}</p>
+                    <p className={classnames("text-xs text-lumi-accent", styles.email)}>{tx.email}</p>
                   </div>
                   <div className="ml-auto text-sm font-medium flex items-center">
                     {amountParts ? (
@@ -109,7 +109,7 @@ export const RecentSales = () => {
               >
                 <div className="text-sm">
                   <p className="font-bold">{tx.name}</p>
-                  <p>{tx.email}</p>
+                  <p className="text-lumi-accent">{tx.email}</p>
                   <Separator className="my-1" />
                   <p className={classnames("font-semibold text-primary", tx.amount.startsWith("+") ? "text-lumi-accent-green" : "text-muted-foreground")}>
                     {tx.amount}

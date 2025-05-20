@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import NewItem from '../window/new-item'
 
 // Mock data for items
 const items = [
@@ -52,13 +53,16 @@ const items = [
 export default function Items() {
   const [activeTab, setActiveTab] = useState('items')
   const [searchQuery, setSearchQuery] = useState('')
+  const [openWindow, setOpenWindow] = useState(false)
+  const onClose = () => setOpenWindow(false)
 
   const filteredItems = items.filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.description.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  return (
+  return (<>
+    {openWindow && (<NewItem onClose={onClose} />)}
     <div className="space-y-4">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList>
@@ -79,7 +83,7 @@ export default function Items() {
             </div>
             {activeTab === 'items' ? (
               <div className="flex gap-1">
-                <Button>New Item</Button>
+                <Button onClick={() => setOpenWindow(true)}>New Item</Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="default" className="px-2">
@@ -159,5 +163,5 @@ export default function Items() {
         </div>
       </Tabs>
     </div>
-  )
+  </>)
 }

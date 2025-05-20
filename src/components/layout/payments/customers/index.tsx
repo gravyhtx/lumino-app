@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { InvoiceCreator } from '../window/invoice-creator'
+import { NewCustomer } from '../window/new-customer'
 
 // Mock data
 const customers = [
@@ -101,7 +102,7 @@ export default function Customers() {
   )
 
   return (<>
-    {openAddCustomer ? <InvoiceCreator onClose={onClose} /> : <></>}
+    {openAddCustomer ? <NewCustomer onClose={onClose} /> : <></>}
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Customers</h1>
