@@ -17,11 +17,32 @@ export default function CardManagement() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="px-4 py-6 flex items-center">
-        <Button variant="ghost" size="icon" className="mr-2">
-          <ArrowLeft className="h-5 w-5" />
+      <header className="px-4 py-6 flex items-center justify-between">
+        <div className="flex items-center">
+          <Button variant="ghost" size="icon" className="mr-2">
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+          <h1 className="text-xl font-bold">Card Management</h1>
+        </div>
+
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShowCardNumber(!showCardNumber)}
+          className="text-xs"
+        >
+          {showCardNumber ? (
+            <>
+              <EyeOff className="h-3 w-3 mr-2" />
+              Hide Card Details
+            </>
+          ) : (
+            <>
+              <Eye className="h-3 w-3 mr-2" />
+              Show Card Details
+            </>
+          )}
         </Button>
-        <h1 className="text-xl font-bold">Card Management</h1>
       </header>
 
       {/* Main Content */}
@@ -29,7 +50,7 @@ export default function CardManagement() {
         {/* Virtual Card */}
         <div className="relative overflow-hidden rounded-xl">
           <div
-            className={`bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-5 rounded-xl aspect-[16/9] relative overflow-hidden ${isCardFrozen ? "opacity-70" : ""}`}
+            className={`bg-gradient-to-r from-lumi-green via-lumi-emerald to-lumi-teal p-5 rounded-xl aspect-[16/9] relative overflow-hidden ${isCardFrozen ? "opacity-70" : ""}`}
           >
             {isCardFrozen && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/30">
@@ -76,22 +97,6 @@ export default function CardManagement() {
           <Button variant="outline" size="sm" className="flex flex-col items-center py-3 h-auto">
             <Search className="h-5 w-5 mb-1" />
             <span className="text-xs">Details</span>
-          </Button>
-        </div>
-
-        <div className="flex justify-center">
-          <Button variant="outline" size="sm" onClick={() => setShowCardNumber(!showCardNumber)} className="text-xs">
-            {showCardNumber ? (
-              <>
-                <EyeOff className="h-3 w-3 mr-2" />
-                Hide Card Details
-              </>
-            ) : (
-              <>
-                <Eye className="h-3 w-3 mr-2" />
-                Show Card Details
-              </>
-            )}
           </Button>
         </div>
 

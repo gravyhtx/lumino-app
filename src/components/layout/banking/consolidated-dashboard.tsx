@@ -282,7 +282,7 @@ export default function ConsolidatedDashboard() {
 
               {/* Virtual Card */}
               <div className="relative overflow-hidden rounded-xl">
-                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-4 rounded-xl aspect-[16/9] relative overflow-hidden">
+                <div className="bg-gradient-to-r from-lumi-green via-lumi-emerald to-lumi-teal p-4 rounded-xl aspect-[16/9] relative overflow-hidden">
                   <div className="absolute inset-0 bg-black/10"></div>
                   <div className="flex flex-col justify-between h-full">
                     <div className="flex justify-between items-start">

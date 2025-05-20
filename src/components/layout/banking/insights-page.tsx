@@ -169,7 +169,7 @@ export default function InsightsPage() {
                     </div>
                     <div className="text-right">
                       <p className="font-medium">$3,012.45</p>
-                      <p className="text-xs text-red-600">
+                      <p className="text-xs text-lumi-accent-red">
                         +7.7% <ArrowUp className="inline h-3 w-3" />
                       </p>
                     </div>
@@ -199,7 +199,7 @@ export default function InsightsPage() {
                     </div>
                     <div className="text-right">
                       <p className="font-medium">$4,089.25</p>
-                      <p className="text-xs text-green-600">
+                      <p className="text-xs text-lumi-accent-green">
                         +12.0% <ArrowUp className="inline h-3 w-3" />
                       </p>
                     </div>
