@@ -171,5 +171,5 @@ function getAiToolsForPillar(pillarId: string) {
     ],
   }
 
-  return toolsByPillar[pillarId] || []
+  return toolsByPillar[pillarId] ?? []
 }

@@ -112,7 +112,7 @@ export default function NewPayLink({ onClose }: NewPayLinkProps) {
 
                   <div className="space-y-2 mb-6">
                     <Label htmlFor="submit-label" className="text-base">
-                      Custom label for <span className="font-semibold">'Submit'</span> button
+                      Custom label for <span className="font-semibold">&apos;Submit&apos;</span> button
                     </Label>
                     <Input
                       id="submit-label"
