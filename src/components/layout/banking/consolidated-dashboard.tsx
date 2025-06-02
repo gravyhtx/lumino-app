@@ -71,7 +71,7 @@ export default function ConsolidatedDashboard() {
           </div>
 
           {/* Balance Card - Prominent */}
-          <Card className="bg-gradient-to-r from-slate-900 to-slate-800 text-white border-none shadow-lg">
+          <Card className="bg-gradient-to-r from-slate-900 to-slate-800 border-none shadow-lg">
             <CardHeader className="pb-2">
               <CardDescription className="text-slate-300">Available Balance</CardDescription>
               <CardTitle className="text-4xl font-bold">$12,456.78</CardTitle>

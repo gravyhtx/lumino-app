@@ -66,7 +66,7 @@ export const SideNav: React.FC<SideNavProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       <div className="flex h-full max-h-screen flex-col gap-2">
-        <div className="flex flex-shrink-0 h-14 items-center border-b border-glass-border px-4 h-[60px] lg:px-5 lumino-banner dark:bg-lumi-dark-blue">
+        <div className="flex flex-shrink-0 h-14 items-center border-b border-glass-border px-4 h-[60px] lg:px-5 lumino-banner bg-lumi-dark-blue dark:bg-lumi-dark-blue">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <LuminoLogo close={!isNavOpen} />
           </Link>
